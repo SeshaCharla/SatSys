@@ -112,13 +112,13 @@ function:
 %===
 Thus, for $NO_x$ process dynamics under catalyst saturation, $\sigma(k) = \Gamma$. From (\ref{eqn::nox_avg})
 \begin{align}
-    x_1(k+1) &= u_1(k) - \tau(k) k_{scr}(k) u_1(k) \Gamma
+    x_{1_{sat}}(k+1) &= u_1(k) - \tau(k) k_{scr}(k) u_1(k) \Gamma
         \label{eqn::nox_mdl}
 \end{align}
 %===
 Defining $\eta(k)$ as change in $NO_x$ concentration reduction during the time between $k-1$ and $k$, i.e.,
 \begin{align}
-    \eta(k) &= u_1(k-1) - x_1 (k)
+    \eta_{sat}(k) &= u_1(k-1) - x_{1_{sat}} (k)
     \label{eqn::eta}
 \end{align}
 %===
@@ -142,8 +142,14 @@ The temperature model for concentration of viable voids $\Gamma$ on the catalyst
 %===
 Incorporating equations (\ref{eqn::eta}), (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}) and writing in regression form, we get
 \begin{align}
-    \eta(k+1) &= \pmb \phi_{sat}^T(k) \pmb \theta_{sat} \label{eqn::regression} \\
+    \eta_{sat}(k+1) &= \pmb \phi_{sat}^T(k) \pmb \theta_{sat} \label{eqn::regression} \\
     \pmb \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1} \label{eqn::phi_def}\\
     \pmb \theta_{sat} &= \tau_0 \times \bm{-k_1 \gamma_1 \\ k_1 \gamma_0 - k_0 \gamma_1 \\ k_0 \gamma_0}
                 = \bm{\theta_1 \\ \theta_2 \\ \theta_2} \label{eqn::theta_def}
+\end{align}
+%===
+Based on the parameter definitions (\ref{eqn::theta_def}), the signs of two of the parameters is deterministic.
+\begin{align}
+    \theta_1 \leq 0, \qquad
+    \theta_3 \geq 0
 \end{align}
