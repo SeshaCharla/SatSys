@@ -1,0 +1,89 @@
+\documentclass[subscriptcorrection,upint,varvw,barcolor=Goldenrod3,mathalfa=cal=euler,balance,hyphenate,french,pdf-a]{asmejour}
+
+\def\versionno{0.1}
+
+\hypersetup{
+	pdfauthor={Sesha Charla},                       		   	% <=== change to YOUR name[s]!
+	pdftitle={Modelling and Parameter Estimation of Diesel Engine After-treatment System under Catalyst Saturation
+	for Aging Diagnostics},                  	% <=== change to YOUR pdf file title
+	pdfkeywords={Diesel Engnine Aftertreatment Systems, Diagnostics, Modelling, Nonlinear systems, System Identification, },% <=== change to YOUR pdf keywords
+	pdfsubject = {Mathematical Modelling, Identification and Diagnostics},			% <=== change to YOUR subject
+}
+
+
+\JourName{Dynamic Systems, Measurement, and Control }%<=== change to the name of your journal
+
+\PaperYear{2025}
+
+% Custom Stuff
+\input{ltx_core/ltx_pkgs.tex}
+\input{ltx_core/new_cmds.tex}
+
+\begin{document}
+%=======================================================================================================================
+\SetAuthorBlock{Sesha Charla}{School of Mechanical Engineering,\\
+   Purdue University,\\
+   West Lafayette, Indiana, USA\\
+   email: scharla@purdue.edu}
+
+\SetAuthorBlock{Peter H. Meckl\CorrespondingAuthor}{%
+Fellow ASME\\
+School of Mechanical Engineering,\\
+Purdue University,\\
+West Lafayette, Indiana, USA\\
+email: meckl@purdue.edu
+}
+
+\SetAuthorBlock{Bin Yao}{%
+Fellow ASME\\
+School of Mechanical Engineering,\\
+Purdue University,\\
+West Lafayette, Indiana, USA\\
+email: byao@purdue.edu
+}
+%=======================================================================================================================
+\title{Modelling and Parameter Estimation of Diesel Engine After-treatment System under Catalyst Saturation for Aging
+Diagnostics}
+
+\keywords{Diesel Engine Aftertreatment System, System Identification, Nonlinear Systems, Hybrid Systems, Diagnostics, Parameter Estimation, Linear Programming.}
+%=======================================================================================================================
+%=======================================================================================================================
+\date{Version \versionno , \today}
+\maketitle
+%=======================================================================================================================
+
+%% Abstract should be no more than 250 words
+\begin{abstract}
+\input{secs/0_abstract.tex}
+\end{abstract}
+
+\input{secs/1_intro.tex}
+\input{secs/2_modelling.tex}
+\input{secs/3_parameter_est.tex}
+\input{secs/3_cross-sensitivity.tex}
+
+\subsection{PARAMETER BOUNDS UNDER UNCERTAINTY}
+
+\section{EXPERIMENTAL RESULTS}
+\subsection{TEST CELL DATA}
+\subsection{TRUCK DATA}
+\subsection{SIMULATION DATA WITH $\pm 20\%$ UREA DOSING GAIN}
+
+\section{CONCLUSIONS}
+
+%=======================================================================================================================
+\section*{Acknowledgment}
+Authors acknowledge the support, experimental data and, feedback from David Schmidt, Larry
+Bruner, Adam Kidd and Tom Nelson of Cummins, Inc.
+%=======================================================================================================================
+\section*{Funding Data}
+%=======================================================================================================================
+\input{secs/0-symb_list.tex}
+%=======================================================================================================================
+\appendix   %%% starting appendices
+\section{APPENDIX-A: List of Symbols}
+\input{secs/0-symb_list.tex}
+%=======================================================================================================================
+\bibliographystyle{asmejour}
+\bibliography{refs}
+\end{document}
