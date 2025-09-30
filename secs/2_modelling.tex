@@ -1,4 +1,4 @@
-\section{SCR-ASC SYSTEM DYNAMICS UNDER CATALYST SATURATION}
+\section{SCR-ASC System Dynamics Under Catalyst Satuaration}
 The SCR-ASC subsystem in the diesel engine after-treatment systems involves reacting flow on the top of a catalyst which
 adsorbs ammonia from urea decomposition. The reaction kinetics start with the decomposition of urea into ammonia
 followed by its adsorption onto the surface of the catalyst. The $NO_x$ entering the chamber is reduced by this adsorbed
@@ -130,7 +130,7 @@ The residence time can be parameterized as a function of mass flow rate $\lr{F}$
 %===
 The temperature dependence of the rate constant, $k_{scr}$, can be approximated by linearizing Arrhenius equation as:
 \begin{align}
-    k_{scr}(T) = A_{scr} e^{\lr{-\frac{E_{scr}}{RT}}} \approx k_1 T^T + k_0 \qquad k_1, k_0 > 0
+    k_{scr}(T) = A_{scr} e^{\lr{-\frac{E_{scr}}{RT}}} \approx k_1 T + k_0 \qquad k_1, k_0 > 0
     \label{eqn::rate_const}
 \end{align}
 %===
@@ -142,11 +142,17 @@ The temperature model for concentration of viable voids $\Gamma$ on the catalyst
 %===
 Incorporating equations (\ref{eqn::eta}), (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}) and writing in regression form, we get
 \begin{align}
-    \eta_{sat}(k+1) &= \pmb \phi_{sat}^T(k) \pmb \theta_{sat} \label{eqn::regression} \\
-    \pmb \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1} \label{eqn::phi_def}\\
+    \eta_{sat}(k+1) &= \pmb \phi_{sat}^T(k) \pmb \theta_{sat}
+    \label{eqn::regression} \\
+    %===
+    \pmb \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1}
+    \label{eqn::phi_def}\\
+    %===
     \pmb \theta_{sat} &= \tau_0 \times \bm{-k_1 \gamma_1 \\ k_1 \gamma_0 - k_0 \gamma_1 \\ k_0 \gamma_0}
-                = \bm{\theta_1 \\ \theta_2 \\ \theta_2} \label{eqn::theta_def}
+                       = \bm{\theta_1 \\ \theta_2 \\ \theta_2}
+    \label{eqn::theta_def}
 \end{align}
+
 %===
 Based on the parameter definitions (\ref{eqn::theta_def}), the signs of two of the parameters is deterministic.
 \begin{align}
