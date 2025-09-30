@@ -1,0 +1,62 @@
+Title: Modelling and Parameter Estimation of Diesel Engine After-treatment System under Catalyst Saturation for Aging
+Diagnostics
+
+Overall Narrative:
+-----------------
+1. The NO_x reduction dynamics are different when the Catalyst is saturted as it is independent of the urea-dosing.
+2. The I/O dynamics for NO_x reduction under Catalyst Saturation forms an upper bound to the actual NO_x reduction dynamics which switch between Saturation and de-saturation.
+3. This relationhip is used for estimating the model parameters through a constrained optimization problem.
+4. The model parameter are a strong function of mean and variance of temperature of the data set owing to the approximation used in temperature modelling.
+5. The approach is validated by showing the similarity between the paramter estimates across different data sets of the same catalyst under the sufficient statistics.
+6. We introduce the NO_x sensor cross sensitivity into the estimation problem, modify the convex optimization with regularization paramter that captures the effect of cross-sensitivity.
+7. The approach is validated by comparing the results of FTIR data and NO_x sensor data and NO_x sensor data across all the available data sets.
+8. There are two main applications for this model,
+        a. Identifying the segments of the data where the catalyst is confirmed to be desaturated.
+        b. The paramteres capture the aging levels of the catalyst
+9. The segment identification is demonstrated using the +/-20% gain data and validated by showing the reduction in the legnth of de-saturated data due to increase in the feedback gain.
+10. The capturing of aging-effects is demonstrated by comparing the aged and degreened test-cell data and demonstrated using the truck data as well.
+
+
+========================================================================================================================
+
+
+Putting the narrative into the paper sections:
+----------------------------------------------
+
+1. Introduction:
+        -- Motivation behind modeling SCR dynamics in this way.
+        -- Reveiw of existing literature on modelling and identification of SCR dynamics.
+        -- Advangatages of the modelling approach and applications.
+        -- Structure of the paper.
+
+
+2. SCR-ASC system dynamics under catalyst saturation
+        Overview Points:
+                1. The NO_x reduction dynamics are different when the Catalyst is saturted as it is independent of the urea-dosing.
+                2. The I/O dynamics for NO_x reduction under Catalyst Saturation forms an upper bound to the actual NO_x reduction dynamics which switch between Saturation and de-saturation.
+
+
+3. Model Parameter Estimation Algorithm and Validation
+        Overview Points:
+                3. This relationhip is used for estimating the model parameters through a constrained optimization problem.
+                4. The model parameter are a strong function of mean and variance of temperature of the data set owing to the approximation used in temperature modelling.
+                5. The approach is validated by showing the similarity between the paramter estimates across different data sets of the same catalyst under the sufficient statistics.
+
+
+4. Model Paramter Estimation under NO_x Sensor Cross-sensitivity.
+        Overview Points:
+                6. We introduce the NO_x sensor cross sensitivity into the estimation problem, modify the convex optimization with regularization paramter that captures the effect of cross-sensitivity.
+                7. The approach is validated by comparing the results of FTIR data and NO_x sensor data and NO_x sensor data across all the available data sets.
+
+
+5. Application 1: Catalyst Mode Detection
+        Overview Points:
+                9. The segment identification is demonstrated using the +/-20% gain data and validated by showing the reduction in the legnth of de-saturated data due to increase in the feedback gain.
+
+
+6. Application 2: Catalyst Aging Detection
+        Overview Points:
+                10. The capturing of aging-effects is demonstrated by comparing the aged and degreened test-cell data and demonstrated using the truck data as well.
+
+
+7. Conclusion
