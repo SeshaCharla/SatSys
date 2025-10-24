@@ -72,7 +72,7 @@ function:
 %===
 Thus, for $NO_x$ process dynamics under catalyst saturation, $\sigma(k) = \Gamma$. From (\ref{eqn::nox_avg})
 \begin{align}
-    x_{1_{sat}}(k+1) &= u_1(k) - \tau(k) k_{scr}(k) u_1(k) \Gamma
+    x_{1_{sat}}(k+1) &= u_1(k) - \underbrace{\tau(k) k_{scr}(k) u_1(k) \Gamma}_{\bm{\text{$NO_x$ reduction in} \\\text{sampling period $\lr{\eta(k)}$}}}
         \label{eqn::nox_mdl}
 \end{align}
 %===

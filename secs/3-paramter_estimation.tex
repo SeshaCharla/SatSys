@@ -1,1 +1,9 @@
 \section{Model Parameter Estimation Algorithm and Validation}
+The parameters of the $NO_x$ process dynamics under catalyst saturation (\ref{eqn::eta}), are estimated using the bounding constraint (\ref{eqn::eta_bound}) on the experimental data. The parameters are the solution of the following optimization problem:
+\begin{align}
+\text{minimize} &\qquad \sum_{k=1}^{N} \lr{ \eta_{sat}(k) - \eta(k)} ^2 \\
+\text{subject to} &\qquad \eta_{sat}(k) \geq \eta(k) \quad \forall \, k \in \lrf{1,2,\hdots, N} \notag
+\end{align}
+%===
+The above constrained least-squares problem can also be posed as an equivalent linear programming problem as $\eta_{sat}, \eta \geq 0$ always. The solution provides the system's parameter estimates under ideal conditions, i.
+e., in the absence of model structure uncertainties and measurement noise.
