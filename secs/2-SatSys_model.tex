@@ -3,12 +3,12 @@
 The SCR-ASC subsystem in the diesel engine after-treatment systems involves reacting flow on the top of a catalyst which
 adsorbs ammonia from urea decomposition. The reaction kinetics start with the decomposition of urea into ammonia
 followed by its adsorption onto the surface of the catalyst. The $NO_x$ entering the chamber is reduced by this adsorbed
-ammonia. The Eley-Rideal reaction mechanism \cite{yuan2015diesel}, \cite{hsieh2011development}, \cite{nova2014urea} is
-considered for modeling the SCR reaction kinetics, where one reactant $(NO_x)$ is gaseous, and the other is adsorbed on
-the catalyst surface $(NH_3)$. \cite{nova2014urea} lists all the reactions that take place inside the
-SCR-ASC chamber. Ammonia oxidation (AMOX) happens both on the surfaces of the SCR catalyst and the ASC catalyst in the
-mechanism that is similar, but SCR catalyst favors $NO_x$ reduction while ASC is specifically designed for ammonia
-oxidation.
+ammonia. The Eley-Rideal reaction mechanism \cite{prins2018eley}, \cite{yuan2015diesel}, \cite{hsieh2011development},
+\cite{nova2014urea} is considered for modeling the SCR reaction kinetics, where one reactant $(NO_x)$ is gaseous, and
+the other is adsorbed on the catalyst surface $(NH_3)$. \cite{nova2014urea} lists all the reactions that take place
+inside the SCR-ASC chamber. Ammonia oxidation (AMOX) happens both on the surfaces of the SCR catalyst and the ASC
+catalyst in the mechanism that is similar, but SCR catalyst favors $NO_x$ reduction while ASC is specifically designed
+for ammonia oxidation.
 In order to keep the model order reasonably low and parameters identifiable, only the following three prominent reactions \cite{devarakonda2008adequacy},\cite{hsieh2011development} are considered:
 \begin{enumerate}
     \item Standard SCR reaction:
@@ -44,3 +44,4 @@ selectivity of AMOX reaction \cite{jain2023diagnostics}.
 %===
 \input{secs/2-subs/2-1-relative_response.tex}
 %===
+\input{secs/2-subs/2-3-temperature_limitations.tex}
