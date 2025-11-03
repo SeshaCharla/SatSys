@@ -1,3 +1,25 @@
 \section{Model Parameter Estimation}
+The catalyst mode detection separates the data segments corresponding to saturated catalyst's response and normal catalyst's response within a margin of error dictated by $\epsilon_{sat}$. Using the saturated catalyst's response data we can construct a regression problem (\ref{eqn::sat_regress}) that can be solved using ordinary least-squares.
+\begin{align}
+        \eta(k) &= \phi_{sat}^T(k) \theta_{\sat} \quad \text{where, } k \in \lrf{i| \norm{\hat \eta_{sat}(i) - \eta_{i}} \leq \epsilon_{sat}}
+        \label{eqn::sat_regress}
+\end{align}
+The prediction error, $\varepsilon$'s, statistics can be used for estimating the variance of parameter estimates. We have,
+\begin{align}
+        &\varepsilon(k) =  \eta(k) - \phi_{sat}^T(k) \hat \theta_{\sat} \\
+        %===
+        &E\lrb{\varepsilon} = \bar \varepsilon = \frac{1}{M}\sum_k \varepsilon(k)= 0 \: \lrb{\because \theta_3 \text{ includes mean-error}} \\
+        %===
+        &Var \lr{\varepsilon} = \sigma^2_{\varepsilon} =\frac{1}{M-1} \sum_k \varepsilon_s^2(k) \quad \lrb{\text{Sample Variance}} \\
+        %===
+        &\implies C_{\hat{\theta}_{sat}} = \sigma^2_{p} \lrb{ \bar{\pmb \Phi}_{sat}^T \bar{\pmb \Phi}_{sat}}^{-1}\\
+        %====
+        &\text{where, }\qquad  \bar{\pmb \Phi}_{sat} = \bm{\pmb \phi_{sat}(k), \pmb \phi_{sat}(l), \hdots}^T \\
+        %====
+        &k,l, \hdots \in \lrf{i | \norm{\hat \eta_{sat}(i) - \eta(i)} \leq \epsilon_{sat}, i = \lrf{1,2,\hdots,N}} \notag
+\end{align}
+and $M$ is the sample size corresponding to the saturated catalyst's response.
 
-\subsection{Parameter Estimation Using $NO_x$ Sensor Data}
+
+\subsection{Parameter Estimation Results Using FTIR Sensor Data}
+\subsection{Parameter Estimation Results Using $NO_x$ Sensor Data}

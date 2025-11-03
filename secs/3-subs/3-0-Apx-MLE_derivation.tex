@@ -1,0 +1,28 @@
+\section{Maximum Likelihood Estimate Derivation \label{sec::mle_derivation}}
+Consider,
+\begin{align}
+        \varepsilon_\eta(k) &= \eta_{sat}(k) - \eta\lr{k}  \quad
+        \text{or,}\quad \varepsilon_\eta(k) = \eta_{sat}(k) - \eta_y{k} \label{eqn::varepsilon_eta}\\
+        \implies& \varepsilon_\eta(k) = \phi^T \theta_{sat} - \eta\lr{k} \label{eqn::eta_regression}
+\end{align}
+based on the measurement sensors. Assuming $\varepsilon_\eta$ follows an exponential distribution with known rate parameter, $\lambda$,
+\begin{align}
+        \varepsilon_\eta &\backsim \text{Exp}(\lambda);\qquad
+        p(\varepsilon_\eta;\lambda) = \begin{cases} \lambda e^{-\lambda \varepsilon_\eta} & \varepsilon_\eta \geq  0\\
+                                                        0 & \varepsilon_{\eta} < 0
+                                        \end{cases}
+                                        \label{eqn::exp_pdf}
+\end{align}
+we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$:
+\begin{align}
+        p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) &= \prod_k  \lambda e^{-\lambda \varepsilon_\eta (k)} & \varepsilon_\eta(k) \geq  0 \\
+        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)} &= n \ln \lambda -\lambda \sum_{k}\varepsilon_\eta (k) & \varepsilon_\eta(k) \geq  0
+\end{align}
+Thus we have the maximum likelihood estimate $\theta_{sat}$ as,
+\begin{align}
+       \hat \theta_{sat} &= \argmax_{\theta_{sat}} \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)}
+       = \argmin_{\theta_{sat}} \sum_{k}\varepsilon_\eta (k), \varepsilon_\eta(k) \geq  0 \notag \\
+       %===
+       &=\argmin_{\theta_{sat}}  \lrf{\sum_{k} \phi_{sat}(k) \theta_{\sat}}, \: s.t \: \phi_{sat}(k) \theta_{\sat} \geq \eta_{\sat} (k) \: \forall k
+\end{align}
+which is the linear programming problem (\ref{eqn::lin_prog}).

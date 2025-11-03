@@ -100,15 +100,15 @@ The temperature model for concentration of viable voids $\Gamma$ on the catalyst
     \label{eqn::gamma}
 \end{align}
 %===
-The above approximate models for temperature introduces variation in the parameter estimates based on range and skewness in the sampling of the temperature. This can be quantified and accounted for using the sufficient statistics that are only the functions of temperature (Appendix-\ref{sec::T_lims}). Incorporating equations (\ref{eqn::eta}), (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}) and writing in regression form, we get
+The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. Incorporating equations (\ref{eqn::eta}), (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}) and writing in regression form, we get
 \begin{align}
-    \eta_{sat}(k+1) &= \pmb \phi_{sat}^T(k) \pmb \theta_{sat}
+    \eta_{sat}(k+1) &= \phi_{sat}^T(k) \theta_{sat}
     \label{eqn::regression} \\
     %===
-    \pmb \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1}
+    \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1}
     \label{eqn::phi_def}\\
     %===
-    \pmb \theta_{sat} &= \tau_0 \times \bm{-k_1 \gamma_1 \\ k_1 \gamma_0 - k_0 \gamma_1 \\ k_0 \gamma_0}
+    \theta_{sat} &= \tau_0 \times \bm{-k_1 \gamma_1 \\ k_1 \gamma_0 - k_0 \gamma_1 \\ k_0 \gamma_0}
                        = \bm{\theta_1 \\ \theta_2 \\ \theta_2}
     \label{eqn::theta_def}
 \end{align}
