@@ -5,7 +5,7 @@ Consider,
         \text{or,}\quad \varepsilon_\eta(k) = \eta_{sat}(k) - \eta_y{k} \label{eqn::varepsilon_eta}\\
         \implies& \varepsilon_\eta(k) = \phi^T \theta_{sat} - \eta\lr{k} \label{eqn::eta_regression}
 \end{align}
-based on the measurement sensors. Assuming $\varepsilon_\eta$ follows an exponential distribution with known rate parameter, $\lambda$,
+based on the measurement sensors. Assuming $\varepsilon_\eta$ follows an exponential distribution with the rate parameter, $\lambda$,
 \begin{align}
         \varepsilon_\eta &\backsim \text{Exp}(\lambda);\qquad
         p(\varepsilon_\eta;\lambda) = \begin{cases} \lambda e^{-\lambda \varepsilon_\eta} & \varepsilon_\eta \geq  0\\
@@ -13,10 +13,19 @@ based on the measurement sensors. Assuming $\varepsilon_\eta$ follows an exponen
                                         \end{cases}
                                         \label{eqn::exp_pdf}
 \end{align}
-we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$:
+we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$ and $\lambda$:
 \begin{align}
         p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) &= \prod_k  \lambda e^{-\lambda \varepsilon_\eta (k)} & \varepsilon_\eta(k) \geq  0 \\
-        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)} &= n \ln \lambda -\lambda \sum_{k}\varepsilon_\eta (k) & \varepsilon_\eta(k) \geq  0
+        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)} &= N \ln \lambda -\lambda \sum_k \varepsilon_\eta (k) & \varepsilon_\eta(k) \geq  0
+\end{align}
+where, N is the total sample size. For, maximum likelihood estimate of $\lambda$,
+\begin{align}
+        \frac{\partial\ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)}}{\partial \lambda} = 0 \qquad
+        \implies \lambda = \frac{N}{\sum_k \varepsilon_\eta} \quad \varepsilon_\eta \geq 0
+\end{align}
+So, the log-likelihood functions becomes:
+\begin{align}
+        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat})}&= \lrb{N \ln N - N} - \ln \sum_k \varepsilon_{\eta}(k) & \varepsilon_\eta(k) \geq  0
 \end{align}
 Thus we have the maximum likelihood estimate $\theta_{sat}$ as,
 \begin{align}
