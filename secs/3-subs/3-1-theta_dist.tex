@@ -1,5 +1,10 @@
 \subsection{Distribution of the Parameter Estimate}
-Using asymptotic properties of MLE (Theorem-7.3 in \cite{kay1993estimation}), with significantly large data lenght $(N)$ the parameter estimate $\hat \theta_{sat}$ asymptotically follows a normal distribution.
+Using asymptotic properties of MLE (Theorem-7.3 in \cite{kay1993estimation}), with significantly large data length $(N)$, the parameter estimate $\hat \theta_{sat}$ asymptotically follows a normal distribution under some regularity conditions on the PDF $p(\pmb \varepsilon_n; \theta_{sat})$.
 \begin{align}
-        \hat \theta_{sat} \sim \mathcal{N} \lr{\theta_{sat}, I^{-1}(\theta_{sat})}
+        \hat \theta_{sat} \sim \mathcal{N} \lr{\theta_{sat},  I^{-1}(\theta_{sat})}
 \end{align}
+where, $I(\theta_{sat})$ is the fisher information matrix evaluated at the true value of the parameter $(\theta_{sat})$. Here, $I$ is evaluated at the MLE estimate. We have the $(i,j)^{th}$ element of the fisher information matrix:
+\begin{align}
+        \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 \ln p(\varepsilon_\eta; \theta_{sat})}{\partial \theta_j \partial \theta_i}}
+\end{align}
+The regularity conditions require the existence of derivatives of the log-likelihood function and the Fisher information being non-zero.
