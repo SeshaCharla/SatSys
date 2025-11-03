@@ -25,13 +25,15 @@ where, N is the total sample size. For, maximum likelihood estimate of $\lambda$
 \end{align}
 So, the log-likelihood functions becomes:
 \begin{align}
-        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat})}&= \lrb{N \ln N - N} - \ln \sum_k \varepsilon_{\eta}(k) & \varepsilon_\eta(k) \geq  0
+        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat})} &= \lrb{N \ln N - N} - \ln \sum_k \lr{\phi_{\sat}(k)^T \theta_{\sat} - \eta(k)}
+        \notag\\
+        & \phi_{\sat}(k)^T \theta_{\sat} \geq \eta(k) \quad \forall k \in \lrf{1, 2, \hdots, N}
 \end{align}
 Thus we have the maximum likelihood estimate $\theta_{sat}$ as,
 \begin{align}
        \hat \theta_{sat} &= \argmax_{\theta_{sat}} \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)}
-       = \argmin_{\theta_{sat}} \sum_{k}\varepsilon_\eta (k), \varepsilon_\eta(k) \geq  0 \notag \\
        %===
-       &=\argmin_{\theta_{sat}}  \lrf{\sum_{k} \phi_{sat}(k) \theta_{\sat}}, \: s.t \: \phi_{sat}(k) \theta_{\sat} \geq \eta_{\sat} (k) \: \forall k
+       =\argmin_{\theta_{sat}}  \lrf{\sum_{k} \phi_{sat}(k) \theta_{\sat}}, \notag\\
+       & s.t \quad \phi_{sat}(k) \theta_{\sat} \geq \eta_{\sat} (k) \quad \forall \: k \in \lrf{1, 2, \hdots, N}
 \end{align}
 which is the linear programming problem (\ref{eqn::lin_prog}).
