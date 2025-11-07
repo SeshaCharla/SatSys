@@ -3,8 +3,11 @@ Using asymptotic properties of MLE (Theorem-7.3 in \cite{kay1993estimation}), wi
 \begin{align}
         \hat \theta_{sat} \sim \mathcal{N} \lr{\theta_{sat},  I^{-1}(\theta_{sat})}
 \end{align}
-where, $I(\theta_{sat})$ is the fisher information matrix evaluated at the true value of the parameter $(\theta_{sat})$. Here, $I$ is evaluated at the MLE estimate. We have the $(i,j)^{th}$ element of the fisher information matrix:
+where, $I(\theta_{sat})$ is the fisher information matrix evaluated at the true value of the parameter $(\theta_{sat})$.
+The regularity conditions require the existence of derivatives of the log-likelihood function and the Fisher information
+being non-zero. Using the log-likelihood function for half-normal distribution (\ref{eqn::log_likelihood}), we have,
 \begin{align}
-        \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 \ln p(\varepsilon_\eta; \theta_{sat})}{\partial \theta_j \partial \theta_i}}
+        \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 L\lr{\theta_{sat}}}{\partial \theta_j
+        \partial \theta_i}} = \frac{\lambda^2}{\pi} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \\
+        I(\theta_{sat}) &= \frac{\lambda^2}{\pi} \Phi_{sat}^T \Phi_{sat}
 \end{align}
-The regularity conditions require the existence of derivatives of the log-likelihood function and the Fisher information being non-zero.

@@ -5,50 +5,28 @@ Consider,
         \text{or,}\quad \varepsilon_\eta(k) = \eta_{sat}(k) - \eta_y{k} \label{eqn::varepsilon_eta}\\
         \implies& \varepsilon_\eta(k) = \phi^T \theta_{sat} - \eta\lr{k} \label{eqn::eta_regression}
 \end{align}
-based on the measurement sensors. Assuming $\varepsilon_\eta$ follows Rayleigh distribution with the scale parameter, $\lambda = (\sigma^2)$,
+based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} and using inverse variance parametrization with parameter, $\lambda$,
 \begin{align}
-        \varepsilon_\eta &\backsim \text{Rayleigh}(\lambda);\qquad
-        p(\varepsilon_\eta;\lambda) = \begin{cases} \frac{\varepsilon_\eta}{\lambda} e^{- \frac{\varepsilon_\eta^2}{2\lambda}} & \varepsilon_\eta \geq  0\\
+        \varepsilon_\eta &\backsim \text{Half-Normal}(\lambda);\quad
+        p(\varepsilon_\eta;\lambda) = \begin{cases} \frac{2\lambda}{\pi} e^{- \frac{\varepsilon_\eta^2 \lambda^2}{\pi}} & \varepsilon_\eta \geq  0\\
                                                         0 & \varepsilon_{\eta} < 0
                                         \end{cases}
                                         \label{eqn::exp_pdf}
 \end{align}
 we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$ and $\lambda$:
 \begin{align}
-        p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) &= \prod_k  \frac{\varepsilon_\eta(k)}{\lambda} e^{- \frac{\varepsilon_\eta(k)^2}{2\lambda}} \quad \varepsilon_\eta(k) \geq  0
+        l\lr{\theta_{sat}}&=p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) = \prod_{k=1}^N  \frac{2\lambda}{\pi} e^{- \frac{\varepsilon_\eta^2 \lambda^2}{\pi}} \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::likelihood}\\
-        \ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)} &= -N \ln \lambda
-                + \sum_{k} \lr{\ln \varepsilon_{\eta}(k) - \frac{\varepsilon_{\eta}(k)^2}{2\lambda}} \notag\\
-        & \qquad \qquad \varepsilon_\eta(k) \geq  0
+        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}
+                \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::log_likelihood}
 \end{align}
-where, N is the total sample size. The maximum likelihood estimate of $\lambda$ would be
-\begin{align}
-        \frac{\partial\ln \lr{p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda)}}{\partial \lambda} = 0 \quad
-        \implies \lambda = \frac{\sum_k \varepsilon_\eta(k)^2}{N} \quad \varepsilon_\eta(k)\geq 0
-        \label{eqn::lambda_eqn}
-\end{align}
-Introducing (\ref{eqn::lambda_eqn}) into (\ref{eqn::log_likelihood}) for computing the maximum likelihood estimate for $\theta_{sat}$
+where, N is the total sample size. The maximum likelihood estimate for $\theta_{sat}$ would be:
 \begin{align}
         \hat \theta_{sat}
-        %===
-        % &= \argmax \lrf{-N \ln \lr{\frac{\sum_k \varepsilon_\eta(k)^2}{N}} + \sum_{k} \lr{\ln \varepsilon_{\eta}(k) -
-        % \frac{\varepsilon_{\eta}(k)^2}{2\lr{\frac{\sum_k \varepsilon_\eta(k)^2}{N}}}}} \\
-        %===
-        % &= \argmax \lrf{-N \ln \lr{\sum_k \varepsilon_\eta(k)^2} + N \ln N + \sum_{k} \lr{\ln \varepsilon_{\eta}(k)} -
-        % \frac{N}{2} } \\
-        %====
-        &= \argmax_{\theta_{sat}} \lrf{ \lrb{N \ln N - \frac{N}{2}} + \sum_k \ln \lr{ \frac{\varepsilon_\eta (k)}{\sum_m
-        \varepsilon_\eta(m)^2}} }  \notag\\
-        %===
-        % &= \argmax_{\theta_{sat}} {\sum_k \ln \lr{ \frac{\varepsilon_\eta (k)}{\sum_m
-        % \varepsilon_\eta(m)^2}}} \quad \varepsilon_\eta(k) \geq 0 \notag\\
-        %===
-        &= \argmin_{\theta_{sat}} \sum_{m=1}^{N} \varepsilon_\eta(m)^2
-                =\argmin_{\theta_{sat}} \sum_{m=1}^{N} \varepsilon_\eta(m) \,,
-        \quad \varepsilon_\eta(m) \geq 0 \notag \\
-        %===
-        &= \argmin_{\theta_{sat}} \sum_{m=1}^{N} \phi_{sat}(k)^T \theta_{sat} \notag\\
-        & \qquad s.t. \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in \lrf{1,2,\hdots,N}
+        &= \argmax_{\theta_{sat}} \lrf{ N \ln \frac{2\pi}{\lambda} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}} \quad \varepsilon_\eta(k) \geq  0 \notag\\
+        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag\\
+        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
+        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
 \end{align}
-which is the linear programming problem (\ref{eqn::lin_prog}).
+which is the quadratic programming problem (\ref{eqn::lin_prog}).
