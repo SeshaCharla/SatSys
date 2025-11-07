@@ -1,0 +1,8 @@
+\section{Catalyst Mode Detection}
+The saturated catalyst model's response is not dependent on the previous state but only on the inputs making the
+response independent of the initial conditions. Thus, using the parameter estimates, a given data point can be
+classified as saturated catalyst's response if the prediction error for the same inputs (inlet $NO_x$, $u_1$, and
+mass flow rate, $F$) is less than the $\epsilon_{sat}$.
+\begin{align}
+        \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
+\end{align}
