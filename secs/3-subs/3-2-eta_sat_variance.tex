@@ -1,0 +1,6 @@
+\subsection{Variance in $\eta_{sat}$ prediction}
+The variance in the $\eta_{sat}$ prediction for the given time-step is predicted using the distribution of the paremter estimates. Form (\ref{eqn::regression}), we have,
+\begin{align}
+        \Var\lr{\eta_{sat}(k)} &= \phi_{sat}(k)^T \Var\lr{\theta_{sat}} \phi_{sat}(k) \notag \\
+        \implies \sigma_{\eta_{sat}}(k) &= \phi_{sat}(k)^T I^{-1}(\theta_{sat}) \phi_{sat}(k)
+\end{align}

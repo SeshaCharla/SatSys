@@ -17,7 +17,7 @@ we have the likelihood and log-likelihood functions given the data and parameter
 \begin{align}
         l\lr{\theta_{sat}}&=p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) = \prod_{k=1}^N  \frac{2\lambda}{\pi} e^{- \frac{\varepsilon_\eta^2 \lambda^2}{\pi}} \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::likelihood}\\
-        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}
+        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi} {\sum_{k=1}^N \varepsilon_\eta^2}
                 \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::log_likelihood}
 \end{align}

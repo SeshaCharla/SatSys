@@ -43,34 +43,34 @@ Summing the equations from (\ref{eqn::nox_bal_con}) for  $i = 0$ to $n-1$, where
 \begin{multline}
         \underbrace{\con{NO_x}^{out}}_{x_1(k+1)}(t+t_s) =
                 \underbrace{\con{NO_x}^{in}}_{u_1(k)}(t) \\
-                - \tau(t) k_{scr}(t) \con{NO_x}^{in}(t) \underbrace{\lrf{\frac{1}{n} \sum_{i = 0}^{n-1} \con{NH_3}^{ads}(t + i \tau)}}_{\sigma(k)}
+                - \tau(t) k_{scr}(t) \con{NO_x}^{in}(t) \underbrace{\lrf{\frac{1}{n} \sum_{i = 0}^{n-1} \con{NH_3}^{ads}(t + i \tau)}}_{\gamma(k)}
         \label{eqn::nox_avg}
 \end{multline}
 %
 % ======================================================================================================================
 %
-The quantity $\sigma(k)$ is the average concentration of ammonia adsorbed on the catalysts surface across the $n$ residence times between $k$ and $k+1$ samples. $\sigma(k)$ is bounded by the total concentration of voids on the surface of the catalyst, $\Gamma$, which decrease with increase in temperature.
+The quantity $\gamma(k)$ is the average concentration of ammonia adsorbed on the catalysts surface across the $n$ residence times between $k$ and $k+1$ samples. $\gamma(k)$ is bounded by the total concentration of voids on the surface of the catalyst, $\Gamma$, which decrease with increase in temperature.
 \begin{align}
-    0 \leq \sigma(k) \leq \Gamma \qquad \forall k
+    0 \leq \gamma(k) \leq \Gamma \qquad \forall k
 \end{align}
 %===
-The unbounded dynamics of $\sigma$, $\sigma^{ub}(k)$ is a nonlinear function dependent on concentration of adsorbed ammonia, urea dosing $\lr{u_{inj}}$, and the inlet $NO_x$ concentration from the previous time step.
+The unbounded dynamics of $\gamma$, $\gamma^{ub}(k)$ is a nonlinear function dependent on concentration of adsorbed ammonia, urea dosing $\lr{u_{inj}}$, and the inlet $NO_x$ concentration from the previous time step.
 \begin{align}
-    \sigma^{ub}(k) &= g_{\sigma} \lr{ \sigma(k-1), u_{inj}(k-1), \con{NO_x}^{in}(k-1) }
+    \gamma^{ub}(k) &= g_{\gamma} \lr{ \gamma(k-1), u_{inj}(k-1), \con{NO_x}^{in}(k-1) }
 \end{align}
 The actual expression, which is beyond the scope of this work, can be derived using the similar approach used for
-deriving $NO_x$ process dynamics (\ref{eqn::nox_avg}). $\sigma(k)$ can be described using the following pairwise
+deriving $NO_x$ process dynamics (\ref{eqn::nox_avg}). $\gamma(k)$ can be described using the following pairwise
 function:
 \begin{align}
-    \sigma(k) &=
+    \gamma(k) &=
     \begin{cases}
-        \sigma^{ub}(k) & \text{if } \quad 0 \leq \sigma^{ub}(k) \leq \Gamma \\
-        \Gamma         & \text{if } \quad \sigma^{ub}(k) > \Gamma \qquad \text{[Satuaration]}\\
-        0              & \text{if } \quad \sigma^{ub}(k) < 0 \qquad \text{[Empty]}
+        \gamma^{ub}(k) & \text{if } \quad 0 \leq \gamma^{ub}(k) \leq \Gamma \\
+        \Gamma         & \text{if } \quad \gamma^{ub}(k) > \Gamma \qquad \text{[Satuaration]}\\
+        0              & \text{if } \quad \gamma^{ub}(k) < 0 \qquad \text{[Empty]}
     \end{cases}
 \end{align}
 %===
-Thus, for $NO_x$ process dynamics under catalyst saturation, $\sigma(k) = \Gamma$. From (\ref{eqn::nox_avg})
+Thus, for $NO_x$ process dynamics under catalyst saturation, $\gamma(k) = \Gamma$. From (\ref{eqn::nox_avg})
 \begin{align}
     x_{1_{sat}}(k+1) &= u_1(k) - \underbrace{\tau(k) k_{scr}(k) u_1(k) \Gamma}_{\bm{\text{$NO_x$ reduction in} \\\text{sampling period $\lr{\eta_{sat}(k)}$}}}
         \label{eqn::nox_mdl}
@@ -96,7 +96,7 @@ The temperature dependence of the rate constant, $k_{scr}$, can be approximated 
 %===
 The temperature model for concentration of viable voids $\Gamma$ on the catalyst \cite{nova2014urea},\cite{ciardelli2004scr},\cite{joo2008study} is approximated as a linear function that decreases with increase in temperature.
 \begin{align}
-    \Gamma(T) &= S_1 e^{-S_2 T} \approx -\gamma_1 T + \gamma_0 \qquad \gamma_1, \gamma_0 > 0
+    \Gamma(T) &= S_1 e^{-S_2 T} \approx -r_1 T + r_0 \qquad r_1, r_0 > 0
     \label{eqn::gamma}
 \end{align}
 %===
@@ -108,7 +108,7 @@ The above approximate models for temperature introduces dependence of the parame
     \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1}
     \label{eqn::phi_def}\\
     %===
-    \theta_{sat} &= \tau_0 \times \bm{-k_1 \gamma_1 \\ k_1 \gamma_0 - k_0 \gamma_1 \\ k_0 \gamma_0}
+    \theta_{sat} &= \tau_0 \times \bm{-k_1 r_1 \\ k_1 r_0 - k_0 r_1 \\ k_0 r_0}
                        = \bm{\theta_1 \\ \theta_2 \\ \theta_2}
     \label{eqn::theta_def}
 \end{align}
