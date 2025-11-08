@@ -1,13 +1,15 @@
-\subsection{Distribution of the Parameter Estimate}
+% \subsection{Distribution of the Parameter Estimate}
 Using asymptotic properties of MLE (Theorem-7.3 in \cite{kay1993estimation}), with significantly large data length $(N)$, the parameter estimate $\hat \theta_{sat}$ asymptotically follows a normal distribution under some regularity conditions on the PDF $p(\pmb \varepsilon_n; \theta_{sat})$.
 \begin{align}
         \hat \theta_{sat} \sim \mathcal{N} \lr{\theta_{sat},  I^{-1}(\theta_{sat})}
+        \label{eqn::theta_dist}
 \end{align}
 where, $I(\theta_{sat})$ is the fisher information matrix evaluated at the true value of the parameter $(\theta_{sat})$.
 The regularity conditions require the existence of derivatives of the log-likelihood function and the Fisher information
 being non-zero. Using the log-likelihood function for half-normal distribution (\ref{eqn::log_likelihood}), we have,
 \begin{align}
         \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 L\lr{\theta_{sat}}}{\partial \theta_j
-        \partial \theta_i}} = \frac{\lambda^2}{\pi} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \\
+        \partial \theta_i}} = \frac{\lambda^2}{\pi} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \notag \\
         I(\theta_{sat}) &= \frac{\lambda^2}{\pi} \Phi_{sat}^T \Phi_{sat}
+        \label{eqn::fisher_information}
 \end{align}
