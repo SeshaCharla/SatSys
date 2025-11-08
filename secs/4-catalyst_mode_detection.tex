@@ -6,3 +6,4 @@ mass flow rate, $F$) is less than the $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
+The value of the threshold, $\epsilon_{sat}$ is not dependent on the uncertainity of the esitmation process but the the quantization errors and noise in the signals. The optimization problem (\ref{eqn::lin_prog}) finds the tightest upper-bound to the data that is structurally feasible, so the main source of uncertainity here is the quantization errors and noise in the measurement signals. For the test-cell data set, $\epsilon_{sat} = 2\times 10^{-3} \, mol/m^{-3}$.
