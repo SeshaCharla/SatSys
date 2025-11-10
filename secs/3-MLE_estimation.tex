@@ -11,7 +11,7 @@ parameter estimates under ideal conditions, i.e., in the absence of model struct
 When the $NO_x$ sensor data is used, $\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition
 (\ref{eqn::eta_y_bound}) still holds. Rewriting the optimization problem (\ref{eqn::lin_opt_1}) into a quadratic programming problem using regression vector (\ref{eqn::regression}) and introducing the constraints on the parameters (\ref{eqn::theta_cond}), we have the quadratic programming problem for estimating the parameters of the catalyst:
 \begin{align}
-        \text{minimize} &\qquad \norm{\Phi_{sat}^T \theta_{sat} - H}^2      \label{eqn::lin_prog}\\
+        \text{minimize} &\qquad \norm{W \lr{\Phi_{sat} \theta_{sat} - H}}^2      \label{eqn::lin_prog}\\
         \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H,
                            \qquad \bm{-1 & 0 & 0\\
                                       0  & 0 & 0 \\
@@ -19,10 +19,11 @@ When the $NO_x$ sensor data is used, $\eta(k)$ is replaced with $\eta_y(k)$ as t
         \text{where, } & \qquad
         \Phi_{sat} = \bm{\phi_{sat}(1), \phi_{sat}(2), \hdots, \phi_{sat}(N-1)}^T \notag\\
         &\qquad H = \bm{ \eta(2), \eta(3), \hdots, \eta(N)}^T \notag\\
-        & \qquad \text{and $\pmb 1$ is a column vector of $1's$.} \notag
+        & \: W\text{ is the weight matrix and $\pmb 1$ is a column vector of $1's$.} \notag
 \end{align}
-The experimental results indicate that the constraint on the parameter signs (\ref{eqn::theta_cond}) is not active for
-the optimal values showing that the model structure is consistent with data.
+The matrix $W$ is a diagonal matrix of weights to reduce the imbalance in sampling as the experimental conditions
+cannot be fully controlled. The experimental results indicate that the constraint on the parameter signs
+(\ref{eqn::theta_cond}) is not active for the optimal values showing that the model structure is consistent with data.
 
 The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (MLE) under half-normal distribution for
 model structure error} $\lr{\varepsilon_\eta}$  between the saturated system's response, $\eta_{sat}(k)$, and the actual

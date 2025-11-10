@@ -10,6 +10,6 @@ being non-zero. Using the log-likelihood function for half-normal distribution (
 \begin{align}
         \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 L\lr{\theta_{sat}}}{\partial \theta_j
         \partial \theta_i}} = \frac{\lambda^2}{\pi} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \notag \\
-        I(\theta_{sat}) &= \frac{\lambda^2}{\pi} \Phi_{sat}^T \Phi_{sat}
+        I(\theta_{sat}) &= \frac{2 \lambda^2}{\pi} \lrb{\Phi_{sat}^T \lr{W^T W} \Phi_{sat}}
         \label{eqn::fisher_information}
 \end{align}

@@ -3,7 +3,7 @@ Consider,
 \begin{align}
         \varepsilon_\eta(k) &= \eta_{sat}(k) - \eta\lr{k}  \quad
         \text{or,}\quad \varepsilon_\eta(k) = \eta_{sat}(k) - \eta_y{k} \label{eqn::varepsilon_eta}\\
-        \implies& \varepsilon_\eta(k) = \phi^T \theta_{sat} - \eta\lr{k} \label{eqn::eta_regression}
+        \implies& \varepsilon_\eta(k) = w_i\lr{\phi^T \theta_{sat} - \eta\lr{k}} \label{eqn::eta_regression}
 \end{align}
 based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} and using inverse variance parametrization with parameter, $\lambda$,
 \begin{align}
@@ -24,9 +24,9 @@ we have the likelihood and log-likelihood functions given the data and parameter
 where, N is the total sample size. The maximum likelihood estimate for $\theta_{sat}$ would be:
 \begin{align}
         \hat \theta_{sat}
-        &= \argmax_{\theta_{sat}} \lrf{ N \ln \frac{2\pi}{\lambda} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}} \quad \varepsilon_\eta(k) \geq  0 \notag\\
+        &= \argmax_{\theta_{sat}} \lrf{ N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}} \quad \varepsilon_\eta(k) \geq  0 \notag\\
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag\\
-        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
+        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N w_i^2 \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
         &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
 \end{align}
 which is the quadratic programming problem (\ref{eqn::lin_prog}).
