@@ -3,10 +3,11 @@
 Considering the reaction chamber as a control volume (Figure-\ref{fig:plug-flow}), the dynamic model is developed based
 on the molar conservation of species at the inlet and outlet separated by a residence-time interval. By assuming a
 zero-order hold on the inlet species over the sampling time, the equations relating inlet and outlet concentrations at
-the residence-time scale are extended to the sampling-time scale.
-%====
-% ======================================================================================================================
-% \subsection{$NO_x$ PROCESS DYNAMICS}
+the residence-time scale are extended to the sampling-time scale. The residence time can be parameterized as a function of mass flow rate $\lr{F}$ assuming that the effect of the density variation on residence time is insignificant.
+\begin{align}
+    \tau(k) &= \frac{\rho V_{scr}}{F(k)} = \frac{\tau_0}{F(k)}
+    \label{eqn::res_time}
+\end{align}
 Let, $\lrf{\bullet}$ be the number of moles and $\lrb{\bullet}$ be the concentration of a given species $\bullet$. We have the molar conservation of $NO_x$ across the control volume $(V_{scr})$ within one residence time $(\tau)$:
 %====
 \begin{multline}
@@ -16,10 +17,10 @@ Let, $\lrf{\bullet}$ be the number of moles and $\lrb{\bullet}$ be the concentra
         \label{eqn::nox_bal}
 \end{multline}
 %===
-The number of moles entering at the inlet and leaving at the outlet can be written as a function of the concentration, residence time and volume flow rate $(F_{vol})$:
+The number of moles entering at the inlet and leaving at the outlet can be written as a function of the concentration, residence time and mass flow rate $(F)$:
 %===
 \begin{align}
-    \mol{NO_x}^{in/out} = \con{NO_x}^{in/out} \tau F_{vol} = \con{NO_x}^{in/out} V_{scr}
+    \mol{NO_x}^{in/out} = \con{NO_x}^{in/out} \tau \lr{\frac{F}{\rho}} = \con{NO_x}^{in/out} V_{scr}
 \end{align}
 %===
 Using Eiley-Rideal mechanism for Standard SCR reaction $\lrf{2}$:
@@ -41,8 +42,7 @@ Summing the equations from (\ref{eqn::nox_bal_con}) for  $i = 0$ to $n-1$, where
     \con{NO_x}^{out} (t + (i+1) \tau) &= \con{NO_x}^{out}(t + t_s) \quad \forall i \in [0, n-1] \label{eqn::zero_out}
 \end{align}
 \begin{multline}
-        \underbrace{\con{NO_x}^{out}}_{x_1(k+1)}(t+t_s) =
-                \underbrace{\con{NO_x}^{in}}_{u_1(k)}(t) \\
+  \con{NO_x}^{out}(t+t_s) = \con{NO_x}^{in} \\
                 - \tau(t) k_{scr}(t) \con{NO_x}^{in}(t) \underbrace{\lrf{\frac{1}{n} \sum_{i = 0}^{n-1} \con{NH_3}^{ads}(t + i \tau)}}_{\gamma(k)}
         \label{eqn::nox_avg}
 \end{multline}
@@ -59,7 +59,7 @@ The unbounded dynamics of $\gamma$, $\gamma^{ub}(k)$ is a nonlinear function dep
     \gamma^{ub}(k) &= g_{\gamma} \lr{ \gamma(k-1), u_{inj}(k-1), \con{NO_x}^{in}(k-1) }
 \end{align}
 The actual expression, which is beyond the scope of this work, can be derived using the similar approach used for
-deriving $NO_x$ process dynamics (\ref{eqn::nox_avg}). $\gamma(k)$ can be described using the following pairwise
+deriving $NO_x$ process dynamics (\ref{eqn::nox_avg}). $\gamma(k)$ can be described using the following piecewise
 function:
 \begin{align}
     \gamma(k) &=
@@ -70,42 +70,35 @@ function:
     \end{cases}
 \end{align}
 %===
-Thus, for $NO_x$ process dynamics under catalyst saturation, $\gamma(k) = \Gamma$. From (\ref{eqn::nox_avg})
+Let, $\eta_F(k)$ be the $NO_x$ reduction efficiency scaled by the mass flow rate at time step $k$,
 \begin{align}
-    x_{1_{sat}}(k+1) &= u_1(k) - \underbrace{\tau(k) k_{scr}(k) u_1(k) \Gamma}_{\bm{\text{$NO_x$ reduction in} \\\text{sampling period $\lr{\eta_{sat}(k)}$}}}
+    \eta_F (k+1) &= F(k) \lrb{\frac{\con{NO_x}^{in}(k) - \con{NO_x}^{out}(k+1)}{\con{NO_x}^{in}(k)} }
+\end{align}
+Introducing above definition and the residence time expression (\ref{eqn::res_time}) into the $NO_x$ process dynamics model (\ref{eqn::nox_avg}), we get,
+\begin{align}
+    \eta_F (k+1) &=   \tau_0 \; k_{scr}(T(k)) \; \gamma (T(k)) \label{eqn::flow_scaled_nox_eff}
+\end{align}
+%===
+For $NO_x$ process dynamics under catalyst saturation, $\gamma(k) = \Gamma$.
+\begin{align}
+    \implies \eta_F^{sat} (k+1) &=   \tau_0 \; k_{scr}(T(k)) \; \Gamma (T(k))
         \label{eqn::nox_mdl}
 \end{align}
 %===
-The above equation~(\ref{eqn::nox_mdl}) shows that the tailpipe $NO_x$ concentration becomes independent of urea dosing under catalyst saturation. Defining $\eta(k)$ as change in $NO_x$ concentration reduction during the time between $k-1$ and $k$, i.e.,
+The above equation~(\ref{eqn::nox_mdl}) shows that the tailpipe $NO_x$ concentration becomes independent of urea dosing under catalyst saturation. Polynomial approximations of Arrhenius temperature dependence of the rate constant, $k_{scr}$ and the concentration of viable voids, $\Gamma$ (\cite{nova2014urea},\cite{ciardelli2004scr},\cite{joo2008study}), are used to get a linear in parameters model for the $NO_x$ process dynamics.
 \begin{align}
-    \eta_{sat}(k) &= u_1(k-1) - x_{1_{sat}} (k)
-    \label{eqn::eta}
-\end{align}
-%===
-The residence time can be parameterized as a function of mass flow rate $\lr{F}$ assuming that the effect of the density variation on residence time is insignificant.
-\begin{align}
-    \tau(k) &= \frac{\rho V_{scr}}{F} = \frac{\tau_0}{F}
-    \label{eqn::res_time}
-\end{align}
-%===
-The temperature dependence of the rate constant, $k_{scr}$, can be approximated by linearizing Arrhenius equation as:
-\begin{align}
-    k_{scr}(T) = A_{scr} e^{\lr{-\frac{E_{scr}}{RT}}} \approx k_1 T + k_0 \qquad k_1, k_0 > 0
-    \label{eqn::rate_const}
-\end{align}
-%===
-The temperature model for concentration of viable voids $\Gamma$ on the catalyst \cite{nova2014urea},\cite{ciardelli2004scr},\cite{joo2008study} is approximated as a linear function that decreases with increase in temperature.
-\begin{align}
-    \Gamma(T) &= S_1 e^{-S_2 T} \approx -r_1 T + r_0 \qquad r_1, r_0 > 0
+    k_{scr}(T) &= A_{scr} e^{\lr{-\frac{E_{scr}}{RT}}} \approx \sum k_i T^i  \qquad i = 0, 1, \hdots
+    \label{eqn::rate_const} \\
+    \Gamma(T) &= S_1 e^{-S_2 T} \approx \sum r_i T^i \qquad i = 0, 1, \hdots
     \label{eqn::gamma}
 \end{align}
 %===
-The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. Incorporating equations (\ref{eqn::eta}), (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}) and writing in regression form, we get
+The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. For numerical stability, the given temperature range in mapped to $[-1,1]$ and chebyshev polynomial basis \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
 \begin{align}
-    \eta_{sat}(k+1) &= \phi_{sat}^T(k) \theta_{sat}
+    \eta_F^{sat}(k+1) &= \phi_{sat}^T(T(k)) \theta_{sat}
     \label{eqn::regression} \\
     %===
-    \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \times \bm{T^2 \\ T \\ 1}
+    \phi_{sat} (k) &= \bm{2T^2-1 & T & 1}
     \label{eqn::phi_def}\\
     %===
     \theta_{sat} &= \tau_0 \times \bm{-k_1 r_1 \\ k_1 r_0 - k_0 r_1 \\ k_0 r_0}

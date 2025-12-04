@@ -12,8 +12,33 @@ Consequently, the following Wald test \cite{wald1943tests} is proposed to check 
 \begin{align}
         T_w \lr{\hat \theta_{sat}} &= \lr{\hat \theta_{sat} - \theta_{sat}^{dg}}^T I\lr{\hat \theta_{sat}} \lr{\hat \theta_{sat} - \theta_{sat}^{dg}} > \beta
 \end{align}
-$\theta_{sat}^{dg}$ is the parameter estimates for the degreened catalyst under same input conditions i.e.,  temperature, flow-rate and urea-dosing rate ranges. The threshold $\beta$ is decided based on the experimental results. For FTP data sets, the value of the test-statistic is tabulated in $\_$.%\ref{tab::Tw_ftp}.
+$\theta_{sat}^{dg}$ is the parameter estimates for the degreened catalyst under same input conditions i.e.,  temperature, flow-rate and urea-dosing rate ranges. The threshold $\beta$ is decided based on the experimental results. For RMC and FTP data sets, the value of the test-statistic is tabulated in \ref{tab::Tw_tst}.
 
 % Table of test-statistic
+
+\begin{table}[H]
+        \centering
+        \caption{Wald Test On the Test Cell Data}
+        \label{tab::Tw_tst}
+        \begin{tabular}{l c c}
+        \hline \hline
+        Test & $T_w$ from FTIR & $T_w$ from $NO_x$ sensor \\\hline \hline
+        DG RMC 1      & 0.0   & 0.0  \\
+        DG RMC 2      & 20.26 & 21.04\\
+        DG RMC 2      & 1.12  &  7.32\\
+        Aged RMC      & 61.06 & 61.99\\
+        \hline
+        DG Hot FTP 1  & 0.0  & 0.0   \\
+        DG Hot FTP 2  & 1.34 & 3.89  \\
+        DG Hot FTP 3  & 3.10 & 2.53  \\
+        Aged Hot FTP  & 4.03 & 57.20 \\
+%         \hline
+%         DG Cold FTP 1 & 0.0    & 0.0   \\
+%         DG Cold FTP 2 & 3.20   & 4.09  \\
+%         DG Cold FTP 3 & 70.46  & 71.47 \\
+%         Aged Cold FTP & 370.09 & 335.16\\
+        \hline \hline
+        \end{tabular}
+\end{table}
 
 Based on the results, a reasonabley discerning threshold for FTP test condistions is found to be $\_$.
