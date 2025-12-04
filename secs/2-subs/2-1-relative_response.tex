@@ -2,11 +2,12 @@
 %===
 It can be observed that, in a given time step maximum $NO_x$ reduction happens when the catalyst is saturated. Thus,
 under the same temperature, flow rate and inlet $NO_x$ concentration, the response of the saturated model
-(\ref{eqn::eta}) forms a tight upper bound to the response of the actual system, that switched between saturation and
-desaturation based on urea dosing, flow rate and catalyst temperature. This results in the following bounding condition (\ref{eqn::eta_bound}) on response of the saturated system's response.
+(\ref{eqn::nox_mdl}) forms a tight upper bound to the response of the actual system, that switches between saturation
+and desaturation based on urea dosing, flow rate and catalyst temperature. This results in the following bounding
+condition (\ref{eqn::eta_bound}) on response of the saturated system's response.
 %===
 \begin{align}
-        \eta_{sat}(k) \geq \eta(k) \qquad \forall k
+        \eta_F^{sat}(k) \geq \eta_F(k) \qquad \forall k
         \label{eqn::eta_bound}
 \end{align}
 %===
