@@ -100,16 +100,7 @@ The above approximate models for temperature introduces dependence of the parame
     \label{eqn::regression} \\
     %===
     \phi_{sat} (k) &= \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
-    \label{eqn::phi_def}
-%     %===
-%     \theta_{sat} &= \tau_0 \times \bm{-k_1 r_1 \\ k_1 r_0 - k_0 r_1 \\ k_0 r_0}
-%                        = \bm{\theta_1 \\ \theta_2 \\ \theta_2}
-%     \label{eqn::theta_def}
+    \label{eqn::phi_def} \\
+    %===
+    \text{Where, } \quad T_0 &= \frac{T_{max} + T_{min}}{2}, \quad T_r = \frac{T_{max} - T_{min}}{2} \notag
 \end{align}
-% %===
-% Based on the parameter definitions (\ref{eqn::theta_def}), the signs of two of the parameters is deterministic.
-% \begin{align}
-%     \theta_1 \leq 0, \qquad
-%     \theta_3 \geq 0
-%     \label{eqn::theta_cond}
-% \end{align}
