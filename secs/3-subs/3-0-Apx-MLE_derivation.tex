@@ -29,10 +29,10 @@ where, N is the total sample size. The maximum likelihood estimate for $\theta_{
         &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta_F(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::quad_prog}
 \end{align}
-As the inequality constraint ensures that the cost function is always positive, the quadratic programming problem (\ref{eqn::quad_prog}) can be reduced to an equvalent linear programming problem (\ref{eqn::lin_prog}).
+As the inequality constraint ensures that the cost function is always positive, the quadratic programming problem (\ref{eqn::quad_prog}) can be reduced to an equvalent linear programming problem (\ref{eqn::lin_prog_final}).
 \begin{align}
         \hat \theta_{sat}
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag\\
         &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta_F(k) \quad \forall \: k \in {1,2, \hdots, N}
-        \label{eqn::lin_prog}
+        \label{eqn::lin_prog_final}
 \end{align}

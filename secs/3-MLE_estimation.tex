@@ -2,39 +2,32 @@
 
 The catalyst switches between saturation mode and normal mode based on states that are not completely controllable experimentally. The bounding condition on the saturated system's response (\ref{eqn::eta_bound}) can be used for detecting segments of the data where the catalyst's operation is normal or saturated. As the saturated catalyst's response forms a tight upper bound to the actual system's response, the parameters of the systems will be the solution to the linear programming problem that minimizes the area under the curve with the lower bound as the response of the actual system.
 \begin{align}
-\text{min. } \, \sum (\eta_{sat}(k)- \eta(k))^2\quad
-\text{s.t } \, \lr{\eta_{sat}(k) \geq \eta(k)} \quad \forall  k \label{eqn::lin_opt_1}
+\text{min. } \, \sum \eta_F^{sat}(k) \quad
+\text{s.t } \, \lr{\eta_F^{sat}(k) \geq \eta_F(k)} \quad \forall  k \label{eqn::lin_opt_1}
 \end{align}
 %===
-The above optimization problem is feasible as $\eta_{sat}, \eta \geq 0$ always. The solution provides the system's
-parameter estimates under ideal conditions, i.e., in the absence of model structure uncertainties and measurement noise.
-When the $NO_x$ sensor data is used, $\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition
-(\ref{eqn::eta_y_bound}) still holds. Rewriting the optimization problem (\ref{eqn::lin_opt_1}) into a quadratic programming problem using regression vector (\ref{eqn::regression}) and introducing the constraints on the parameters (\ref{eqn::theta_cond}), we have the quadratic programming problem for estimating the parameters of the catalyst:
+The above optimization problem is feasible as $\eta_F^{sat}, \eta_F \geq 0$ always. When the $NO_x$ sensor data is used,
+$\eta_F(k)$ is replaced with $\eta_F^y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) . Rewriting
+the optimization problem using regression vector (\ref{eqn::regression}), we have the linear programming problem for
+estimating the parameters of the catalyst:
 \begin{align}
-        \text{minimize} &\qquad \norm{{\Phi_{sat} \theta_{sat} - H}}^2      \label{eqn::lin_prog}\\
-        \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H,
-                           \qquad \bm{-1 & 0 & 0\\
-                                      0  & 0 & 0 \\
-                                      0  & 0 & 1} \pmb \theta_{sat} \geq 0 \notag\\
+        \text{minimize} &\qquad \pmb 1^T \lrb{\Phi_{sat} \theta_{sat}}      \label{eqn::lin_prog}\\
+        \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H, \\
         \text{where, } & \qquad
         \Phi_{sat} = \bm{\phi_{sat}(1), \phi_{sat}(2), \hdots, \phi_{sat}(N-1)}^T \notag\\
         &\qquad H = \bm{ \eta(2), \eta(3), \hdots, \eta(N)}^T \notag\\
         & \text{$\pmb 1$ is a column vector of $1's$.} \notag
 \end{align}
-The experimental results indicate that the constraint on the parameter signs (\ref{eqn::theta_cond}) is not active for
-the optimal values showing that the model structure is consistent with data.
-
-The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (MLE) under half-normal distribution for
-model structure error} $\lr{\varepsilon_\eta}$  between the saturated system's response, $\eta_{sat}(k)$, and the actual
-response of the catalyst, $\eta(k)$ \cite{942636} (Appendix-\ref{sec::mle_derivation}). In the case of $NO_x$-sensor
-data with cross-sensitivity, the model structure error includes the cross-sensitivity error $\varepsilon_{\chi}$ and is
-assumed to be an exponential random variable. The assumption of half-normal distribution for $\varepsilon_\eta$ implies
-that the catalyst close to saturated for most of the time. Ideally this would be one of the objectives of the
-closed-loop urea-dosing controller as maximum $NO_x$ reduction is achieved when the catalyst is saturated.
-
-
-% The validity of the assumption on the error distribution is verified experimentally using goodness of fit for half-normal distribution demonstrated by the p-values \cite{kojadinovic2012goodness} in section-\ref{sec::epsilon_dist}.
-
+%===
+The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (MLE) under half-normal distribution
+\cite{942636} for model structure error}, $\lr{\varepsilon_\eta}$, between the saturated system's response,
+$\eta_F^{sat}(k)$, and the actual response of the catalyst, $\eta_F(k)$ (Appendix-\ref{sec::mle_derivation}). In the
+case of $NO_x$-sensor data with cross-sensitivity, the model structure error includes the cross-sensitivity error
+$\varepsilon_{\chi}$ and is assumed to be an half-normal random variable. The assumption of half-normal distribution for
+$\varepsilon_\eta$ implies that the catalyst is at it's maximum performance (close to saturation) for most of the drive
+time. Ideally this would be one of the objectives of the closed-loop urea-dosing controller as maximum $NO_x$ reduction
+is achieved when the catalyst is saturated.
+%===
 \input{secs/3-subs/3-1-theta_dist.tex}
 \input{secs/3-subs/3-2-eta_sat_variance.tex}
 \input{secs/3-subs/3-3-FTIR_results.tex}
