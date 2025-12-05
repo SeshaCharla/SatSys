@@ -1,8 +1,8 @@
 \section{Maximum Likelihood Estimate Derivation \label{sec::mle_derivation}}
 Consider,
 \begin{align}
-        \varepsilon_\eta(k) &= \eta_F^{sat}(k) - \eta_F\lr{k}  \quad
-        \implies& \varepsilon_\eta(k) = \lr{\phi^T \theta_{sat} - \eta_F \lr{k}} \label{eqn::eta_regression}
+        \varepsilon_\eta(k) &= \eta_{sat}(k) - \eta\lr{k}  \quad
+        \implies& \varepsilon_\eta(k) = \lr{\phi_{sat}^T \theta_{sat} - \eta \lr{k}} \label{eqn::eta_regression}
 \end{align}
 based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} and using inverse variance parametrization with parameter, $\lambda$,
 \begin{align}
@@ -25,14 +25,14 @@ where, N is the total sample size. The maximum likelihood estimate for $\theta_{
         \hat \theta_{sat}
         &= \argmax_{\theta_{sat}} \lrf{ N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}} \quad \varepsilon_\eta(k) \geq  0 \notag\\
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag\\
-        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta_F(k)}^2} \notag\\
-        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta_F(k) \quad \forall \: k \in {1,2, \hdots, N}
+        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
+        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::quad_prog}
 \end{align}
 As the inequality constraint ensures that the cost function is always positive, the quadratic programming problem (\ref{eqn::quad_prog}) can be reduced to an equvalent linear programming problem (\ref{eqn::lin_prog_final}).
 \begin{align}
         \hat \theta_{sat}
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag\\
-        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta_F(k) \quad \forall \: k \in {1,2, \hdots, N}
+        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::lin_prog_final}
 \end{align}

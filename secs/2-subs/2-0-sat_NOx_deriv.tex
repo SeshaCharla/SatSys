@@ -71,18 +71,18 @@ function:
     \end{cases}
 \end{align}
 %===
-Let, $\eta_F(k)$ be the $NO_x$ reduction efficiency scaled by the mass flow rate at time step $k$,
+Let, $\eta(k)$ be the $NO_x$ reduction during a given time step $k$,
 \begin{align}
-    \eta_F (k+1) &= F(k) \lrb{\frac{u_1(k) - x_1(k+1)}{u_1(k)} }
+    \eta (k+1) &= u_1(k) - x_1(k+1)
 \end{align}
 Introducing above definition and the residence time expression (\ref{eqn::res_time}) into the $NO_x$ process dynamics model (\ref{eqn::nox_avg}), we get,
 \begin{align}
-    \eta_F (k+1) &=   \tau_0 \; k_{scr}(T(k)) \; \gamma (T(k)) \label{eqn::flow_scaled_nox_eff}
+    \eta (k+1) &=   \frac{u_1(k)}{F(k)} \tau_0 \; k_{scr}(T(k)) \; \gamma (T(k)) \label{eqn::flow_scaled_nox_eff}
 \end{align}
 %===
 For $NO_x$ process dynamics under catalyst saturation, $\gamma(k) = \Gamma$.
 \begin{align}
-    \implies \eta_F^{sat} (k+1) &=   \tau_0 \; k_{scr}(T(k)) \; \Gamma (T(k))
+    \implies \eta_{sat} (k+1) &=  \frac{u_1(k)}{F(k)} \tau_0 \; k_{scr}(T(k)) \; \Gamma (T(k))
         \label{eqn::nox_mdl}
 \end{align}
 %===
@@ -96,10 +96,10 @@ The above equation~(\ref{eqn::nox_mdl}) shows that the tailpipe $NO_x$ concentra
 %===
 The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. For numerical stability, the given temperature range in mapped to $[-1,1]$ and chebyshev polynomial basis \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
 \begin{align}
-    \eta_F^{sat}(k+1) &= \phi_{sat}^T(T(k)) \; \theta_{sat}
+    \eta_{sat} (k+1) &= \phi_{sat}^T(T(k)) \; \theta_{sat}
     \label{eqn::regression} \\
     %===
-    \phi_{sat} (k) &= \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
+    \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
     \label{eqn::phi_def} \\
     %===
     \text{Where, } \quad T_0 &= \frac{T_{max} + T_{min}}{2}, \quad T_r = \frac{T_{max} - T_{min}}{2} \notag

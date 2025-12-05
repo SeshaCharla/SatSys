@@ -2,12 +2,12 @@
 
 The catalyst switches between saturation mode and normal mode based on states that are not completely controllable experimentally. The bounding condition on the saturated system's response (\ref{eqn::eta_bound}) can be used for detecting segments of the data where the catalyst's operation is normal or saturated. As the saturated catalyst's response forms a tight upper bound to the actual system's response, the parameters of the systems will be the solution to the linear programming problem that minimizes the area under the curve with the lower bound as the response of the actual system.
 \begin{align}
-\text{min. } \, \sum \eta_F^{sat}(k) \quad
-\text{s.t } \, \lr{\eta_F^{sat}(k) \geq \eta_F(k)} \quad \forall  k \label{eqn::lin_opt_1}
+\text{min. } \, \sum \eta_{sat}(k) \quad
+\text{s.t } \, \lr{\eta_{sat}(k) \geq \eta(k)} \quad \forall  k \label{eqn::lin_opt_1}
 \end{align}
 %===
-The above optimization problem is feasible as $\eta_F^{sat}, \eta_F \geq 0$ always. When the $NO_x$ sensor data is used,
-$\eta_F(k)$ is replaced with $\eta_F^y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) . Rewriting
+The above optimization problem is feasible as $\eta_{sat}, \eta \geq 0$ always. When the $NO_x$ sensor data is used,
+$\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) . Rewriting
 the optimization problem using regression vector (\ref{eqn::regression}), we have the linear programming problem for
 estimating the parameters of the catalyst:
 \begin{align}
@@ -21,7 +21,7 @@ estimating the parameters of the catalyst:
 %===
 The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (MLE) under half-normal distribution
 \cite{942636} for model structure error}, $\lr{\varepsilon_\eta}$, between the saturated system's response,
-$\eta_F^{sat}(k)$, and the actual response of the catalyst, $\eta_F(k)$ (Appendix-\ref{sec::mle_derivation}). In the
+$\eta_{sat}(k)$, and the actual response of the catalyst, $\eta(k)$ (Appendix-\ref{sec::mle_derivation}). In the
 case of $NO_x$-sensor data with cross-sensitivity, the model structure error includes the cross-sensitivity error
 $\varepsilon_{\chi}$ and is assumed to be an half-normal random variable. The assumption of half-normal distribution for
 $\varepsilon_\eta$ implies that the catalyst is at it's maximum performance (close to saturation) for most of the drive
