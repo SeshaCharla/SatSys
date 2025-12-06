@@ -4,32 +4,32 @@ Consider,
         \varepsilon_\eta(k) &= \eta_{sat}(k) - \eta\lr{k}  \quad
         \implies& \varepsilon_\eta(k) = \lr{\phi_{sat}^T \theta_{sat} - \eta \lr{k}} \label{eqn::eta_regression}
 \end{align}
-based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} and using inverse variance parametrization with parameter, $\lambda$,
+based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} with scale-parameter, $\sigma$,
 \begin{align}
-        \varepsilon_\eta &\backsim \text{Half-Normal}(\lambda);\quad
-        p(\varepsilon_\eta;\lambda) = \begin{cases} \frac{2\lambda}{\pi} e^{- \frac{\varepsilon_\eta^2 \lambda^2}{\pi}} & \varepsilon_\eta \geq  0\\
+        \varepsilon_\eta &\backsim \text{Half-Normal}(\sigma);\quad
+        p(\varepsilon_\eta;\sigma) = \begin{cases} \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} & \varepsilon_\eta \geq  0\\
                                                         0 & \varepsilon_{\eta} < 0
                                         \end{cases}
                                         \label{eqn::exp_pdf}
 \end{align}
-we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$ and $\lambda$:
+we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$ and $\sigma$:
 \begin{align}
-        l\lr{\theta_{sat}}&=p(\pmb \varepsilon_{\eta};\theta_{sat}, \lambda) = \prod_{k=1}^N  \frac{2\lambda}{\pi} e^{- \frac{\varepsilon_\eta^2 \lambda^2}{\pi}} \quad \varepsilon_\eta(k) \geq  0
+        l\lr{\theta_{sat}}&=p(\pmb \varepsilon_{\eta};\theta_{sat}, \sigma) = \prod_{k=1}^N  \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::likelihood}\\
-        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi} {\sum_{k=1}^N \varepsilon_\eta^2}
+        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2}
                 \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::log_likelihood}
 \end{align}
 where, N is the total sample size. The maximum likelihood estimate for $\theta_{sat}$ would be:
 \begin{align}
         \hat \theta_{sat}
-        &= \argmax_{\theta_{sat}} \lrf{ N \ln \frac{2\lambda}{\pi} - \frac{\lambda^2}{\pi}\lr{\sum_{k=1}^N \varepsilon_\eta^2}} \quad \varepsilon_\eta(k) \geq  0 \notag\\
+        &= \argmax_{\theta_{sat}} \lrf{ \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2} } \quad \varepsilon_\eta(k) \geq  0 \notag\\
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag\\
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
         &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::quad_prog}
 \end{align}
-As the inequality constraint ensures that the cost function is always positive, the quadratic programming problem (\ref{eqn::quad_prog}) can be reduced to an equvalent linear programming problem (\ref{eqn::lin_prog_final}).
+As the inequality constraint ensures that the cost function and individual elements of the sum are always positive. Thus, the $l_2-$norm in quadratic programming problem (\ref{eqn::quad_prog}) can be replaced with $l_1-$norm resulting an linear programming problem formulation (\ref{eqn::lin_prog_final}).
 \begin{align}
         \hat \theta_{sat}
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag\\
