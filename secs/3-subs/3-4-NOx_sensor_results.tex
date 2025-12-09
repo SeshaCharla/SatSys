@@ -1,21 +1,33 @@
-% \subsection{Test-cell data results using $NO_x$ sensor measurement (cross-sensitivity)}
-The parameter $\sigma$. The uncertainty bounds are widened when the $NO_x$ sensor measurements are used for estimating the parameters of the
-saturated system. This is due to the additional uncertainty introduced by the cross-sensitivity error.
+The parameter estimates using $NO_x$ sensor measurements from the test-cell experiments are tabulated in
+Table-\ref{tab::parm_nox}. The parameter estimates are different from those obtained using FTIR measurements
+(Table-\ref{tab::parm_FTIR}) due to the cross-sensitivity of the $NO_x$ sensor to ammonia. However, the parameters show
+consistency across repeated tests on the same catalyst under similar test conditions. The $NO_x$ sensor cros
+-sensitivity error $\varepsilon_{\chi}(T)$ introduces bias in the paramter estimates as part of the error that has the
+same temperature dependence as the model structure enters into the parameter estimates. Thus, the linear programming problem estimated the paramters with an added bias term as shown below:
+\begin{align}
+    \varepsilon_{\chi}(T) &= \phi_{sat}(T(k))^T \theta_{\varepsilon_{\chi}}\\
+    J(\theta_{sat}) &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \theta_{sat} - \eta_y (k) } \notag\\
+                    &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \lr{\theta_{sat} + \theta_{\varepsilon_{\chi}}} - \eta (k) }
+\end{align}
+From, the experimental results, it is observed that $NO_x$ sensor cross-sensitivity reduces the difference between the
+estimates of aging-factor between aged and degreened catalysts. But the overall trend of change in
+parameter values remains consistent.
+
 \begin{table}[H]
         \centering
         \caption{Parameter Estimates using $NO_x$ Sensor Measurements}
         \label{tab::parm_nox}
-        \begin{tabular}{l c c c}
+        \begin{tabular}{l c c c c}
                 \hline \hline
-                Test & $\hat \theta_1 $ & $\hat \theta_2 $ & $\hat \theta_3 $ \\ \hline \hline
-                        DG RMC 1 & -0.70 & 0.56 & 38.48 \\
-                        DG RMC 2 & -1.18 & 0.93 & 38.43 \\
-                        DG RMC 3 & -0.54 & 0.62 & 38.99 \\
-                        Aged RMC & -1.02 & 1.26 & 37.80 \\
-                        DG Hot FTP 1 & -2.30 & -6.11  & 37.08 \\
-                        DG Hot FTP 2 & -2.71 & -6.13  & 36.22 \\
-                        DG Hot FTP 3 & -3.92 & -6.17  & 35.81 \\
-                        Aged Hot FTP & -6.42 & -13.05 & 34.73\\
+                Test & $\hat \theta_1 $ & $\hat \theta_2 $ & $\hat \theta_3 $ & $\sigma$ \\ \hline \hline
+                        DG RMC 1 & -0.70 & 0.56 & 38.48 & 1.10\\
+                        DG RMC 2 & -1.18 & 0.93 & 38.43 & 1.07\\
+                        DG RMC 3 & -0.54 & 0.62 & 38.99 & 1.06\\
+                        Aged RMC & -1.03 & 1.26 & 37.80 & 1.00\\ \hline
+                        DG Hot FTP 1 & -2.30 & -6.11 & 37.08 & 1.28\\
+                        DG Hot FTP 2 & -2.71 & -6.13 & 36.22 & 1.27\\
+                        DG Hot FTP 3 & -3.92 & -6.17 & 35.81 & 1.30\\
+                        Aged Hot FTP & -6.42 & -13.06 & 34.73 & 1.34\\
                 \hline\hline
         \end{tabular}
 \end{table}

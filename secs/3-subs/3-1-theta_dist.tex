@@ -12,7 +12,7 @@ The regularity conditions require the existence of derivatives of the log-likeli
 being non-zero. Using the log-likelihood function for half-normal distribution (\ref{eqn::log_likelihood}), we have,
 \begin{align}
         \lrb{I(\theta_{sat})}_{ij} &= -E \lrb{\frac{\partial^2 L\lr{\theta_{sat}}}{\partial \theta_j
-        \partial \theta_i}} = \frac{\lambda^2}{\pi} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \notag \\
-        I(\theta_{sat}) &= \frac{2 \lambda^2}{\pi} \lrb{\Phi_{sat}^T \Phi_{sat}}
+        \partial \theta_i}} = \frac{1}{\sigma^2} {\sum_{k=1}^{N} \frac{\partial \varepsilon_\eta(k)}{\partial \theta_i}\frac{\partial \varepsilon_\eta(k)}{\partial \theta_j}} \notag \\
+        I(\theta_{sat}) &= \frac{1}{\sigma^2} \lrb{\Phi_{sat}^T \Phi_{sat}}
         \label{eqn::fisher_information}
 \end{align}
