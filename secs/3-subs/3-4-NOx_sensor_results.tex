@@ -9,13 +9,15 @@ same temperature dependence as the model structure enters into the parameter est
     J(\theta_{sat}) &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \theta_{sat} - \eta_y (k) } \notag\\
                     &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \lr{\theta_{sat} + \theta_{\varepsilon_{\chi}}} - \eta (k) }
 \end{align}
-From, the experimental results, it is observed that $NO_x$ sensor cross-sensitivity reduces the difference between the
-estimates of aging-factor between aged and degreened catalysts. But the overall trend of change in
-parameter values remains consistent.
-
+Thus, the estimated parameters using $NO_x$ sensor measurements will have a bias dependent on the cross-sensitivity
+error characteristics of the sensor used. From, the experimental results, it is observed that $NO_x$ sensor
+cross-sensitivity reduces the difference between the estimates of aging-factor
+(Figure~\ref{fig::alpha_sat_ssd},\ref{fig::alpha_sat_iod})between aged and degreened catalysts. But the overall trend of
+change in parameter values remains consistent.
+%===
 \begin{table}[H]
         \centering
-        \caption{Parameter Estimates using $NO_x$ Sensor Measurements}
+        \caption{Parameter Estimates using $NO_x$ Sensor Data}
         \label{tab::parm_nox}
         \begin{tabular}{l c c c c}
                 \hline \hline
@@ -31,3 +33,4 @@ parameter values remains consistent.
                 \hline\hline
         \end{tabular}
 \end{table}
+%==

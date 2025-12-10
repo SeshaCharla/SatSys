@@ -8,14 +8,14 @@ the catalyst $(\Gamma)$. This is demonstrated using data from high-fidelity simu
 change in the gain of urea-dosing controller to change the length of the data where the catalyst remains saturated.
 \begin{figure}[H]
         \centering
-        \includegraphics[width=\figWidth]{./figs/3_parm_ID/apx_necessary/eta_sim.eps}
-        \caption{RMC Test $NO_x$ Reduction with $\pm 20$ Urea Dosing Gain Variation}
+        \includegraphics[width=\figWidth]{./figs/3_parm_ID/apx_necessary/eta_sim.png}
+        \caption{RMC $\eta$ simulation with $\pm 20\%$ Urea Dosing}
         \label{fig::necessary_cond_sim}
 \end{figure}
 \begin{figure}[H]
         \centering
-        \includegraphics[width=\figWidth]{./figs/3_parm_ID/apx_necessary/eta_sat.eps}
-        \caption{Predicted $NO_x$ Reduction Under Catalyst Saturation}
+        \includegraphics[width=\figWidth]{./figs/3_parm_ID/apx_necessary/eta_sat.png}
+        \caption{RMC $\eta_{sat}$ prediction with $\pm 20\%$ Urea Dosing}
         \label{fig::necessary_cond_sat}
 \end{figure}
 Figure-\ref{fig::necessary_cond_sim} shows no increase in $NO_x$ reduction when urea dosing is increased by $20\%$,
@@ -23,4 +23,9 @@ which indicates that maximum $NO_x$ reduction is already reached at nominal urea
 catalyst is saturated or because the inlet $NO_x$ concentration is sufficiently low. Conversely, a $20\%$ decrease in
 urea dosing decreases $NO_x$ reduction. When the $-20\%$ urea-dosing data are used to estimate saturated-model
 parameters, the model predicts a substantially lower $NO_x$ reduction under saturation than for the nominal and $+20\%$
-dosing cases (Figure-\ref{fig::necessary_cond_sat}), the latter two giving essentially identical results. It is assumed that under ordinary drive conditions, the catalyst will reach saturation for a significant length of time, making the proposed parameter estimation approach valid.
+dosing cases (Figure-\ref{fig::necessary_cond_sat}), the latter two giving essentially identical results. Thus for the nominal and $+20\%$ dosing cases, the catalyst is indeed saturated, and the parameter estimates show the same. However, for the $-20\%$ dosing case, the catalyst is not saturated in the data, instead the parmeters fit the maximimu surface coverage achieved $\lrf{\theta_{max} = \sfrac{\gamma_{max}}{\Gamma}}$ in the data, i.e.,
+\begin{align}
+        \eta_{sat}(k+1) &= \frac{u_1(k)}{F(k)} \tau_0 \; k_{scr} \Gamma \theta_{max} = \phi_{sat} \theta_{sat}
+\end{align}
+
+It is assumed that under ordinary drive conditions, the catalyst will reach saturation for a significant length of time, making the proposed parameter estimation approach valid.

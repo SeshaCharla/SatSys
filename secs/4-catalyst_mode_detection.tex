@@ -6,4 +6,16 @@ mass flow rate, $F$) is less than the $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
-The value of the threshold, $\epsilon_{sat}$ is not dependent on the uncertainity of the esitmation process but the the quantization errors and noise in the signals. The optimization problem (\ref{eqn::lin_prog}) finds the tightest upper-bound to the data that is structurally feasible, so the main source of uncertainity here is the quantization errors and noise in the measurement signals. For the test-cell data set, $\epsilon_{sat} = 2\times 10^{-3} \, mol/m^{-3}$.
+For the current test-cell  and truck data set, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$.
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}
+        \caption{Catalyst Mode Detection for DG RMC 1 Data}
+        \label{fig::cat_mode_det}
+\end{figure}
+The catalyst mode detection for DG RMC 1 test-cell data using FTIR measurements is shown in
+Figure-\ref{fig::cat_mode_det}. The catalyst is found to be close to saturation (or at its maximum $NO_x$ reduction)
+when the mass flow rate and the urea dosing rates are high, consistent with the physical understanding of the catalyst
+operation. Further, the flow rate can introduce virtual cieling on the maximum achievable $NO_x$ reduction due to
+reduced residence time in the catalyst which would be indistinguishable from saturated catalyst behaviour as the $NO_x$
+reduction would be independent of urea dosing.
