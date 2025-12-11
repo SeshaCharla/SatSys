@@ -12,7 +12,7 @@ the optimization problem using regression vector (\ref{eqn::regression}), we hav
 estimating the parameters of the catalyst:
 \begin{align}
         \text{minimize} &\qquad \pmb 1^T \lrb{\Phi_{sat} \theta_{sat}}      \label{eqn::lin_prog}\\
-        \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H, \\
+        \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H,  \notag\\
         \text{where, } & \qquad
         \Phi_{sat} = \bm{\phi_{sat}(1), \phi_{sat}(2), \hdots, \phi_{sat}(N-1)}^T \notag\\
         &\qquad H = \bm{ \eta(2), \eta(3), \hdots, \eta(N)}^T \notag\\

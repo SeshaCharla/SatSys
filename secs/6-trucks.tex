@@ -1,0 +1,30 @@
+\section{Aging Detection from Truck Data}
+
+The performance of the proposed aging detector is also demonstrated using the $NO_x$ sensor data from four long-haul
+truck. The road data was collected from trucks operating in the United States  for two days separated by a few years
+during which the catalyst has aged based on the existing performance measures. The data contains measurements of $NO_x$
+sensors before and after the catalyst, as well as other required variables including flow rate, temperature and urea
+injection rate. The data preporcessing includes,
+\begin{inparaenum}
+        \item removing the rows with missing values,
+        \item removing the rows whose operating temperature range is beyond range of $200-300 \,^0C$,
+        \item interpolating the missing data if the data breaks are smaller than a minute, and finally,
+        \item smooting the data using non-causal chebyshev filter.
+\end{inparaenum}
+The preprocessed data is than partitioned into drive segments with no breaks which correspond to a continuous driving
+period from engine start to engine stop.
+%===
+\begin{table}[H]
+        \centering
+        \caption{Truck Data Set Years and Mileage Difference}
+        \begin{tabular}{l c c r}
+        \hline \hline
+        Truck & Earlier Data & Latter Data & Milage \\
+              &  Year            & Year    & Difference\\ \hline \hline
+        AD Transport (adt) & $2015$ & $2017$ & $2.79 \times 10^5$\\
+        Mesilla Valley (mes) & $2015$ & $2018$ & $11.87 \times 10^5$\\
+        Transwest (trw) & $2015$ & $2016$ & $6.56 \times 10^5$ \\
+        Werner (wer) & $2015$ & $2017$ & $5.89 \times 10^5$\\ \hline \hline
+        \end{tabular}
+\end{table}
+%===
