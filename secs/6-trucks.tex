@@ -30,9 +30,17 @@ period from engine start to engine stop.
         \end{tabular}
 \end{table}
 %===
+Unlike the test-cell data where the engine drive-cycles are repeatable and produce significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary conditon for the proposed parameter estimation and aging detection framework is that the data contains sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic holds (\ref{eqn::Ns_min}). Hence, the drive segment data is further pruned to only include segments with atleast $150$ samples ($120$ in the case of Werner) close to catalyst saturation.
+\begin{align}
+        N_{sat} &\geq N_{sat}^{min} \label{eqn::Ns_min} \\
+        \beta_{truck} &= 250 \label{eqn::beta_truck}
+\end{align}
+The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in truck is chosen such that it maximises the probability of detection while minimizing the probability of false alarm and missed detection for the given limited truck data. A larger data set would help arriving at the thresholds using Neyman-Pearson criteria \cite{kay1998detection}. The value of the test statistic for the pruned drive segments for each truck is tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res}, \ref{tab::wer_aging_res} and \ref{tab::trw_aging_res}. A summary of the aging detection results is tabulated in the Table~\ref{tab::truck_aging_summary}.
+%===
 \begin{table}[H]
         \centering
         \caption{Summary of Aging Detection Results on Truck Data}
+        \label{tab::truck_aging_summary}
         \begin{tabular}{l c c c c}
         \hline \hline
               & Total Drive & Detection & False  & Missed \\
