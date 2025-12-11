@@ -46,7 +46,7 @@ given data set correspond to an aged catalyst or a known degreened catalyst. Dec
 \end{align}
 $\theta_{sat}^{dg}$ is the parameter estimates for the degreened catalyst under same input conditions i.e.,
 temperature, flow-rate and urea-dosing rate ranges. The threshold $\beta$ is decided based on the experimental results.
-For RMC and FTP data sets, the value of the test-statistic is tabulated in \ref{tab::Tw_tst}.
+For RMC and FTP data sets, the value of the test-statistic is tabulated in Tabel~\ref{tab::Tw_tst}.
 % Table of test-statistic
 \begin{table}[H]
         \centering
@@ -69,7 +69,11 @@ For RMC and FTP data sets, the value of the test-statistic is tabulated in \ref{
 \end{table}
 The distribution (Non-central $\chi^2$ asymptotically) of the test-statistic under aging is different for RMC and FTP
 test conditions due to the differences in the ranges of inputs (temperature, flow-rate and urea-dosing rate) experienced
-by the catalyst during the tests. Based on the results, a reasonabley discerning threshold for Hot-FTP test conditions
-is found to be $4.00$ and for RMC test conditions is found to be $10.00$. Further investigation with more data is needed
-to arrive at the probability of detection and false alarm for these thresholds. The proposed Wald test detects the aged
-catalyst for both FTIR and $NO_x$ sensor measurements under both test conditions.
+by the catalyst during the tests. Based on the results, a reasonabley discerning threshold for Hot-FTP and RMC test
+conditions is found to be:
+\begin{align}
+        \beta_{hFTP} &= 4.00, \qquad \beta_{RMC} = 10.00
+\end{align}
+Further investigation with more data is needed to arrive at the probability of detection and false alarm for these
+thresholds. The proposed Wald test detects the aged catalyst for both FTIR and $NO_x$ sensor measurements under both
+test conditions.
