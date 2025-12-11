@@ -94,7 +94,7 @@ The above equation~(\ref{eqn::nox_mdl}) shows that the tailpipe $NO_x$ concentra
     \label{eqn::gamma}
 \end{align}
 %===
-The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. For numerical stability, the given temperature range in mapped to $[-1,1]$ and chebyshev polynomial basis \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
+The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. For numerical stability \cite{press2003numerical}, the given temperature range in mapped to $[-1,1]$ and chebyshev polynomial basis \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
 \begin{align}
     \eta_{sat} (k+1) &= \phi_{sat}^T(T(k)) \; \theta_{sat}
     \label{eqn::regression} \\
