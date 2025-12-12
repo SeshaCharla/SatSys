@@ -32,13 +32,17 @@ system dynamics and causality, thereby increasing the model order. The single CS
 \cite{devarakonda2008adequacy} and a nonlinear model was developed using these assumptions, which was then linearized
 for feedback control design (\cite{devarakonda2009model}). With this model, observers were designed to estimate the
 states corresponding to the catalyst's storage (\cite{ma2017observer}, \cite{jain2020term}). A method for detecting the
-catalyst's aging by observing the change in the maximum storage capacity of the catalyst, modeled as an exponential
-function of temperature, was also proposed in \cite{ma2017observer}. A common theme in these studies is the resulting
-non-convex, nonlinear parameter estimation problem. Moreover, these studies assume the availability of all the gaseous
-states at the tail-pipe to eliminate the effects of cross-sensitivity of the $NO_x$ sensors, which is not always the
-case in real-world applications. One other fundamental issue with a single cell CSTR assumption is that it results in
-the causality reversal at the reaction rates as CSTR inherently assumes that the output concentrations are the same as
-CSTR's accumulator concentrations \cite{charla2024reduced}.
+catalyst's aging using an observer for the the change in the maximum storage capacity of the catalyst, modeled as an
+exponential function of temperature, was also proposed in \cite{ma2017observer} and \cite{jiang2019hydrothermal}.
+Alternatively, an onboad diagnostics (OBD) logic for catalyst aging based on the tailpipe $NO_x$ and ammonia is proposed
+in \cite{matsumoto2016model} based on the hypthesis of reduction in adsorption cites and demonstrated on real world
+trucks. A common theme in these studies is the resulting non-convex, nonlinear parameter estimation problem. Moreover,
+these studies assume the availability of all the gaseous states at the tail-pipe to eliminate the effects of
+cross-sensitivity of the $NO_x$ sensors, which is not always the case in real-world applications as tailpipe ammonia
+measurements are not generally available in commercial vehicles. One other fundamental issue with the CSTR assumption is
+that, when the number of cells is reduced to one for model reduction, it results in the causality reversal at the
+reaction rates as CSTR inherently assumes that the output concentrations are the same as CSTR's accumulator
+concentrations \cite{charla2024reduced}.
 
 An alternative approach to the problem would be discarding the CSTR assumption and modelling the time evolution of the
 sensor signals when a "plug" or "parcel" of the exhaust gases flows through the chamber in discrete time considering the
@@ -47,4 +51,6 @@ the CSTR approach needs to be explicitly included as separate mode of the system
 model under catalyst saturation which becomes one of the modes of the complete switched nonlinear model. Following the
 model development we present the parameter estimation algorithm that estimates the parameters of the saturated catalyst
 model using the real-world data whose operating mode is unknown and has additional uncertainties due to $NO_x$ sensor's
-cross-sensitivity to ammonia.
+cross-sensitivity to ammonia. Finally, we develope a statistical test for detecting the catalyst aging based on the
+estimated parameters of the saturated catalyst model. The performance of the proposed aging detector is demonstrated
+using both test-cell and real-world truck data.

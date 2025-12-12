@@ -1,7 +1,8 @@
 This work develops a reduced-order nonlinear discrete model from first principles to describe the dynamics of a diesel
-engine's SCR catalyst under ammonia saturation. A novel parameter estimation algorithm is proposed utilizing the
-relationship between predicted and measured $NO_x$ reduction in the system while explicitly considering the
-uncertainties due to $NO_x$ sensor cross-sensitivity. The model forms part of a discrete nonlinear switched framework
-that captures catalyst reaction dynamics, switching between saturation and desaturation modes depending on urea dosing.
-By explicitly accounting for the interplay between residence time and sampling, the model parameters provide insights
-into quantifying catalyst's aging.
+engine's SCR catalyst under ammonia saturation for detecting aging. The model explicitly accounts for the interplay
+between the residence time of the reacting flow and the sampling of the sensors. A novel parameter estimation algorithm
+is proposed utilizing the relationship between predicted and measured $NO_x$ reduction in the system while explicitly
+considering the uncertainties due to $NO_x$ sensor cross-sensitivity. The model parameters are shown to be sensitive to
+the catalyst's aging state. A statistical test based on the Wald test statistic is developed to detect catalyst aging
+using the estimated parameters of the saturated catalyst model. The performance of the proposed aging detector is
+demonstrated using both test-cell and real-world truck data.

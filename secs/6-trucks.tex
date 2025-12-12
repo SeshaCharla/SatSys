@@ -1,5 +1,5 @@
 \section{Aging Detection from Truck Data}
-
+%===
 The performance of the proposed aging detector is also demonstrated using the $NO_x$ sensor data from four long-haul
 truck. The road data was collected from trucks operating in the United States  for two days separated by a few years
 (Table~\ref{tab::truck_data_summary}) during which the catalyst has aged based on the existing performance measures. The
@@ -14,7 +14,7 @@ including flow rate, temperature and urea injection rate. The data preporcessing
 The preprocessed data is than partitioned into drive segments with no breaks which correspond to a continuous driving
 period from engine start to engine stop.
 %===
-\begin{table}[H]
+\begin{table}[ht]
         \centering
         \caption{Truck Data Set Years and Mileage Difference}
         \label{tab::truck_data_summary}
@@ -37,7 +37,7 @@ Unlike the test-cell data where the engine drive-cycles are repeatable and produ
 \end{align}
 The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in truck is chosen such that it maximises the probability of detection while minimizing the probability of false alarm and missed detection for the given limited truck data. A larger data set would help arriving at the thresholds using Neyman-Pearson criteria \cite{kay1998detection}. The value of the test statistic for the pruned drive segments for each truck is tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res}, \ref{tab::wer_aging_res} and \ref{tab::trw_aging_res}. A summary of the aging detection results is tabulated in the Table~\ref{tab::truck_aging_summary}.
 %===
-\begin{table}[H]
+\begin{table}[ht]
         \centering
         \caption{Summary of Aging Detection Results on Truck Data}
         \label{tab::truck_aging_summary}
