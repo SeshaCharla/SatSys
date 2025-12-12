@@ -1,5 +1,5 @@
 \section{Model Paramters Capture Catalyst Aging}
-The paramters of the saturated system a function of the rate-constant for SCR reaction and the maximum surface
+The paramters of the saturated system are a function of the rate-constant for SCR reaction and the maximum surface
 concentration of vaible voids on the catalyst. The adsorption cite concentration is hypothesized to change with aging of
 the catalyst allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
 experiments on a new (de-greened) and hydro-thermally aged catalyst with the same capacity. The predicted $NO_x$
@@ -14,14 +14,14 @@ catalyst (Figure-\ref{fig::aging_diff}).
 %===
 When the $\eta_{sat}$ response is nromalized with respect to the inlet $NO_x$ concentration and flow-rate, we end up
 with a quantity that is only a function of themperature and represents the product of rate-constant and maximum surface
-coverage, i.e., from \ref{eqn::regression}:
+coverage. From \ref{eqn::regression},
 \begin{align}
         \alpha_{sat} &= \frac{F(k)}{u_1(k)} \eta_{sat}(k) = \tau_0 k_{scr}\Gamma = \phi_T^T(k)\theta_{sat}\\
         \text{where,} \quad \phi_T^T(k) &= \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
 \end{align}
 %===
 This quantity, $\alpha_{sat}$ is estimatible and changes with aging of the catalyst based on the hypothesis of changing
-adsorption cite concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell experiments.
+adsorption cite concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell experiments (Figure~\ref{fig::alpha_sat_ssd}, \ref{fig::alpha_sat_iod}).
 \begin{figure}[ht]
         \centering
         \includegraphics[width=\figWidth]{./figs/5_aging/aging_factor_ssd.png}
@@ -35,16 +35,16 @@ adsorption cite concentration. The change in $\alpha_{sat}$ with aging is demons
         \label{fig::alpha_sat_iod}
 \end{figure}
 %===
-Thus, $\theta_{sat}$ capture the aging of the catalyst. Hence, the catalyst aging detection problem can be posed as a
-hypothesis testing problem with null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst and
-alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged catalyst. Since, the distribution of the error
-(half-normal) is assumed to be known for both hypotheses and differ by the unknown (but estimatible) parameter
+\par Thus, $\theta_{sat}$ capture the aging of the catalyst. Hence, the catalyst aging detection problem can be posed as
+a hypothesis testing problem with null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst and
+alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged catalyst. Since, the distribution of the error is
+assumed to be known (half-normal) for both hypotheses and differ by the unknown (but estimatible) parameter
 $\theta_{sat}$, the following Wald test \cite{wald1943tests} is proposed to check if the parameter estimates for the
 given data set correspond to an aged catalyst or a known degreened catalyst. Decide $\mathcal{H}_1$ if,
 \begin{align}
         T_w  &= \lr{\hat \theta_{sat} - \theta_{sat}^{dg}}^T I\lr{\hat \theta_{sat}} \lr{\hat \theta_{sat} - \theta_{sat}^{dg}} > \beta
 \end{align}
-$\theta_{sat}^{dg}$ is the parameter estimates for the degreened catalyst under same input conditions i.e.,
+Where, $\theta_{sat}^{dg}$ is the parameter estimates for the degreened catalyst under same input conditions i.e.,
 temperature, flow-rate and urea-dosing rate ranges. The threshold $\beta$ is decided based on the experimental results.
 For RMC and FTP data sets, the value of the test-statistic is tabulated in Tabel~\ref{tab::Tw_tst}.
 % Table of test-statistic
@@ -67,7 +67,7 @@ For RMC and FTP data sets, the value of the test-statistic is tabulated in Tabel
         \hline \hline
         \end{tabular}
 \end{table}
-The distribution (Non-central $\chi^2$ asymptotically) of the test-statistic under aging is different for RMC and FTP
+The distribution of the test-statistic under aging (non-central $\chi^2$, asymptotically) is different for RMC and FTP
 test conditions due to the differences in the ranges of inputs (temperature, flow-rate and urea-dosing rate) experienced
 by the catalyst during the tests. Based on the results, a reasonabley discerning threshold for Hot-FTP and RMC test
 conditions is found to be:

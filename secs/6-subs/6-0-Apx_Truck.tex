@@ -1,5 +1,10 @@
 \section{Aging Detector Results on Truck Data Drive Segments}
-\begin{table}[ht]
+The value of the Wald test statistic for each drive segment that met the necessary condition of sufficient samples
+close to catalyst saturation is calculated and tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res},
+\ref{tab::wer_aging_res} and \ref{tab::trw_aging_res} for each truck. The number and percentage of samples close to
+catalyst saturation in each drive segment is also tabulated. There is a strong corrolation between detection of aging and the number of samples close to catalyst saturation in the drive segment.
+
+\begin{table}[H]
         \centering
         \caption{Aging Detaction Results for AD Transport}
         \label{tab::adt_aging_res}
@@ -18,7 +23,26 @@
         \end{tabular}
 \end{table}
 %===
-\begin{table}[ht]
+\begin{table}[H]
+        \centering
+        \caption{Aging Detaction Results for Transwest}
+        \label{tab::trw_aging_res}
+        \begin{tabular}{l r r r}
+        \hline \hline
+                Drive Segment& $T_w$ & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\ \hline \hline
+                $trw\_15\_0$ & 0.00 & 214 & 1.29 \\
+                $trw\_15\_2$ & 98.99 & 160 & 2.95 \\
+                $trw\_15\_4$ & 1546.55 & 213 & 4.90 \\
+                $trw\_15\_6$ & 935.05 & 152 & 8.86 \\ \hline
+                $trw\_16\_1$ & 423.20 & 246 & 3.67 \\
+                $trw\_16\_2$ & 1022.06 & 199 & 5.22 \\
+                $trw\_16\_3$ & 697.78 & 170 & 5.36 \\
+                $trw\_16\_5$ & 313.62 & 200 & 9.31 \\
+        \hline \hline
+        \end{tabular}
+\end{table}
+%===
+\begin{table}[H]
         \centering
         \caption{Aging Detaction Results for Mesilla Valley}
         \label{tab::mes_aging_res}
@@ -40,7 +64,7 @@
         \end{tabular}
 \end{table}
 % ===
-\begin{table}[ht]
+\begin{table}[H]
         \centering
         \caption{Aging Detaction Results for Werner}
         \label{tab::wer_aging_res}
@@ -56,25 +80,6 @@
                 $wer\_17\_4$ & 186.64 & 120 & 2.81\\
                 $wer\_17\_7$ & 1878.52 & 129 & 4.73\\
                 $wer\_17\_9$ & 7500.10 & 218 & 11.63\\
-        \hline \hline
-        \end{tabular}
-\end{table}
-%===
-\begin{table}[ht]
-        \centering
-        \caption{Aging Detaction Results for Transwest}
-        \label{tab::trw_aging_res}
-        \begin{tabular}{l r r r}
-        \hline \hline
-                Drive Segment& $T_w$ & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\ \hline \hline
-                $trw\_15\_0$ & 0.00 & 214 & 1.29 \\
-                $trw\_15\_2$ & 98.99 & 160 & 2.95 \\
-                $trw\_15\_4$ & 1546.55 & 213 & 4.90 \\
-                $trw\_15\_6$ & 935.05 & 152 & 8.86 \\ \hline
-                $trw\_16\_1$ & 423.20 & 246 & 3.67 \\
-                $trw\_16\_2$ & 1022.06 & 199 & 5.22 \\
-                $trw\_16\_3$ & 697.78 & 170 & 5.36 \\
-                $trw\_16\_5$ & 313.62 & 200 & 9.31 \\
         \hline \hline
         \end{tabular}
 \end{table}

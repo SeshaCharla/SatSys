@@ -6,10 +6,10 @@ The catalyst switches between saturation mode and normal mode based on states th
 \text{s.t } \, \lr{\eta_{sat}(k) \geq \eta(k)} \quad \forall  k \label{eqn::lin_opt_1}
 \end{align}
 %===
-The above optimization problem is feasible as $\eta_{sat}, \eta \geq 0$ always. When the $NO_x$ sensor data is used,
-$\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) . Rewriting
-the optimization problem using regression vector (\ref{eqn::regression}), we have the linear programming problem for
-estimating the parameters of the catalyst:
+The optimization problem (\ref{eqn::lin_opt_1}) is feasible as $\eta_{sat}, \eta \geq 0$ always. When the $NO_x$ sensor
+data is used, $\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) .
+Rewriting the optimization problem using regression vector (\ref{eqn::regression}), we have the linear programming
+problem for estimating the parameters of the catalyst:
 \begin{align}
         \text{minimize} &\qquad \pmb 1^T \lrb{\Phi_{sat} \theta_{sat}}      \label{eqn::lin_prog}\\
         \text{subject to} &\qquad \Phi_{sat} \theta_{sat} \succeq H,  \notag\\
@@ -23,10 +23,7 @@ The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (M
 \cite{942636} for model structure error}, $\lr{\varepsilon_\eta}$, between the saturated system's response,
 $\eta_{sat}(k)$, and the actual response of the catalyst, $\eta(k)$ (Appendix-\ref{sec::mle_derivation}). In the
 case of $NO_x$-sensor data with cross-sensitivity, the model structure error includes the cross-sensitivity error
-$\varepsilon_{\chi}$ and is assumed to be an half-normal random variable. The assumption of half-normal distribution for
-$\varepsilon_\eta$ implies that the catalyst is at it's maximum performance (close to saturation) for most of the drive
-time. Ideally this would be one of the objectives of the closed-loop urea-dosing controller as maximum $NO_x$ reduction
-is achieved when the catalyst is saturated.
+$\varepsilon_{\chi}$ and is assumed to be an half-normal random variable.
 %===
 \input{secs/3-subs/3-1-theta_dist.tex}
 \input{secs/3-subs/3-2-eta_sat_variance.tex}
