@@ -7,9 +7,7 @@ mass flow rate, $F$) is less than the $\epsilon_{sat}$.
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
 For the current test-cell and truck dataset, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$. This value is chosen
-based on the cumulative distribution of the prediction error for the saturated catalyst model across all the test-cell
-data such that the probability of a data point being classified as close to catalyst saturation is greater than $68.2\%$
-for the test-cell data.
+based on the variance of distribution of the prediction error for the saturated catalyst model.
 \begin{figure}[H]
         \centering
         \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}

@@ -29,7 +29,9 @@ where, N is the total sample size. The maximum likelihood estimate for $\theta_{
         &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::quad_prog}
 \end{align}
-As the inequality constraint ensures that the cost function and individual elements of the sum are always positive. Thus, the $l_2-$norm in quadratic programming problem (\ref{eqn::quad_prog}) can be replaced with $l_1-$norm resulting an linear programming problem formulation (\ref{eqn::lin_prog_final}).
+The quadratic program with a positivity constraint can be relaxed to a linear program as follows. By norm equivalence,
+the $l_2-$norm in (\ref{eqn::quad_prog}) is replaced with the $l_1$-norm, and the nonnegativity constraint renders the
+absolute value redundant, yielding the linear programming formulation in (\ref{eqn::lin_prog_final}).
 \begin{align}
         \hat \theta_{sat}
         &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag\\

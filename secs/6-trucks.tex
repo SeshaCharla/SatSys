@@ -14,48 +14,53 @@ including flow rate, temperature and urea injection rate. The data preprocessing
 The preprocessed data is then partitioned into drive segments with no breaks which correspond to a continuous driving
 period from engine start to engine stop.
 %===
+% Truck Maping
+% Truck A - AD Transport (adt)
+% Truck B - Mesilla Valley (mes)
+% Truck C - Werner (wer)
+% Truck D - Transwest (trw)
+% =====
 \begin{table}[ht]
         \centering
         \caption{Truck Data Set Years and Mileage Difference}
         \label{tab::truck_data_summary}
-        \begin{tabular}{l l l r}
+        \begin{tabular}{c c c c}
         \hline \hline
-               & Earlier Data & Latter Data & Mileage \\
-         Truck &  Year            & Year    & Difference\\ \hline \hline
-        AD Transport (adt) & $2015$ & $2017$ & $2.79 \times 10^5$\\
-        Mesilla Valley (mes) & $2015$ & $2018$ & $11.87 \times 10^5$\\
-        Werner (wer) & $2015$ & $2017$ & $5.89 \times 10^5$\\
-        Transwest (trw) & $2015$ & $2016$ & $6.56 \times 10^5$ \\
+         Truck & Earlier Data & Latter Data & Mileage \\
+               &  Year            & Year    & Difference\\ \hline \hline
+        Truck A & $2015$ & $2017$ & $2.8 \times 10^5$\\
+        Truck B & $2015$ & $2018$ & $11.9 \times 10^5$\\
+        Truck C & $2015$ & $2017$ & $5.9 \times 10^5$\\
+        Truck D & $2015$ & $2016$ & $6.6 \times 10^5$ \\
         \hline \hline
         \end{tabular}
 \end{table}
 %===
-Unlike the test-cell data where the engine drive-cycles are repeatable and produce a significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary condition for the proposed parameter estimation and aging detection framework is that the data contains a sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic hold (\ref{eqn::Ns_min}). Hence, the drive segment data is further pruned to only include segments with at least $150$ samples ($120$ in the case of Werner) close to catalyst saturation.
+Unlike the test-cell data where the engine drive-cycles are repeatable and produce a significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary condition for the proposed parameter estimation and aging detection framework is that the data contains a sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic hold (\ref{eqn::Ns_min}). Hence, the drive segment data is further pruned to only include segments with at least $150$ samples ($120$ in the case of Truck C) close to catalyst saturation.
 \begin{align}
         N_{sat} &\geq N_{sat}^{min} \label{eqn::Ns_min} \\
         \beta_{truck} &= 250 \label{eqn::beta_truck}
 \end{align}
-The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in trucks is chosen such that it maximises the probability of detection while minimizing the probability of false alarm and missed detection for the given limited truck data. A larger data set would help arrive at the thresholds using Neyman-Pearson criteria \cite{kay1998detection}. The value of the test statistic for the drive segments for each truck is tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res}, \ref{tab::wer_aging_res} and \ref{tab::trw_aging_res}. A summary of the aging detection results is tabulated in Table~\ref{tab::truck_aging_summary}.
+The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in trucks is chosen such that it maximizes the probability of detection while minimizing the probability of false alarm and missed detection for the given limited truck data. A larger data set would help arrive at the thresholds using Neyman-Pearson criteria \cite{kay1998detection}. The value of the test statistic for the drive segments for each truck is tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::trw_aging_res}, \ref{tab::mes_aging_res}, and \ref{tab::wer_aging_res}. A summary of the aging detection results is tabulated in Table~\ref{tab::truck_aging_summary}.
 %===
 \begin{table}[ht]
         \centering
         \caption{Summary of Aging Detection Results on Truck Data}
         \label{tab::truck_aging_summary}
-        \begin{tabular}{l c c c c}
+        \begin{tabular}{c c c c c}
         \hline \hline
-              & Total Drive & Detection & False  & Missed \\
-        Truck & Segments    &         & Alarm & Detection  \\\hline \hline
-        AD Transport   & 8  & 4 & 0 & 4 \\
-        Mesilla Valley & 11 & 9 & 1 & 1 \\
-        Werner         & 9  & 7 & 1 & 1 \\
-        Transwest      & 8  & 6 & 2 & 0 \\
+         Truck & Total Drive & Detection & False  & Missed \\
+               & Segments    &         & Alarm & Detection  \\\hline \hline
+        Truck A   & 8  & 4 & 0 & 4 \\
+        Truck B   & 11 & 9 & 1 & 1 \\
+        Truck C   & 9  & 7 & 1 & 1 \\
+        Truck D   & 8  & 6 & 2 & 0 \\
         \hline \hline
         \end{tabular}
 \end{table}
 The detector performs reasonably well on three of the four trucks with high probability of detection and low false alarm
-and missed detection rates. The AD Transport truck has relatively lower mileage difference between the earlier and
-latter data years which may explain the lower detection performance. The performance is limited by the amount of data
-available with sufficient samples close to catalyst saturation. Further, the lack of ground truth on the actual catalyst
+and missed detection rates. Truck A has relatively lower mileage difference between the earlier and latter data years
+which may explain the lower detection performance. The performance is limited by the amount of data available with
+sufficient samples close to catalyst saturation. Further, the lack of ground truth on the actual individual catalyst's
 aging levels limits the ability to quantify the performance of the detector. Nevertheless, the results demonstrate the
 potential of the proposed aging detection framework for on-board application using $NO_x$ sensor data.
-t
