@@ -1,6 +1,11 @@
 \section{Maximum Likelihood Estimation of the Model Parameters}
 
-The catalyst switches between saturation mode and normal mode based on states that are not completely controllable experimentally. The bounding condition on the saturated system's response (\ref{eqn::eta_bound}) can be used for detecting segments of the data where the catalyst's operation is normal or saturated. As the saturated catalyst's response forms a tight upper bound to the actual system's response, the parameters of the systems will be the solution to the linear programming problem that minimizes the area under the curve with the lower bound as the response of the actual system.
+The catalyst switches between saturation mode and normal mode based on states that are not completely controllable
+experimentally. The bounding condition on the saturated system's response (\ref{eqn::eta_bound}) can be used for
+detecting segments of the data where the catalyst's operation is normal or saturated. As the saturated catalyst's
+response forms a tight upper bound to the actual system's response, the parameters of the systems will be the solution
+to the linear programming problem that minimizes the area under the curve with the lower bound as the response of the
+actual system.
 \begin{align}
 \text{min. } \, \sum \eta_{sat}(k) \quad
 \text{s.t } \, \lr{\eta_{sat}(k) \geq \eta(k)} \quad \forall  k \label{eqn::lin_opt_1}
