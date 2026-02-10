@@ -1,12 +1,15 @@
 \section{Catalyst Mode Detection}
-The saturated catalyst model's response is not dependent on the previous state but only on the inputs making the
+The saturated catalyst model's response is not dependent on the previous state but only on the inputs, making the
 response independent of the initial conditions. Thus, using the parameter estimates, a given data point can be
-classified as saturated catalyst's response if the prediction error for the same inputs (inlet $NO_x$, $u_1$, and
+classified as saturated catalyst response if the prediction error for the same inputs (inlet $NO_x$, $u_1$, and
 mass flow rate, $F$) is less than the $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
-For the current test-cell  and truck data set, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$.
+For the current test-cell and truck dataset, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$. This value is chosen
+based on the cumulative distribution of the prediction error for the saturated catalyst model across all the test-cell
+data such that the probability of a data point being classified as close to catalyst saturation is greater than $68.2\%$
+for the test-cell data.
 \begin{figure}[H]
         \centering
         \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}
@@ -16,13 +19,13 @@ For the current test-cell  and truck data set, $\epsilon_{sat} = 2.5\times 10^{-
 The catalyst mode detection for DG RMC 1 test-cell data using FTIR measurements is shown in
 Figure-\ref{fig::cat_mode_det}. The catalyst is found to be close to saturation (or at its maximum $NO_x$ reduction)
 when the mass flow rate and the urea dosing rates are high, consistent with the physical understanding of the catalyst
-operation. Further, the flow rate can introduce virtual cieling on the maximum achievable $NO_x$ reduction due to
-reduced residence time in the catalyst which would be indistinguishable from saturated catalyst behaviour as the $NO_x$
+operation. Further, the flow rate can introduce a virtual ceiling on the maximum achievable $NO_x$ reduction due to
+reduced residence time in the catalyst, which would be indistinguishable from saturated catalyst behavior as the $NO_x$
 reduction would be independent of urea dosing.
 
 A fraction of the data from the test-cell experiments under RMC and Hot-FTP test conditions for both degreened and aged
-catalysts are found to be in saturated mode. The number data points close to catalyst saturation $\lr{N_{sat}}$ and the
-total number of samples ($N$) for different test conditions is tabulated in Table-\ref{tab::sat_data_perc_ssd},
+catalysts are found to be in saturated mode. The number of data points close to catalyst saturation $\lr{N_{sat}}$ and
+the total number of samples ($N$) for different test conditions is tabulated in Tables-\ref{tab::sat_data_perc_ssd} and
 \ref{tab::sat_data_perc_iod}.
 %==============================================================
 \begin{table}[ht]
@@ -61,6 +64,6 @@ total number of samples ($N$) for different test conditions is tabulated in Tabl
                 \hline\hline
         \end{tabular}
 \end{table}
-A higher number of data points classified as close to catalyst saturation in RMC test conditions compared to Hot-FTP,
-this results in better parameter estimates and performace of the aging detection test statistic
+Note that the higher number of data points classified as close to catalyst saturation in RMC test conditions, compared
+to Hot-FTP, results in better parameter estimates and performance of the aging detection test statistic in this case
 (Table-\ref{tab::Tw_tst}).
