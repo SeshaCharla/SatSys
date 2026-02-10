@@ -7,8 +7,7 @@ ammonia. The Eley-Rideal reaction mechanism \cite{prins2018eley}, \cite{yuan2015
 \cite{nova2014urea} is considered for modeling the SCR reaction kinetics, where one reactant $(NO_x)$ is gaseous, and
 the other is adsorbed on the catalyst surface $(NH_3)$. \cite{nova2014urea} lists all the reactions that take place
 inside the SCR-ASC chamber. Ammonia oxidation (AMOX) happens both on the surfaces of the SCR catalyst and the ASC
-catalyst in the mechanism that is similar, but SCR catalyst favors $NO_x$ reduction while ASC is specifically designed
-for ammonia oxidation.
+catalyst, but SCR catalyst favors $NO_x$ reduction while ASC is specifically designed for ammonia oxidation.
 In order to keep the model order reasonably low and parameters identifiable, only the following three prominent reactions \cite{devarakonda2008adequacy},\cite{hsieh2011development} are considered:
 \begin{enumerate}
     \item Standard SCR reaction:
@@ -29,9 +28,9 @@ In order to keep the model order reasonably low and parameters identifiable, onl
         \end{align*}
 \end{enumerate}
 %==
-This aggregation of reactions results in errors in parameter estimates, specifically parameters containing rate constant
-for the $NO_x$ reduction $\lr{k_{scr}}$ will have higher (bounded) uncertainty as it becomes dependent on the nitrogen
-selectivity of AMOX reaction \cite{jain2023diagnostics}.
+This aggregation of reactions results in errors in parameter estimates, specifically parameters containing the rate
+constant for the $NO_x$ reduction $\lr{k_{scr}}$ will have higher (bounded) uncertainty as it becomes dependent on the
+nitrogen selectivity of the AMOX reaction \cite{jain2023diagnostics}.
 %=======================================================================================================================
 \begin{figure}[ht]
     \centering

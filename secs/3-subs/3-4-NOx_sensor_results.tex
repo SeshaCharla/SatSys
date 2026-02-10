@@ -6,7 +6,7 @@ consistency across repeated tests on the same catalyst under similar test condit
 same temperature dependence as the model structure enters into the parameter estimates. Thus, the linear programming problem estimated the paramters with an added bias term as shown below:
 \begin{align}
     \varepsilon_{\chi}(T) &= \phi_{sat}(T(k))^T \theta_{\varepsilon_{\chi}} + \epsilon_{\chi}\\
-    J(\theta_{sat}) &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \theta_{sat} - \eta_y (k) } \notag\\
+    J(\theta_{sat})
                     &= \sum_{k=0}^{N-1} \lr{ \phi^T(k) \lr{\theta_{sat} + \theta_{\varepsilon_{\chi}}} - \eta (k) }
 \end{align}
 Thus, the estimated parameters using $NO_x$ sensor measurements will have a bias dependent on the cross-sensitivity

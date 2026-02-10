@@ -23,7 +23,7 @@ The number of moles entering at the inlet and leaving at the outlet can be writt
     \mol{NO_x}^{in/out} = \con{NO_x}^{in/out} \tau \lr{\frac{F}{\rho}} = \con{NO_x}^{in/out} V_{scr}
 \end{align}
 %===
-Using Eiley-Rideal mechanism for Standard SCR reaction $\lrf{2}$:
+Using Eiley-Rideal mechanism for Standard SCR reaction $\lrf{1}$:
 \begin{align}
     \frac{d}{dt} \con{NO_x}^{scr}dt = -k_{scr} \con{NH_3}^{ads} \con{NO_x}^{in}
 \end{align}
@@ -50,7 +50,7 @@ Let, tailpipe $NO_x$ concentration be $x_1(k+1) = \con{NO_x}^{out}(t+t_s)$ and i
 %
 % ======================================================================================================================
 %
-The quantity $\gamma(k)$ is the average concentration of ammonia adsorbed on the catalysts surface across the $n$ residence times between $k$ and $k+1$ samples. $\gamma(k)$ is bounded by the total concentration of voids on the surface of the catalyst, $\Gamma$, which decrease with increase in temperature.
+The quantity $\gamma(k)$ is the average concentration of ammonia adsorbed on the catalyst's surface across the $n$ residence times between $k$ and $k+1$ samples. $\gamma(k)$ is bounded by the total concentration of voids on the surface of the catalyst, $\Gamma$, which decrease with increase in temperature.
 \begin{align}
     0 \leq \gamma(k) \leq \Gamma \qquad \forall k
 \end{align}
@@ -66,7 +66,7 @@ function:
     \gamma(k) &=
     \begin{cases}
         \gamma^{ub}(k) & \text{if } \quad 0 \leq \gamma^{ub}(k) \leq \Gamma \\
-        \Gamma         & \text{if } \quad \gamma^{ub}(k) > \Gamma \qquad \text{[Satuaration]}\\
+        \Gamma         & \text{if } \quad \gamma^{ub}(k) > \Gamma \qquad \text{[Saturation]}\\
         0              & \text{if } \quad \gamma^{ub}(k) < 0 \qquad \text{[Empty]}
     \end{cases}
 \end{align}
@@ -94,7 +94,7 @@ The above equation~(\ref{eqn::nox_mdl}) shows that the tailpipe $NO_x$ concentra
     \label{eqn::gamma}
 \end{align}
 %===
-The above approximate models for temperature introduces dependence of the parameter estimates based on temperature range in the samples. For numerical stability \cite{press2003numerical}, the given temperature range in mapped to $[-1,1]$ and chebyshev polynomial basis \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
+The above approximate models for temperature introduce dependence of the parameter estimates based on temperature ranges in the samples. For numerical stability \cite{press2003numerical}, the given temperature range is mapped to $[-1,1]$ and Chebyshev polynomial bases \cite{trefethen2019approximation} are used instead of standard polynomials. Incorporating equations (\ref{eqn::res_time}) and (\ref{eqn::gamma}) into the $NO_x$ process dynamic model (\ref{eqn::nox_mdl}),
 \begin{align}
     \eta_{sat} (k+1) &= \phi_{sat}^T(T(k)) \; \theta_{sat}
     \label{eqn::regression} \\
@@ -102,5 +102,5 @@ The above approximate models for temperature introduces dependence of the parame
     \phi_{sat} (k) &= \frac{u_1(k)}{F(k)} \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
     \label{eqn::phi_def} \\
     %===
-    \text{Where, } \quad T_0 &= \frac{T_{max} + T_{min}}{2}, \quad T_r = \frac{T_{max} - T_{min}}{2} \notag
+    \text{where, } \quad T_0 &= \frac{T_{max} + T_{min}}{2}, \quad T_r = \frac{T_{max} - T_{min}}{2} \notag
 \end{align}
