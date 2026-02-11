@@ -1,9 +1,10 @@
 \subsection{$NO_x$ sensor cross-sensitivity}
-Commercial $NO_x$ sensors are cross-sensitive to tailpipe ammonia. The resulting error is modeled as a function of
-ammonia concentration and a temperature-dependent cross-sensitivity factor $\chi(T)$. This introduces a non-negative
-directional error $\lr{\varepsilon_\chi= \chi\lr{T(k)} \times \con{NH_3}^{out}\geq 0}$ into the tailpipe $NO_x$
-measurement $y_1$. Accordingly, when the $NO_x$ reduction in a time-step is calculated from  sensor measurements,
-$y_1(k) = x_1(k) + \varepsilon_{\chi}(k)$, the estimated quantity is less than the actual $NO_x$ reduction.
+Commercial $NO_x$ sensors are cross-sensitive to tailpipe ammonia (Figure~\ref{fig::cross_sensitivity}). The resulting
+error is modeled as a function of ammonia concentration and a temperature-dependent cross-sensitivity factor $\chi(T)$.
+This introduces a non-negative directional error $\lr{\varepsilon_\chi= \chi\lr{T(k)} \times \con{NH_3}^{out}\geq 0}$
+into the tailpipe $NO_x$ measurement $y_1$. Accordingly, when the $NO_x$ reduction in a time-step is calculated from
+sensor measurements, $y_1(k) = x_1(k) + \varepsilon_{\chi}(k)$, the estimated quantity is less than the actual $NO_x$
+reduction.
 \begin{align}
         \eta_y(k) &= u_1(k-1) - y_1(k) =  \eta(k) - \varepsilon_\chi(k) \leq \eta(k) \label{eqn::cross_meas}
 \end{align}
@@ -16,6 +17,7 @@ Thus, the bounding condition on the saturated system's response (\ref{eqn::eta_b
         \centering
         \includegraphics[width=\figWidth]{./figs/2_mdl/cross_aged_hftp.png}
         \caption{$NO_x$ sensor cross-sensitivity to tailpipe ammonia}
+        \label{fig::cross_sensitivity}
 \end{figure}
 % The FTIR sensor also has a bias that is directional. Similar arguments as above can be made for the validity of the
 % bounding condition.
