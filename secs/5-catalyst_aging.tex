@@ -2,7 +2,7 @@
 The parameters of the saturated system are a function of the rate-constant for SCR reaction and the maximum surface
 concentration of viable voids on the catalyst. The adsorption site concentration is hypothesized to change with aging of
 the catalyst allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
-experiments on a new (degreened) and hydro-thermally aged catalyst with the same capacity. The predicted $NO_x$
+experiments on a new (degreened) and hydrothermally aged catalyst with the same capacity. The predicted $NO_x$
 reduction for an aged catalyst is found to be statistically lower than the predicted $NO_x$ reduction in a degreened
 catalyst (Figure-\ref{fig::aging_diff}).
 \begin{figure}[ht]
@@ -36,15 +36,12 @@ test-cell experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_
         \label{fig::alpha_sat_iod}
 \end{figure}
 %===
-\par Thus, $\theta_{sat}$ captures the aging of the catalyst. Hence, the
-catalyst aging detection problem can be posed as a hypothesis testing problem
-with null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst
-and alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged
-catalyst. Since the distribution of the error is assumed to be known
-(half-normal) for both hypotheses and differs by the unknown parameter
-$\theta_{sat}$ which can be estimated, the following Wald test
-\cite{wald1943tests} is proposed to check if the parameter estimates for the
-given data set correspond to an aged catalyst or a known degreened catalyst.
+\par Thus, $\theta_{sat}$ captures the aging of the catalyst. Hence, the catalyst aging detection problem can be posed
+as a hypothesis testing problem with null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst and
+alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged catalyst. Since the distribution of the error is
+assumed to be known (half-normal) for both hypotheses and differs by the unknown parameter $\theta_{sat}$ which can be
+estimated, the following Wald test \cite{wald1943tests} is proposed to check if the parameter estimates for the given
+data set correspond to an aged catalyst or a known degreened catalyst.
 Decide $\mathcal{H}_1$ if,
 \begin{align}
         T_w  &= \lr{\hat \theta_{sat} - \theta_{sat}^{dg}}^T I\lr{\hat \theta_{sat}} \lr{\hat \theta_{sat} - \theta_{sat}^{dg}} > \beta
