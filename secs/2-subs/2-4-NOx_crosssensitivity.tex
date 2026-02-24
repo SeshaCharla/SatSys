@@ -1,5 +1,5 @@
 \subsection{$NO_x$ sensor cross-sensitivity}
-Commercial $NO_x$ sensors are cross-sensitive to tailpipe ammonia (Figure~\ref{fig::cross_sensitivity}). The resulting
+Commercial $NO_x$ sensors are cross-sensitive to tailpipe ammonia. Figure~\ref{fig::cross_sensitivity} shows the effect of cross-sensitivity on commercial $NO_x$ sensors due to tailpipe ammonia. When the tailpipe ammonia is greater than a threshold value, the $NO_x$ sensor output is corrupted, as shown in the plots where the $NO_x$ sensor measurement is significantly higher than the FTIR measurement, which can be considered the true value. The resulting
 error is modeled as a function of ammonia concentration and a temperature-dependent cross-sensitivity factor $\chi(T)$.
 This introduces a non-negative directional error $\lr{\varepsilon_\chi= \chi\lr{T(k)} \times \con{NH_3}^{out}\geq 0}$
 into the tailpipe $NO_x$ measurement $y_1$. Accordingly, when the $NO_x$ reduction in a time step is calculated from
