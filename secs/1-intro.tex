@@ -1,17 +1,16 @@
 \section{ Introduction }
 %===
 Diesel engine aftertreatment systems reduce the concentrations of harmful gases such as $NO_x$ and $CO$ from exhaust
-emissions. The Selective Catalytic Reduction (SCR) system reduces the engine-out $NO_x$ into $N_2$ and $H_2O$, using
+emissions. The Selective Catalytic Reduction (SCR) system reduces the engine-out $NO_x$ to $N_2$ and $H_2O$ using
 ammonia from urea dosing in the presence of a catalyst. This catalytic conversion process is regulated to decrease the
-levels of ammonia in the exhaust (ammonia slip), through two methods. The first is feedback control, which adjusts the
+levels of ammonia in the exhaust (ammonia slip) via two methods. The first is feedback control, which adjusts the
 urea injection rate based on the exhaust $NO_x$ concentrations. The second method involves an additional catalytic
 reaction, the Ammonia Slip Catalyst (ASC), which is designed to oxidize any excess ammonia at the end of the SCR bed.
-Figure-\ref{fig:exhaust_scheme} shows a schematic of the SCR-ASC system. It is found that $NO_x$-reduction capacity of
-the catalyst reduces with time due to hydrothermal aging and deposition of contaminants such as excess urea, platinum,
+Figure-\ref{fig:exhaust_scheme} shows a schematic of the SCR-ASC system. It has been found that the $NO_x$-reduction capacity of
+the catalyst decreases over time due to hydrothermal aging and deposition of contaminants such as excess urea, platinum,
 sulfur and phosphorus \cite{matsumoto2016model}. The aging of the catalyst leads to increased emissions of $NO_x$ and
-ammonia slip, which can result in non-compliance with environmental regulations. A fault detection system for the aging
-of the catalyst would provide better control over the maintenance of the system and improve the overall reduction in
-emissions.
+ammonia slip, which can result in non-compliance with environmental regulations. A fault detection system for catalyst
+aging would provide better control over system maintenance and improve the overall reduction in emissions.
 
 \begin{figure}[ht]
     \centering
@@ -21,13 +20,13 @@ emissions.
 \end{figure}
 
 Thus, modern diesel aftertreatment systems, particularly those that integrate Selective Catalytic Reduction (SCR) with
-Ammonia Slip Catalyst (ASC), necessitate advanced on-board diagnostics (OBD) tools for accurate assessment of catalyst
+Ammonia Slip Catalyst (ASC), necessitate advanced onboard diagnostics (OBD) tools for accurate assessment of catalyst
 aging. However, the effectiveness of traditional OBD approaches for this purpose has been impeded by the absence of
 model validation with real-world catalyst degradation data, the limitations imposed by existing commercial $NO_x$
-sensors' cross-sensitivity to ammonia and the absence of ammonia sensors in commercial vehicles.
+sensors' cross-sensitivity to ammonia, and the absence of ammonia sensors in commercial vehicles.
 
-Numerous studies have been conducted on modeling the SCR-ASC systems and their control \cite{yuan2015diesel}. A
-prevalent modeling approach is to approximate the PDE model for the plug flow reaction into a set of ODEs using sequence
+Numerous studies have been conducted on modeling SCR-ASC systems and their control \cite{yuan2015diesel}. A
+prevalent modeling approach is to approximate the PDE model for the plug flow reaction as a set of ODEs using a sequence
 of Continuously Stirred Tank Reactors (CSTRs) approximation (\cite{hsieh2011development} , and \cite{nova2014urea}). The
 single CSTR approach was first justified in \cite{devarakonda2008adequacy} and a nonlinear model was developed using
 these assumptions, which was then linearized for feedback control design (\cite{devarakonda2009model}). With this model,
@@ -40,19 +39,19 @@ reduction in adsorption sites and demonstrated on real-world trucks. A common th
 identification results in a non-convex, nonlinear parameter estimation problem. Moreover, these studies assume the
 availability of all the gaseous states at the tailpipe for state estimation and to eliminate the effects of
 cross-sensitivity of the $NO_x$ sensors, which is not always the case in real-world applications as tailpipe ammonia
-measurements are not generally available in commercial vehicles. One other fundamental issue with the CSTR model in the
+measurements are not generally available in commercial vehicles. Another fundamental issue with the CSTR model in the
 context of sensor sampling is that the discretization of the continuous model does not account for the residence time
-of the reactants resulting in high sampling frequency requirements that are not feasible in practice. Additionally, the
+of the reactants, resulting in high sampling frequency requirements that are not feasible in practice. Additionally, the
 discretization requires at least two CSTRs to capture the system dynamics and causality \cite{charla2024reduced},
 thereby increasing the model order.
 
 An alternative approach to the problem would be discarding the CSTR assumption and modelling the time evolution of the
 sensor signals when a "plug" or "parcel" of the exhaust gases flows through the chamber in discrete time considering the
 interplay between sampling and residence time of the reactants. The catalyst saturation that is inherently considered in
-the CSTR approach needs to be explicitly included as separate mode of the system. The present work developed such a
+the CSTR approach needs to be explicitly included as a separate mode of the system. The present work develops such a
 model under catalyst saturation which becomes one of the modes of the complete switched nonlinear model. Following the
-model development we present the parameter estimation algorithm that estimates the parameters of the saturated catalyst
-model using the real-world data whose operating mode is unknown and has additional uncertainties due to $NO_x$ sensor's
-cross-sensitivity to ammonia. Finally, we develop a statistical test for detecting the catalyst aging based on the
+model development, we present the parameter estimation algorithm that estimates the parameters of the saturated catalyst
+model using real-world data whose operating mode is unknown and that have additional uncertainties due to $NO_x$ sensor
+cross-sensitivity to ammonia. Finally, we develop a statistical test for detecting catalyst aging based on the
 estimated parameters of the saturated catalyst model. The performance of the proposed aging detector is demonstrated
 using both test-cell and real-world truck data.

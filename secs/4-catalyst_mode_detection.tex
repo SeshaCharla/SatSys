@@ -2,12 +2,12 @@
 The saturated catalyst model's response is not dependent on the previous state but only on the inputs, making the
 response independent of the initial conditions. Thus, using the parameter estimates, a given data point can be
 classified as saturated catalyst response if the prediction error for the same inputs (inlet $NO_x$, $u_1$, and
-mass flow rate, $F$) is less than the $\epsilon_{sat}$.
+mass flow rate, $F$) is less than $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
 For the current test-cell and truck dataset, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$. This value is chosen
-based on the variance of distribution of the prediction error for the saturated catalyst model.
+based on the variance of the distribution of the prediction error for the saturated catalyst model.
 \begin{figure}[H]
         \centering
         \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}

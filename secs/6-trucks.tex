@@ -1,17 +1,17 @@
 \section{Aging Detection from Truck Data}
 %===
 The performance of the proposed aging detector is also demonstrated using the $NO_x$ sensor data from four long-haul
-trucks. The road data was collected from trucks operating in the United States for two days separated by a few years
+trucks. The road data were collected from trucks operating in the United States for two days separated by a few years
 (Table~\ref{tab::truck_data_summary}) during which the catalyst has aged based on the existing performance measures. The
 data contains measurements of $NO_x$ sensors before and after the catalyst, as well as other required variables
 including flow rate, temperature and urea injection rate. The data preprocessing includes,
 \begin{inparaenum}
         \item removing the rows with missing values,
-        \item removing the rows whose operating temperature range is beyond range of $200-300 \,^0C$,
-        \item interpolating the missing data if the data breaks are smaller than a minute, and finally,
+        \item removing the rows whose operating temperature range is beyond the range of $200-300 \,^0C$,
+        \item interpolating the missing data if the data gaps are smaller than a minute, and finally,
         \item smoothing the data using a non-causal Chebyshev filter.
 \end{inparaenum}
-The preprocessed data is then partitioned into drive segments with no breaks which correspond to a continuous driving
+The preprocessed data is then partitioned into drive segments with no breaks, which correspond to a continuous driving
 period from engine start to engine stop.
 %===
 % Truck Mapping
@@ -36,7 +36,7 @@ period from engine start to engine stop.
         \end{tabular}
 \end{table}
 %===
-Unlike the test-cell data where the engine drive-cycles are repeatable and produce a significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary condition for the proposed parameter estimation and aging detection framework is that the data contains a sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic hold (\ref{eqn::Ns_min}). Hence, the drive segment data is further pruned to only include segments with at least $150$ samples ($120$ in the case of Truck C) close to catalyst saturation.
+Unlike the test-cell data where the engine drive-cycles are repeatable and produce a significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary condition for the proposed parameter estimation and aging detection framework is that the data contain a sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic hold (\ref{eqn::Ns_min}). Hence, the drive segment data are further pruned to only include segments with at least $150$ samples ($120$ in the case of Truck C) close to catalyst saturation.
 \begin{align}
         N_{sat} &\geq N_{sat}^{min} \label{eqn::Ns_min} \\
         \beta_{truck} &= 250 \label{eqn::beta_truck}
@@ -63,4 +63,4 @@ and missed detection rates. Truck A has relatively lower mileage difference betw
 which may explain the lower detection performance. The performance is limited by the amount of data available with
 sufficient samples close to catalyst saturation. Further, the lack of ground truth on the actual individual catalyst's
 aging levels limits the ability to quantify the performance of the detector. Nevertheless, the results demonstrate the
-potential of the proposed aging detection framework for on-board application using $NO_x$ sensor data.
+potential of the proposed aging detection framework for onboard application using $NO_x$ sensor data.
