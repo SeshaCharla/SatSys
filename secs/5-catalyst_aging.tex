@@ -1,10 +1,10 @@
 \section{Model Parameters Capture Catalyst Aging}
-The parameters of the saturated system are a function of the rate constant for SCR reaction and the maximum surface
+The parameters of the saturated system are a function of the rate constant for the SCR reaction and the maximum surface
 concentration of viable voids on the catalyst. The adsorption site concentration is hypothesized to change with aging of
-the catalyst allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
+the catalyst, allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
 experiments on a new (degreened) and hydrothermally aged catalyst with the same capacity. The predicted $NO_x$
 reduction for an aged catalyst is found to be statistically lower than the predicted $NO_x$ reduction in a degreened
-catalyst (Figure-\ref{fig::aging_diff}).
+catalyst (Figure~\ref{fig::aging_diff}). The dashed line in Figure~\ref{fig::aging_diff} corresponds to the actual response of the reference system, whose inputs are used to predict the saturated system's response using parameter estimates from the degreened and aged catalyst data under RMC test conditions. Thus, in accordance with the bounding condition (\ref{eqn::eta_bound}), the actual response is always less than the predicted saturated system's response.
 \begin{figure}[ht]
         \centering
         \includegraphics[width=\figWidth]{./figs/5_aging/AgingDiff.png}
@@ -12,8 +12,8 @@ catalyst (Figure-\ref{fig::aging_diff}).
         \label{fig::aging_diff}
 \end{figure}
 %===
-When the $\eta_{sat}$ response is normalized with respect to the inlet $NO_x$ concentration and flow-rate, we end up
-with a quantity that is only a function of temperature and represents the product of rate-constant and maximum surface
+When the $\eta_{sat}$ response is normalized with respect to the inlet $NO_x$ concentration and flow rate, we obtain
+ a quantity that is only a function of temperature and represents the product of the rate constant and maximum surface
 coverage. From (\ref{eqn::regression}),
 \begin{align}
         \alpha_{sat} &= \frac{F(k)}{u_1(k)} \eta_{sat}(k) = \tau_0 k_{scr}\Gamma = \phi_T^T(k)\theta_{sat}\\
@@ -21,8 +21,12 @@ coverage. From (\ref{eqn::regression}),
 \end{align}
 %===
 This quantity $\alpha_{sat}$ can be estimated and changes with aging of the catalyst based on the hypothesis that aging
-changes the adsorption site concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the
-test-cell experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_iod}).
+changes the adsorption site concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell
+experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_iod}). The variance is estimated by propagating
+the variance of the $\eta_{sat}$ estimate (\ref{eqn::eta_sat_var}). As expected from the cost function for parameter
+estimation under $NO_x$ sensor cross-sensitivity (\ref{eqn::nox_cost}), the parameter estimates have a bias that reduces
+the difference between the estimates for the degreened and aged catalyst. However, the overall trend of change in
+parameter values with aging remains consistent across both FTIR and $NO_x$ sensor measurements.
 \begin{figure}[ht]
         \centering
         \includegraphics[width=\figWidth]{./figs/5_aging/aging_factor_ssd.png}
@@ -37,22 +41,22 @@ test-cell experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_
 \end{figure}
 %===
 \par Thus, $\theta_{sat}$ captures the aging of the catalyst. Hence, the catalyst aging detection problem can be posed
-as a hypothesis testing problem with null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst and
-alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged catalyst. Since the distribution of the error is
-assumed to be known (half-normal) for both hypotheses and differs by the unknown parameter $\theta_{sat}$ which can be
-estimated, the following Wald test \cite{wald1943tests} is proposed to check if the parameter estimates for the given
+as a hypothesis-testing problem, with the null hypothesis $\lr{\mathcal{H}_0}$ corresponding to a degreened catalyst and
+the alternative hypothesis $\lr{\mathcal{H}_1}$ corresponding to an aged catalyst. Since the distribution of the error is
+assumed to be known (half-normal) for both hypotheses and differs by the unknown parameter $\theta_{sat}$, which can be
+estimated, the following Wald test \cite{wald1943tests} is proposed to check whether the parameter estimates for a given
 data set correspond to an aged catalyst or a known degreened catalyst.
 Decide $\mathcal{H}_1$ if,
 \begin{align}
         T_w  &= \lr{\hat \theta_{sat} - \theta_{sat}^{dg}}^T I\lr{\hat \theta_{sat}} \lr{\hat \theta_{sat} - \theta_{sat}^{dg}} > \beta
 \end{align}
 where $\theta_{sat}^{dg}$ is the parameter estimate for the degreened catalyst under the same input conditions,
-including temperature, flow-rate and urea-dosing rate ranges. The threshold $\beta$ is decided based on the experimental
-results. For RMC and FTP data sets, the value of the test statistic is tabulated in Table~\ref{tab::Tw_tst}.
+including temperature, flow rate, and urea-dosing rate ranges. The threshold $\beta$ is chosen based on the experimental
+results. For the RMC and FTP data sets, the value of the test statistic is tabulated in Table~\ref{tab::Tw_tst}.
 % Table of test-statistic
 \begin{table}[ht]
         \centering
-        \caption{Wald Test Results On the Test-Cell Data}
+        \caption{Wald Test Results on the Test-Cell Data}
         \label{tab::Tw_tst}
         \begin{tabular}{l c c}
         \hline \hline
@@ -69,12 +73,12 @@ results. For RMC and FTP data sets, the value of the test statistic is tabulated
         \hline \hline
         \end{tabular}
 \end{table}
-The distribution of the test-statistic under aging (non-central $\chi^2$, asymptotically) is different for RMC and FTP
-test conditions due to the differences in the ranges of inputs (temperature, flow-rate and urea-dosing rate) experienced
-by the catalyst during the tests. Based on the results, a reasonably discerning threshold that maximizes the probability of detection for Hot-FTP and RMC test conditions is found to be:
+The distribution of the test statistic under aging (non-central $\chi^2$, asymptotically) is different for the RMC and FTP
+test conditions due to differences in the ranges of inputs (temperature, flow rate, and urea-dosing rate) experienced
+by the catalyst during the tests. Based on the results, a reasonably discerning threshold that maximizes the probability of detection for both Hot-FTP and RMC test conditions is found to be
 \begin{align}
         \beta_{hFTP} &= 4.00, \qquad \beta_{RMC} = 10.00
 \end{align}
-Further investigation with more data is needed to arrive at the probability of detection and false alarm for these
+Further investigation with more data is needed to determine the probabilities of detection and false alarm for these
 thresholds. The proposed Wald test detects the aged catalyst for both FTIR and $NO_x$ sensor measurements under both
 test conditions.

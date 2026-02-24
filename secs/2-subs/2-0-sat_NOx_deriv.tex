@@ -42,9 +42,10 @@ Summing the equations from (\ref{eqn::nox_bal_con}) for  $i = 0$ to $n-1$, where
     \con{NO_x}^{out} (t + (i+1) \tau) &= \con{NO_x}^{out}(t + t_s) \quad \forall i \in [0, n-1] \label{eqn::zero_out}
 \end{align}
 Let tailpipe $NO_x$ concentration be $x_1(k+1) = \con{NO_x}^{out}(t+t_s)$ and inlet $NO_x$ concentration be $u_1(k) = \con{NO_x}^{in}(t)$, we get,
+
 \begin{align}
   \underbrace{\con{NO_x}^{out}(t+t_s)}_{x_1(k+1)} &= \underbrace{\con{NO_x}^{in}(t)}_{u_1(k)} \notag \\
-                & - \tau(t) k_{scr}(t) \con{NO_x}^{in}(t) \underbrace{\lrf{\frac{1}{n} \sum_{i = 0}^{n-1} \con{NH_3}^{ads}(t + i \tau)}}_{\gamma(k)}
+                 - \tau(t) k_{scr}(t) \con{NO_x}^{in}(t) & \underbrace{\lrf{\frac{1}{n} \sum_{i = 0}^{n-1} \con{NH_3}^{ads}(t + i \tau)}}_{\gamma(k)}
         \label{eqn::nox_avg}
 \end{align}
 %
