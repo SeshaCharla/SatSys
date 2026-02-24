@@ -36,11 +36,15 @@ Rewriting (\ref{eqn::nox_bal}) in terms of concentrations and integrating over t
         \label{eqn::nox_bal_con}
 \end{multline}
 %====
-Summing the equations from (\ref{eqn::nox_bal_con}) for  $i = 0$ to $n-1$, where $n$ is the total number of residence times within one sampling period $(n= t_s/\tau)$ and using the zero-order hold assumptions at the inlet (\ref{eqn::zero_in}) and outlet (\ref{eqn::zero_out}) concentrations, we obtain (\ref{eqn::nox_avg}).
+Summing the equations from (\ref{eqn::nox_bal_con}) for  $i = 0$ to $n-1$, where $n$ is the total number of residence
+times within one sampling period $(n= t_s/\tau)$ and using the zero-order hold assumptions at the inlet
+(\ref{eqn::zero_in}) and outlet (\ref{eqn::zero_out}) concentrations, we obtain (\ref{eqn::nox_avg}).
+
 \begin{align}
     \con{NO_x}^{in} (t + i \tau) &= \con{NO_x}^{in}(t) \quad \forall i \in [0, n-1]  \label{eqn::zero_in}\\
     \con{NO_x}^{out} (t + (i+1) \tau) &= \con{NO_x}^{out}(t + t_s) \quad \forall i \in [0, n-1] \label{eqn::zero_out}
 \end{align}
+
 Let tailpipe $NO_x$ concentration be $x_1(k+1) = \con{NO_x}^{out}(t+t_s)$ and inlet $NO_x$ concentration be $u_1(k) = \con{NO_x}^{in}(t)$, we get,
 
 \begin{align}
