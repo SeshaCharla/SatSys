@@ -18,7 +18,6 @@ zip -r "$OUTPUT" \
     asmejour.bst \
     asmejour.cls \
     leftindex.sty \
-    metalogo.sty \
     refs.bib \
     ltx_core/ltx_pkgs.tex \
     ltx_core/new_cmds.tex \
