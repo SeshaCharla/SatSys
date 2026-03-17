@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to compress only the files required to build the LaTeX project into a zip archive.
+# Script to compress only the source files required to build the IFAC LaTeX project.
 # Output: satsys_paper.zip
 
 PROJ_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -14,9 +14,8 @@ cp SCR_SatSys.tex root.tex
 
 zip -r "$OUTPUT" \
     root.tex \
-    SCR_SatSys.bbl \
-    asmejour.bst \
-    asmejour.cls \
+    ifacconf.cls \
+    ifacconf.bst \
     leftindex.sty \
     refs.bib \
     ltx_core/ltx_pkgs.tex \
