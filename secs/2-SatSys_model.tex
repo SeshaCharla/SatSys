@@ -3,12 +3,12 @@
 The SCR-ASC subsystem in the diesel engine aftertreatment systems involves reacting flow over a catalyst that
 adsorbs ammonia from urea decomposition. The reaction kinetics start with the decomposition of urea into ammonia
 followed by its adsorption onto the surface of the catalyst. The $NO_x$ entering the chamber is reduced by this adsorbed
-ammonia. The Eley-Rideal reaction mechanism \cite{prins2018eley}, \cite{yuan2015diesel}, \cite{hsieh2011development},
-\cite{nova2014urea} is considered for modeling the SCR reaction kinetics, where one reactant $(NO_x)$ is gaseous, and
-the other is adsorbed on the catalyst surface $(NH_3)$. Reference~\cite{nova2014urea} lists all the reactions that take place
+ammonia. The Eley-Rideal reaction mechanism \citep{prins2018eley}, \citep{yuan2015diesel}, \citep{hsieh2011development},
+\citep{nova2014urea} is considered for modeling the SCR reaction kinetics, where one reactant $(NO_x)$ is gaseous, and
+the other is adsorbed on the catalyst surface $(NH_3)$. \citet{nova2014urea} lists all the reactions that take place
 inside the SCR-ASC chamber. Ammonia oxidation (AMOX) happens on the surfaces of both the SCR and the ASC
 catalysts, but the SCR catalyst favors $NO_x$ reduction while the ASC is specifically designed for ammonia oxidation.
-In order to keep the model order reasonably low and parameters identifiable, only the following three prominent reactions \cite{devarakonda2008adequacy},\cite{hsieh2011development} are considered:
+In order to keep the model order reasonably low and parameters identifiable, only the following three prominent reactions \citep{devarakonda2008adequacy},\citep{hsieh2011development} are considered:
 \begin{enumerate}
     \item Standard SCR reaction:
     \begin{align}
@@ -27,7 +27,7 @@ In order to keep the model order reasonably low and parameters identifiable, onl
 %==
 This aggregation of reactions results in errors in parameter estimates; specifically, parameters containing the rate
 constant for the $NO_x$ reduction $\lr{k_{scr}}$ have higher (bounded) uncertainty because they become dependent on the
-nitrogen selectivity of the AMOX reaction \cite{jain2023diagnostics}.
+nitrogen selectivity of the AMOX reaction \citep{jain2023diagnostics}.
 %=======================================================================================================================
 \begin{figure}[ht]
     \centering

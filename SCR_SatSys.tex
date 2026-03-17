@@ -1,63 +1,42 @@
-\documentclass[subscriptcorrection,upint,varvw,barcolor=Goldenrod3,mathalfa=cal=euler,balance,hyphenate,french,pdf-a]{asmejour}
+\documentclass{ifacconf}
 
 \def\versionno{0.1}
-
-\hypersetup{
-	pdfauthor={Sesha Charla},                       	   	% <=== change to YOUR name[s]!
-	pdftitle={Modelling and Parameter Estimation of Diesel Engine Aftertreatment System under Catalyst Saturation
-	for Aging Diagnostics},                  	% <=== change to YOUR pdf file title
-	pdfkeywords={Diesel Engine Aftertreatment Systems, Diagnostics, Modelling, Nonlinear Systems, System Identification, Hypothesis Testing, Statistical Detection},% <=== change to YOUR pdf keywords
-	pdfsubject = {Mathematical Modelling, Identification and Diagnostics},			% <=== change to YOUR subject
-}
-
-
-\JourName{Dynamic Systems, Measurement, and Control }%<=== change to the name of your journal
-
-\PaperYear{2026}
 
 % Custom Stuff
 \input{ltx_core/ltx_pkgs.tex}
 \input{ltx_core/new_cmds.tex}
-
-\geometry{a4paper}
+\usepackage[authoryear,round]{natbib}
 
 \begin{document}
 %=======================================================================================================================
-\SetAuthorBlock{Sesha Charla}{School of Mechanical Engineering,\\
-   Purdue University,\\
-   West Lafayette, Indiana, USA\\
-   email: scharla@purdue.edu}
+\begin{frontmatter}
 
-\SetAuthorBlock{Peter H. Meckl\CorrespondingAuthor}{%
-Fellow ASME\\
-School of Mechanical Engineering,\\
-Purdue University,\\
-West Lafayette, Indiana, USA\\
-email: meckl@purdue.edu
-}
+\title{Modelling and Parameter Estimation of Diesel Engine Aftertreatment System under Catalyst Saturation for Aging Diagnostics}
 
-\SetAuthorBlock{Bin Yao}{%
-Fellow ASME\\
-School of Mechanical Engineering,\\
-Purdue University,\\
-West Lafayette, Indiana, USA\\
-email: byao@purdue.edu
-}
-%=======================================================================================================================
-\title{Modelling and Parameter Estimation of Diesel Engine Aftertreatment System under Catalyst Saturation for Aging
-Diagnostics}
+\author[First]{Sesha Charla}
+\author[Second]{Peter H. Meckl\thanksref{correspond}}
+\author[Third]{Bin Yao}
 
-\keywords{Diesel Engine Aftertreatment System, System Identification, Nonlinear Systems, Hybrid Systems, Diagnostics, Parameter Estimation, Linear Programming.}
+\address[First]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: scharla@purdue.edu)}
+\address[Second]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: meckl@purdue.edu)}
+\address[Third]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: byao@purdue.edu)}
 
-%=======================================================================================================================
-%% Abstract should be no more than 250 words
+\thanks[correspond]{Corresponding author.}
+
+%% Abstract should be no more than 100 words
 \begin{abstract}
 \input{secs/0-abstract.tex}
 \end{abstract}
 
-%=======================================================================================================================
-\date{Version \versionno , \today}
-\maketitle
+\begin{keyword}
+Diesel Engine Aftertreatment System \sep System Identification \sep Nonlinear Systems \sep
+Hybrid Systems \sep Diagnostics \sep Parameter Estimation \sep Linear Programming
+\end{keyword}
+
+\end{frontmatter}
 %=======================================================================================================================
 
 \input{secs/1-intro.tex}
@@ -69,17 +48,15 @@ Diagnostics}
 \input{secs/7-conclusion.tex}
 
 %=======================================================================================================================
-\section*{Acknowledgment}
+\begin{ack}
 Authors acknowledge the support and feedback from David Schmidt, Larry Bruner, Adam Kidd and Tom Nelson of Cummins, Inc.
-%=======================================================================================================================
-\section*{Funding Data}
 Authors acknowledge the funding and test-cell, truck and simulation data of Diesel Engine Aftertreatment Systems from Cummins, Inc.
+\end{ack}
 %=======================================================================================================================
 \input{secs/0-symb_list.tex}
 %=======================================================================================================================
 \appendix   %%% starting appendices
 \input{secs/n-appendix.tex}
 %=======================================================================================================================
-\bibliographystyle{asmejour}
 \bibliography{refs}
 \end{document}
