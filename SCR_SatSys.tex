@@ -28,35 +28,39 @@
 
 %% Abstract should be no more than 100 words
 \begin{abstract}
-\input{secs/0-abstract.tex}
+\begingroup
+\relpenalty=10000
+\binoppenalty=10000
+\input{secs/0-extended_abstract.tex}
+\endgroup
 \end{abstract}
 
 \begin{keyword}
 Diesel Engine Aftertreatment System \sep System Identification \sep Nonlinear Systems \sep
-Hybrid Systems \sep Diagnostics \sep Parameter Estimation \sep Linear Programming
+Hybrid Systems \sep Diagnostics \sep Parameter Estimation \sep Linear Programming \sep Statistical Detection
 \end{keyword}
 
 \end{frontmatter}
 %=======================================================================================================================
 
-\input{secs/1-intro.tex}
-\input{secs/2-SatSys_model.tex}
-\input{secs/3-MLE_estimation.tex}
-\input{secs/4-catalyst_mode_detection.tex}
-\input{secs/5-catalyst_aging.tex}
-\input{secs/6-trucks.tex}
-\input{secs/7-conclusion.tex}
-
+% \input{secs/1-intro.tex}
+% \input{secs/2-SatSys_model.tex}
+% \input{secs/3-MLE_estimation.tex}
+% \input{secs/4-catalyst_mode_detection.tex}
+% \input{secs/5-catalyst_aging.tex}
+% \input{secs/6-trucks.tex}
+% \input{secs/7-conclusion.tex}
+%
 %=======================================================================================================================
-\begin{ack}
-Authors acknowledge the support and feedback from David Schmidt, Larry Bruner, Adam Kidd and Tom Nelson of Cummins, Inc.
-Authors acknowledge the funding and test-cell, truck and simulation data of Diesel Engine Aftertreatment Systems from Cummins, Inc.
-\end{ack}
+% \begin{ack}
+% Authors acknowledge the support and feedback from David Schmidt, Larry Bruner, Adam Kidd and Tom Nelson of Cummins, Inc.
+% Authors acknowledge the funding and test-cell, truck and simulation data of Diesel Engine Aftertreatment Systems from Cummins, Inc.
+% \end{ack}
 %=======================================================================================================================
-\input{secs/0-symb_list.tex}
+% \input{secs/0-symb_list.tex}
 %=======================================================================================================================
-\appendix   %%% starting appendices
-\input{secs/n-appendix.tex}
+% \appendix   %%% starting appendices
+% \input{secs/n-appendix.tex}
 %=======================================================================================================================
-\bibliography{refs}
+% \bibliography{refs}
 \end{document}
