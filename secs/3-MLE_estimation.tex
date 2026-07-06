@@ -11,7 +11,7 @@ actual system:
 \text{s.t } \, \lr{\eta_{sat}(k) \geq \eta(k)} \quad \forall  k \label{eqn::lin_opt_1}
 \end{align}
 %===
-The optimization problem (\ref{eqn::lin_opt_1}) is feasible as $\eta_{sat}$ and $\eta \geq 0$ always. When the $NO_x$ sensor
+The optimization problem (\ref{eqn::lin_opt_1}) is feasible as $\eta_{sat}$ and $\eta \geq 0$ always. When the $\nox$ sensor
 data is used, $\eta(k)$ is replaced with $\eta_y(k)$ as the bounding condition still holds (\ref{eqn::eta_y_bound}) .
 Rewriting the optimization problem using the regression vector (\ref{eqn::regression}), we have the linear programming
 problem for estimating the parameters of the catalyst:
@@ -27,7 +27,7 @@ problem for estimating the parameters of the catalyst:
 The above estimate of $\theta_{sat}$ is the \itbf{maximum likelihood estimate (MLE) under a half-normal distribution
 \cite{942636} for model structure error}, $\lr{\varepsilon_\eta}$, between the saturated system's response,
 $\eta_{sat}(k)$, and the actual response of the catalyst, $\eta(k)$ (Appendix-\ref{sec::mle_derivation}). In the
-case of $NO_x$-sensor data with cross-sensitivity, the model structure error includes the cross-sensitivity error
+case of $\nox$-sensor data with cross-sensitivity, the model structure error includes the cross-sensitivity error
 $\varepsilon_{\chi}$ and is assumed to be a half-normal random variable.
 %===
 \input{secs/3-subs/3-1-theta_dist.tex}

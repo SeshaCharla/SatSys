@@ -1,7 +1,7 @@
 \section{Catalyst Mode Detection}
 The saturated catalyst model's response does not depend on the previous state but only on the inputs, making the
 response independent of the initial conditions. Thus, using the parameter estimates, a given data point can be
-classified as a saturated-catalyst response if the prediction error for the same inputs (inlet $NO_x$, $u_1$, and
+classified as a saturated-catalyst response if the prediction error for the same inputs (inlet $\nox$, $u_1$, and
 mass flow rate, $F$) is less than $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
@@ -17,10 +17,10 @@ based on the variance of the distribution of the prediction error for the satura
 The catalyst mode detection for the degreened (DG) catalyst under RMC 1 test-cell conditions using FTIR measurements is shown in
 Figure~\ref{fig::cat_mode_det}. The figure illustrates the operating points for which the prediction error of the
 saturated catalyst model satisfies \eqref{eqn::sat_cond}, and that are therefore classified as saturated, i.e., close to
-maximum $NO_x$ reduction. The catalyst is found to be close to saturation when the mass flow rate and the urea dosing
+maximum $\nox$ reduction. The catalyst is found to be close to saturation when the mass flow rate and the urea dosing
 rates are high, consistent with the physical understanding of the catalyst operation. Furthermore, the flow rate can
-introduce a virtual ceiling on the maximum achievable $NO_x$ reduction due to reduced residence time in the catalyst,
-which would be indistinguishable from saturated-catalyst behavior, since the $NO_x$ reduction would be independent of
+introduce a virtual ceiling on the maximum achievable $\nox$ reduction due to reduced residence time in the catalyst,
+which would be indistinguishable from saturated-catalyst behavior, since the $\nox$ reduction would be independent of
 urea dosing.
 
 A fraction of the data from the test-cell experiments under RMC and Hot-FTP test conditions for both degreened and aged
@@ -51,7 +51,7 @@ C$.
 \end{table}
 \begin{table}[ht]
         \centering
-        \caption{Data Points Close to Catalyst Saturation in Test-Cell $NO_x$ Sensor Data}
+        \caption{Data Points Close to Catalyst Saturation in Test-Cell $\nox$ Sensor Data}
         \label{tab::sat_data_perc_iod}
         \begin{tabular}{l r r}
                 \hline \hline

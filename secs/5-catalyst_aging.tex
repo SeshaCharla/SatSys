@@ -2,8 +2,8 @@
 The parameters of the saturated system are a function of the rate constant for the SCR reaction and the maximum surface
 concentration of viable voids on the catalyst. The adsorption site concentration is hypothesized to change with aging of
 the catalyst, allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
-experiments on a new (degreened) and hydrothermally aged catalyst with the same capacity. The predicted $NO_x$
-reduction for an aged catalyst is found to be statistically lower than the predicted $NO_x$ reduction in a degreened
+experiments on a new (degreened) and hydrothermally aged catalyst with the same capacity. The predicted $\nox$
+reduction for an aged catalyst is found to be statistically lower than the predicted $\nox$ reduction in a degreened
 catalyst (Figure~\ref{fig::aging_diff}). The dashed line in Figure~\ref{fig::aging_diff} corresponds to the actual response of the reference system, whose inputs are used to predict the saturated system's response using parameter estimates from the degreened and aged catalyst data under RMC test conditions. Thus, in accordance with the bounding condition (\ref{eqn::eta_bound}), the actual response is always less than the predicted saturated system's response.
 \begin{figure}[ht]
         \centering
@@ -12,7 +12,7 @@ catalyst (Figure~\ref{fig::aging_diff}). The dashed line in Figure~\ref{fig::agi
         \label{fig::aging_diff}
 \end{figure}
 %===
-When the $\eta_{sat}$ response is normalized with respect to the inlet $NO_x$ concentration and flow rate, we obtain
+When the $\eta_{sat}$ response is normalized with respect to the inlet $\nox$ concentration and flow rate, we obtain
  a quantity that is only a function of temperature and represents the product of the rate constant and maximum surface
 coverage. From (\ref{eqn::regression}),
 \begin{align}
@@ -24,9 +24,9 @@ This quantity $\alpha_{sat}$ can be estimated and changes with aging of the cata
 changes the adsorption site concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell
 experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_iod}). The variance is estimated by propagating
 the variance of the $\eta_{sat}$ estimate (\ref{eqn::eta_sat_var}). As expected from the cost function for parameter
-estimation under $NO_x$ sensor cross-sensitivity (\ref{eqn::nox_cost}), the parameter estimates have a bias that reduces
+estimation under $\nox$ sensor cross-sensitivity (\ref{eqn::nox_cost}), the parameter estimates have a bias that reduces
 the difference between the estimates for the degreened and aged catalyst. However, the overall trend of change in
-parameter values with aging remains consistent across both FTIR and $NO_x$ sensor measurements.
+parameter values with aging remains consistent across both FTIR and $\nox$ sensor measurements.
 \begin{figure}[ht]
         \centering
         \includegraphics[width=\figWidth]{./figs/5_aging/aging_factor_ssd.png}
@@ -36,7 +36,7 @@ parameter values with aging remains consistent across both FTIR and $NO_x$ senso
 \begin{figure}[ht]
         \centering
         \includegraphics[width=\figWidth]{./figs/5_aging/aging_factor_iod.png}
-        \caption{$\hat \alpha_{sat}$ from RMC $NO_x$ Sensor Data}
+        \caption{$\hat \alpha_{sat}$ from RMC $\nox$ Sensor Data}
         \label{fig::alpha_sat_iod}
 \end{figure}
 %===
@@ -60,7 +60,7 @@ results. For the RMC and FTP data sets, the values of the test statistic are tab
         \label{tab::Tw_tst}
         \begin{tabular}{l c c}
         \hline \hline
-        Test & $T_w$ from FTIR & $T_w$ from $NO_x$ sensor \\\hline \hline
+        Test & $T_w$ from FTIR & $T_w$ from $\nox$ sensor \\\hline \hline
         DG RMC 1      & 0.26 & 5.54\\
         DG RMC 2      & 0.00 & 0.00\\
         DG RMC 2      & 6.71 & 5.46\\
@@ -80,5 +80,5 @@ by the catalyst during the tests. Based on the results, a reasonably discerning 
         \beta_{hFTP} &= 4.00, \qquad \beta_{RMC} = 10.00
 \end{align}
 Further investigation with more data is needed to determine the probabilities of detection and false alarm for these
-thresholds. The proposed Wald test detects the aged catalyst for both FTIR and $NO_x$ sensor measurements under both
+thresholds. The proposed Wald test detects the aged catalyst for both FTIR and $\nox$ sensor measurements under both
 test conditions.
