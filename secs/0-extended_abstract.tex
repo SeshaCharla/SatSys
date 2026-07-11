@@ -12,29 +12,30 @@ uncertain and limited data from commercial trucks.
 We propose a discrete-time, input-output model for the SCR system derived from
 molar conservation across the control volume of SCR-ASC with focus on the
 dynamics when the catalyst is saturated with ammonia. In this "saturated" mode,
-the $\nox$ reduction, $\eta(k) = u_1(k-1) - x_1(k)$ where $u_1$ is inlet and
-$x_1$ is outlet $\nox$, becomes independent of urea dosing. The $\nox$
+the $\nox$ reduction, $\eta(k) = u_1(k-1) - x_1(k)$ where $u_1$ is the inlet
+$\nox$ concentration at step $(k-1)$ and $x_1$ is the outlet $\nox$
+concentration at step $(k)$, becomes independent of urea dosing. The $\nox$
 reduction is modeled as an explicit function of inlet $\nox$ concentration
-$\lr{u_1}$, the mass flow rate $\lr{F}$, and the average concentration of
-adsorbed ammonia $\lr{\gamma}$ which strongly depends on the urea-dosing. Under
-saturation, $\gamma$ reaches its maximum temperature-dependent capacity,
-$\Gamma(T)$. Thus, the $\nox$ reduction in the saturated mode, $\eta_{sat}$, is
-therefore: $ \eta_{sat} (k+1) = \frac{u_1(k)}{F(k)} \tau_0 \; k_{scr}(T(k)) \;
-\Gamma (T(k)) $. This saturated model is parameterized using Chebyshev
-polynomials for temperature dependence, resulting in a linear-in-parameters
-regression model: $ \eta_{sat} (k+1) = \phi_{sat}^T(k) \; \theta_{sat} $. A
-crucial observation is that the $\nox$ reduction under saturation,
-$\eta_{sat}(k)$, forms a tight upper bound for the actual $\nox$ reduction,
-$\eta(k)$, at any given time. $ \eta(k) \leq \eta_{sat}(k) \: \forall k $. This
-inequality allows us to estimate the saturated model parameters,
-$\theta_{sat}$, from operational data where the catalyst's saturation state is
-unknown.
+$\lr{u_1}$, the residence time $\lr{\tau}$, which is a function of the mass
+flow rate, and the average concentration of adsorbed ammonia $\lr{\gamma}$,
+which strongly depends on the urea-dosing rate. Under catalyst saturation,
+$\gamma$ reaches its maximum temperature-dependent capacity, $\Gamma(T)$. Thus,
+the $\nox$ reduction in the saturated mode, $\eta_{sat}$, is: $ \eta_{sat}
+    (k+1) = u_1(k) \tau(k) k_{scr}(k) \Gamma (k) $ where $k_{scr}$ is the SCR rate
+constant. This saturated model is parameterized using Chebyshev polynomials for
+temperature dependence, resulting in a linear-in-parameters regression model: $
+    \eta_{sat} (k+1) = \phi_{sat}^T(k) \; \theta_{sat} $. A crucial observation is
+that the $\nox$ reduction under saturation, $\eta_{sat}(k)$, forms a tight
+upper bound for the actual $\nox$ reduction, $\eta(k)$, at any given time. $
+    \eta(k) \leq \eta_{sat}(k) \: \forall k $. This inequality allows us to
+estimate the saturated model parameters, $\theta_{sat}$, from operational data
+where the catalyst's saturation state is unknown.
 
 The proposed methodology is validated using test-cell data, demonstrating
 consistent parameter estimates across datasets and robustness to sensor
-cross-sensitivity. Furthermore, we show a clear, statistically significant
+cross-sensitivity. Furthermore, we show a clear, statistically-significant
 difference in parameters between new and aged catalysts using both test-cell
-and real-world truck data. Using this distinction, a Wald test based aging
+and real-world truck data. Using this distinction, a Wald-test-based aging
 detector is developed. The method is shown to be robust to sensor
-cross-sensitivity and provide a reliable metric for detecting catalyst aging,
-paving the way for more accurate and robust on-board aging diagnostic system.
+cross-sensitivity and to provide a reliable metric for detecting catalyst aging,
+paving the way for more accurate and robust on-board aging diagnostic systems.
