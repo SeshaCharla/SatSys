@@ -9,7 +9,7 @@ commercial vehicles. This work presents a novel approach for modeling the SCR
 system and estimating its parameters to diagnose catalyst aging, even with
 uncertain and limited data from commercial trucks.
 
-We propose a discrete-time, input-output model for the SCR system derived from
+We propose a discrete-time, input-output model for $\nox$ reduction derived from
 molar conservation across the control volume of SCR-ASC with focus on the
 dynamics when the catalyst is saturated with ammonia. In this "saturated" mode,
 the $\nox$ reduction, $\eta(k) = u_1(k-1) - x_1(k)$ where $u_1$ is the inlet
@@ -21,7 +21,7 @@ flow rate, and the average concentration of adsorbed ammonia $\lr{\gamma}$,
 which strongly depends on the urea-dosing rate. Under catalyst saturation,
 $\gamma$ reaches its maximum temperature-dependent capacity, $\Gamma(T)$. Thus,
 the $\nox$ reduction in the saturated mode, $\eta_{sat}$, is: $ \eta_{sat}
-    (k+1) = u_1(k) \tau(k) k_{scr}(k) \Gamma (k) $ where $k_{scr}$ is the SCR rate
+    (k+1) = u_1(k) \tau(k) k_{scr}(k) \Gamma (k) $, where $k_{scr}$ is the SCR rate
 constant. This saturated model is parameterized using Chebyshev polynomials for
 temperature dependence, resulting in a linear-in-parameters regression model: $
     \eta_{sat} (k+1) = \phi_{sat}^T(k) \; \theta_{sat} $. A crucial observation is
