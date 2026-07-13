@@ -47,12 +47,16 @@ discretization requires at least two CSTRs to capture the system dynamics and ca
 thereby increasing the model order.
 
 An alternative approach to the problem would be discarding the CSTR assumption and modelling the time evolution of the
-sensor signals when a "plug" or "parcel" of the exhaust gases flows through the chamber in discrete time, considering the
-interplay between sampling and residence time of the reactants. The catalyst saturation that is inherently considered in
-the CSTR approach needs to be explicitly included as a separate mode of the system. The present work develops such a
-model under catalyst saturation which becomes one of the modes of the complete switched nonlinear model. Following the
-model development, we present the parameter estimation algorithm that estimates the parameters of the saturated catalyst
-model using real-world data whose operating mode is unknown and that have additional uncertainties due to $\nox$ sensor
-cross-sensitivity to ammonia. Finally, we develop a statistical test for detecting catalyst aging based on the
-estimated parameters of the saturated catalyst model. The performance of the proposed aging detector is demonstrated
-using both test-cell and real-world truck data.
+sensor signals when a "plug" or "parcel" of the exhaust gases flows through the chamber in discrete time, considering
+the interplay between sampling and residence time of the reactants. The catalyst saturation that is inherently
+considered in the CSTR approach needs to be explicitly included as a separate mode of the system.
+
+The present work develops such a nonlinear model for $\nox$ reduction under catalyst saturation, which serves as one of
+the modes within a complete switched nonlinear framework. Following the model development, we present an algorithm to
+estimate the parameters of the saturated catalyst model using real-world data. This estimation explicitly accounts for
+unknown operating modes, uncertainties arising from $\nox$ sensor cross-sensitivity to ammonia, and the absence of
+dedicated ammonia sensors. Utilizing these estimates, we introduce a catalyst mode detection algorithm to characterize
+the statistical properties of the parameter estimates. The limitations of both the estimation method and this mode
+detection approach are discussed and demonstrated in the appendix. Finally, we develop a statistical test for detecting
+catalyst aging based on these estimated parameters, with its performance demonstrated using both test-cell and
+real-world truck data.
