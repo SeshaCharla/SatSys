@@ -1,32 +1,32 @@
 \section{Maximum Likelihood Estimate Derivation \label{sec::mle_derivation}}
 Consider,
 \begin{align}
-        \varepsilon_\eta(k) &= \eta_{sat}(k) - \eta\lr{k}  \quad
-        \implies& \varepsilon_\eta(k) = \lr{\phi_{sat}^T \theta_{sat} - \eta \lr{k}} \label{eqn::eta_regression}
+        \varepsilon_\eta(k) & = \eta_{sat}(k) - \eta\lr{k}  \quad
+        \implies            & \varepsilon_\eta(k) = \lr{\phi_{sat}^T \theta_{sat} - \eta \lr{k}} \label{eqn::eta_regression}
 \end{align}
 based on the measurement sensors. Assuming $\varepsilon_\eta$ follows half-normal distribution \cite{byers2014half} with scale-parameter, $\sigma$,
 \begin{align}
-        \varepsilon_\eta &\backsim \text{Half-Normal}(\sigma);\quad
-        p(\varepsilon_\eta;\sigma) = \begin{cases} \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} & \varepsilon_\eta \geq  0\\
-                                                        0 & \varepsilon_{\eta} < 0
-                                        \end{cases}
-                                        \label{eqn::exp_pdf}
+        \varepsilon_\eta & \backsim \text{Half-Normal}(\sigma);\quad
+        p(\varepsilon_\eta;\sigma) = \begin{cases} \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} & \varepsilon_\eta \geq  0 \\
+              0                                                                              & \varepsilon_{\eta} < 0
+                                     \end{cases}
+        \label{eqn::exp_pdf}
 \end{align}
 we have the likelihood and log-likelihood functions given the data and parameter estimate $\theta_{sat}$ and $\sigma$:
 \begin{align}
-        l\lr{\theta_{sat}}&=p(\pmb \varepsilon_{\eta};\theta_{sat}, \sigma) = \prod_{k=1}^N  \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} \quad \varepsilon_\eta(k) \geq  0
-        \label{eqn::likelihood}\\
-        L\lr{\theta_{sat}}&=\ln \lr{l(\theta_{sat})} = \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2}
-                \quad \varepsilon_\eta(k) \geq  0
+        l\lr{\theta_{sat}} & =p(\pmb \varepsilon_{\eta};\theta_{sat}, \sigma) = \prod_{k=1}^N  \frac{\sqrt{2}}{\sigma \sqrt{\pi}} e^{- \frac{\varepsilon_\eta^2}{2 \sigma^2}} \quad \varepsilon_\eta(k) \geq  0
+        \label{eqn::likelihood}                                                                                                                                                                                 \\
+        L\lr{\theta_{sat}} & =\ln \lr{l(\theta_{sat})} = \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2}
+        \quad \varepsilon_\eta(k) \geq  0
         \label{eqn::log_likelihood}
 \end{align}
 where $N$ is the total sample size. The maximum likelihood estimate for $\theta_{sat}$ would be:
 \begin{align}
         \hat \theta_{sat}
-        &= \argmax_{\theta_{sat}} \lrf{ \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2} } \quad \varepsilon_\eta(k) \geq  0 \notag\\
-        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag\\
-        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag\\
-        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
+         & = \argmax_{\theta_{sat}} \lrf{ \frac{N}{2} \ln \frac{2}{\sigma^2 \pi} - \frac{1}{2 \sigma^2} {\sum_{k=1}^N \varepsilon_\eta^2} } \quad \varepsilon_\eta(k) \geq  0 \notag \\
+         & = \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \varepsilon_\eta^2} \quad \varepsilon_\eta(k) \geq  0 \notag                                                                    \\
+         & = \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat} - \eta(k)}^2} \notag                                                                           \\
+         & \quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::quad_prog}
 \end{align}
 The quadratic program with a positivity constraint can be relaxed to a linear program as follows. By norm equivalence,
@@ -34,7 +34,7 @@ the $l_2-$norm in (\ref{eqn::quad_prog}) is replaced with the $l_1$-norm, and th
 absolute value redundant, yielding the linear programming formulation in (\ref{eqn::lin_prog_final}).
 \begin{align}
         \hat \theta_{sat}
-        &= \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag\\
-        &\quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
+         & = \argmin_{\theta_{sat}} \lr{\sum_{k=1}^N \lr{\phi_{sat}(k)^T \theta_{sat}}} \notag                \\
+         & \quad  s.t \quad \phi_{sat}(k)^T \theta_{sat} \geq \eta(k) \quad \forall \: k \in {1,2, \hdots, N}
         \label{eqn::lin_prog_final}
 \end{align}

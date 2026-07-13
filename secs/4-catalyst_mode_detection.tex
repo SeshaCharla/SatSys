@@ -6,19 +6,19 @@ time step can be classified as either a saturated or an unsaturated response bas
 Consequently, by utilizing the estimated parameters, a data point is identified as a saturated-catalyst response if the
 prediction error for the corresponding inputs (inlet $\nox$, $u_1$, and mass flow rate $F$) is less than $\epsilon_{sat}$.
 \begin{align}
-        \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
+    \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
-For the current test-cell and truck data set, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$. This value is chosen
+For the current test-cell and truck data sets, $\epsilon_{sat} = 2.5\times 10^{-3} \, mol/m^{-3}$. This value is chosen
 based on the variance of the distribution of the prediction error for the saturated catalyst model.
 \begin{figure}[H]
-        \centering
-        \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}
-        \caption{Catalyst Mode Detection for DG RMC 1 Data}
-        \label{fig::cat_mode_det}
+    \centering
+    \includegraphics[width=\figWidth]{./figs/4_cat_mode/SatDetect_dg_rmc_1_FTIR.png}
+    \caption{Catalyst Mode Detection for DG RMC 1 Data}
+    \label{fig::cat_mode_det}
 \end{figure}
 The catalyst mode detection for the degreened (DG) catalyst under RMC 1 test-cell conditions using FTIR measurements is shown in
 Figure~\ref{fig::cat_mode_det}. The figure illustrates the operating points for which the prediction error of the
-saturated catalyst model satisfies \eqref{eqn::sat_cond}, and that are therefore classified as saturated, i.e., close to
+saturated catalyst model satisfies \eqref{eqn::sat_cond}, and are therefore classified as saturated, i.e., close to
 maximum $\nox$ reduction. The catalyst is found to be close to saturation when the mass flow rate and the urea dosing
 rates are high, consistent with the physical understanding of the catalyst operation. Furthermore, the flow rate can
 introduce a virtual ceiling on the maximum achievable $\nox$ reduction due to reduced residence time in the catalyst,
@@ -31,43 +31,43 @@ the total number of samples ($N$) for different test conditions are listed in Ta
 \ref{tab::sat_data_perc_iod}. The total number of data points, $N$, is the total length of the temporally contiguous
 segment of the test cell data that is within the chosen temperature operating range for the tests. The operating range
 for RMC test is between $250^\circ C$ and $350^\circ C$, and for Hot-FTP test is between $200^\circ C$ and $300^\circ
-        C$.
+    C$.
 %==============================================================
 \begin{table}[ht]
-        \centering
-        \caption{Data Points Close to Catalyst Saturation in Test-Cell FTIR Data}
-        \label{tab::sat_data_perc_ssd}
-        \begin{tabular}{l r r r}
-                \hline \hline
-                Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
-                DG RMC 1     & 2402 & 490       & 20.4                           \\
-                DG RMC 2     & 2402 & 493       & 20.5                           \\
-                DG RMC 3     & 2402 & 491       & 20.4                           \\
-                Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
-                DG Hot FTP 1 & 634  & 186       & 29.3                           \\
-                DG Hot FTP 2 & 634  & 181       & 28.5                           \\
-                DG Hot FTP 3 & 638  & 180       & 28.2                           \\
-                Aged Hot FTP & 636  & 198       & 31.1                           \\
-                \hline\hline
-        \end{tabular}
+    \centering
+    \caption{Data Points Close to Catalyst Saturation in Test-Cell FTIR Data}
+    \label{tab::sat_data_perc_ssd}
+    \begin{tabular}{l r r r}
+        \hline \hline
+        Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
+        DG RMC 1     & 2402 & 490       & 20.4                           \\
+        DG RMC 2     & 2402 & 493       & 20.5                           \\
+        DG RMC 3     & 2402 & 491       & 20.4                           \\
+        Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
+        DG Hot FTP 1 & 634  & 186       & 29.3                           \\
+        DG Hot FTP 2 & 634  & 181       & 28.5                           \\
+        DG Hot FTP 3 & 638  & 180       & 28.2                           \\
+        Aged Hot FTP & 636  & 198       & 31.1                           \\
+        \hline\hline
+    \end{tabular}
 \end{table}
 \begin{table}[ht]
-        \centering
-        \caption{Data Points Close to Catalyst Saturation in Test-Cell $\nox$ Sensor Data}
-        \label{tab::sat_data_perc_iod}
-        \begin{tabular}{l r r r}
-                \hline \hline
-                Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
-                DG RMC 1     & 2402 & 492       & 20.5                           \\
-                DG RMC 2     & 2402 & 494       & 20.6                           \\
-                DG RMC 3     & 2402 & 493       & 20.5                           \\
-                Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
-                DG Hot FTP 1 & 634  & 194       & 30.6                           \\
-                DG Hot FTP 2 & 634  & 191       & 30.1                           \\
-                DG Hot FTP 3 & 638  & 198       & 31.0                           \\
-                Aged Hot FTP & 636  & 220       & 34.6                           \\
-                \hline\hline
-        \end{tabular}
+    \centering
+    \caption{Data Points Close to Catalyst Saturation in Test-Cell $\nox$ Sensor Data}
+    \label{tab::sat_data_perc_iod}
+    \begin{tabular}{l r r r}
+        \hline \hline
+        Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
+        DG RMC 1     & 2402 & 492       & 20.5                           \\
+        DG RMC 2     & 2402 & 494       & 20.6                           \\
+        DG RMC 3     & 2402 & 493       & 20.5                           \\
+        Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
+        DG Hot FTP 1 & 634  & 194       & 30.6                           \\
+        DG Hot FTP 2 & 634  & 191       & 30.1                           \\
+        DG Hot FTP 3 & 638  & 198       & 31.0                           \\
+        Aged Hot FTP & 636  & 220       & 34.6                           \\
+        \hline\hline
+    \end{tabular}
 \end{table}
 Note that the higher number of data points classified as close to catalyst saturation in RMC test conditions, compared
 to Hot-FTP, results in better parameter estimates and performance of the aging detection test statistic in this case

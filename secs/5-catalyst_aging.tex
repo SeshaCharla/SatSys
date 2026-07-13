@@ -1,7 +1,6 @@
 \section{Model Parameters Capture Catalyst Aging}
 The parameters of the saturated system are a function of the rate constant for the SCR reaction and the maximum surface
-concentration of viable voids on the catalyst. The adsorption site concentration is hypothesized to change with aging of
-the catalyst, allowing the parameters to capture the aging of the catalyst. This is demonstrated using the test-cell
+concentration of viable voids on the catalyst. The adsorption site concentration is hypothesized to change with catalyst aging, allowing the estimated parameters to capture this degradation. This is demonstrated using the test-cell
 experiments on a new (degreened) and hydrothermally aged catalyst with the same capacity. The predicted $\nox$
 reduction for an aged catalyst is found to be statistically lower than the predicted $\nox$ reduction in a degreened
 catalyst (Figure~\ref{fig::aging_diff}). The dashed line in Figure~\ref{fig::aging_diff} corresponds to the actual response of the reference system, whose inputs are used to predict the saturated system's response using parameter estimates from the degreened and aged catalyst data under RMC test conditions. Thus, in accordance with the bounding condition (\ref{eqn::eta_bound}), the actual response is always less than the predicted saturated system's response.
@@ -13,19 +12,19 @@ catalyst (Figure~\ref{fig::aging_diff}). The dashed line in Figure~\ref{fig::agi
 \end{figure}
 %===
 When the $\eta_{sat}$ response is normalized with respect to the inlet $\nox$ concentration and flow rate, we obtain
- a quantity that is only a function of temperature and represents the product of the rate constant and maximum surface
+a quantity that is only a function of temperature and represents the product of the rate constant and maximum surface
 coverage. From (\ref{eqn::regression}),
 \begin{align}
         \alpha_{sat} &= \frac{F(k)}{u_1(k)} \eta_{sat}(k) = \tau_0 k_{scr}\Gamma = \phi_T^T(k)\theta_{sat}\\
         \text{where} \quad \phi_T^T(k) &= \bm{2\lr{\frac{T-T_0}{T_r}}^2-1 & \frac{T-T_0}{T_r} & 1}
 \end{align}
 %===
-This quantity $\alpha_{sat}$ can be estimated and changes with aging of the catalyst based on the hypothesis that aging
-changes the adsorption site concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell
+This quantity, $\alpha_{sat}$, can be estimated and changes with catalyst aging, based on the hypothesis that aging
+affects the adsorption site concentration. The change in $\alpha_{sat}$ with aging is demonstrated using the test-cell
 experiments (Figures~\ref{fig::alpha_sat_ssd} and \ref{fig::alpha_sat_iod}). The variance is estimated by propagating
 the variance of the $\eta_{sat}$ estimate (\ref{eqn::eta_sat_var}). As expected from the cost function for parameter
 estimation under $\nox$ sensor cross-sensitivity (\ref{eqn::nox_cost}), the parameter estimates have a bias that reduces
-the difference between the estimates for the degreened and aged catalyst. However, the overall trend of change in
+the difference between the estimates for the degreened and aged catalysts. However, the overall trend of change in
 parameter values with aging remains consistent across both FTIR and $\nox$ sensor measurements.
 \begin{figure}[ht]
         \centering
@@ -63,7 +62,7 @@ results. For the RMC and FTP data sets, the values of the test statistic are tab
         Test & $T_w$ from FTIR & $T_w$ from $\nox$ sensor \\\hline \hline
         DG RMC 1      & 0.26 & 5.54\\
         DG RMC 2      & 0.00 & 0.00\\
-        DG RMC 2      & 6.71 & 5.46\\
+        DG RMC 3      & 6.71 & 5.46\\
         Aged RMC      & 47.16 & 17.68\\
         \hline
         DG Hot FTP 1  & 0.49 & 0.81\\
