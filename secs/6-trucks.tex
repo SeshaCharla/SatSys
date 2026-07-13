@@ -25,42 +25,67 @@ period from engine start to engine stop.
         \caption{Truck Data Set Years and Mileage Difference}
         \label{tab::truck_data_summary}
         \begin{tabular}{c c c c}
-        \hline \hline
-         Truck & Earlier Data & Latter Data & Mileage \\
-               &  Year            & Year    & Difference\\ \hline \hline
-        Truck A & $2015$ & $2017$ & $2.8 \times 10^5$\\
-        Truck B & $2015$ & $2018$ & $11.9 \times 10^5$\\
-        Truck C & $2015$ & $2017$ & $5.9 \times 10^5$\\
-        Truck D & $2015$ & $2016$ & $6.6 \times 10^5$ \\
-        \hline \hline
+                \hline \hline
+                Truck   & Earlier Data & Latter Data & Mileage            \\
+                        & Year         & Year        & Difference         \\ \hline \hline
+                Truck A & $2015$       & $2017$      & $2.8 \times 10^5$  \\
+                Truck B & $2015$       & $2018$      & $11.9 \times 10^5$ \\
+                Truck C & $2015$       & $2017$      & $5.9 \times 10^5$  \\
+                Truck D & $2015$       & $2016$      & $6.6 \times 10^5$  \\
+                \hline \hline
         \end{tabular}
 \end{table}
 %===
 Unlike the test-cell data where the engine drive-cycles are repeatable and produce a significant fraction of samples where the catalyst is close to saturation, the truck data drive segments constitute varied driving conditions with fewer samples $\lrf{\leq 10\%}$ that are close to catalyst saturation. A necessary condition for the proposed parameter estimation and aging detection framework is that the data contain a sufficiently large number of samples close to catalyst saturation such that the asymptotic properties of the MLE and the test statistic hold (\ref{eqn::Ns_min}). Hence, the drive segment data are further pruned to only include segments with at least $150$ samples ($120$ in the case of Truck C) close to catalyst saturation.
 \begin{align}
-        N_{sat} &\geq N_{sat}^{min} \label{eqn::Ns_min} \\
-        \beta_{truck} &= 250 \label{eqn::beta_truck}
+        N_{sat}       & \geq N_{sat}^{min} \label{eqn::Ns_min} \\
+        \beta_{truck} & = 250 \label{eqn::beta_truck}
 \end{align}
-The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in trucks is chosen such that it maximizes the probability of detection while minimizing the probability of false alarm and missed detection for the given limited truck data. A larger data set would help determine the thresholds using Neyman-Pearson criteria \cite{kay1998detection}. The value of the test statistic for the drive segments for each truck is tabulated in Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res}, \ref{tab::wer_aging_res} and \ref{tab::trw_aging_res}. A summary of the aging detection results is tabulated in Table~\ref{tab::truck_aging_summary}.
+The threshold of the Wald test statistic (\ref{eqn::beta_truck}) for aging detection in trucks is chosen such that it
+maximizes the probability of detection while minimizing the probability of false alarm and missed detection for the
+given limited truck data. The value of the test statistic for the drive segments for each truck is tabulated in
+Tables~\ref{tab::adt_aging_res}, \ref{tab::mes_aging_res}, \ref{tab::wer_aging_res} and \ref{tab::trw_aging_res}. A
+summary of the aging detection results is tabulated in Table~\ref{tab::truck_aging_summary}. The detector performs
+reasonably well on three of the four trucks with high probability of detection and low false alarm and missed detection
+rates. Truck A has relatively lower mileage difference between the earlier and latter data years which may explain the
+lower detection performance. The performance is limited by the amount of data available with sufficient samples close to
+catalyst saturation. Further, the lack of ground truth on the actual individual catalyst's aging levels limits the
+ability to quantify the performance of the detector.
 %===
 \begin{table}[ht]
         \centering
         \caption{Summary of Aging Detection Results on Truck Data}
         \label{tab::truck_aging_summary}
         \begin{tabular}{c c c c c}
-        \hline \hline
-         Truck & Total Drive & Detection & False  & Missed \\
-               & Segments    &         & Alarm & Detection  \\\hline \hline
-        Truck A   & 8  & 4 & 0 & 4 \\
-        Truck B   & 11 & 9 & 1 & 1 \\
-        Truck C   & 9  & 7 & 1 & 1 \\
-        Truck D   & 8  & 6 & 2 & 0 \\
-        \hline \hline
+                \hline \hline
+                Truck   & Total Drive & Detection & False & Missed    \\
+                        & Segments    &           & Alarm & Detection \\\hline \hline
+                Truck A & 8           & 4         & 0     & 4         \\
+                Truck B & 11          & 9         & 1     & 1         \\
+                Truck C & 9           & 7         & 1     & 1         \\
+                Truck D & 8           & 6         & 2     & 0         \\
+                \hline \hline
         \end{tabular}
 \end{table}
-The detector performs reasonably well on three of the four trucks with high probability of detection and low false alarm
-and missed detection rates. Truck A has relatively lower mileage difference between the earlier and latter data years
-which may explain the lower detection performance. The performance is limited by the amount of data available with
-sufficient samples close to catalyst saturation. Further, the lack of ground truth on the actual individual catalyst's
-aging levels limits the ability to quantify the performance of the detector. Nevertheless, the results demonstrate the
-potential of the proposed aging detection framework for onboard application using $\nox$ sensor data.
+%===
+
+The threshold $\beta_{truck} = 250$ is significantly larger than the test-cell thresholds ($\beta_{RMC} = 10$,
+$\beta_{hFTP} = 4$) due to the finite-sample departure of $T_w$ from its asymptotic $\chi^2_p$ distribution under
+$\mathcal{H}_0$. The convergence of the MLE to normality depends on the number of saturated-mode samples
+\cite{kay1993estimation}, and truck data has considerably fewer such samples ($N_{sat} \approx 120$-$150$) compared
+to test-cell experiments ($N_{sat} \approx 200$-$500$), resulting in heavier tails in the null distribution of $T_w$.
+This effect is compounded by the less reliable estimation of the error variance under road conditions and the
+unaccounted variance of the reference parameter $\theta_{sat}^{dg}$, which is itself estimated from limited data. Both
+factors inflate $T_w$ under $\mathcal{H}_0$, necessitating a higher threshold to maintain an acceptable false-alarm
+rate.
+
+With a larger data set and known degreend paramters, the thresholds can be determined using statistically optimal
+selection criteria such as Neyman–Pearson \cite{kay1998detection} or minimum Bayes cost on the receiver operating
+characteristic (ROC) curve \cite{PoorDetection}. This would require multiple truck runs under known catalyst conditions
+to characterize the null distribution, and runs at known aging levels to estimate the non-centrality parameter under
+$\mathcal{H}_1$. Nevertheless, the results demonstrate that the proposed saturated-catalyst model (\ref{eqn::nox_mdl})
+coupled with the constrained parameter estimation method (\ref{eqn::lin_prog}) and the statistical detector
+(\ref{eqn::wald_test}) enables a statistically grounded aging detection framework that performs reasonably well on both
+test-cell and truck data under sensor sampling limitations and cross-sensitivity.
+
+
