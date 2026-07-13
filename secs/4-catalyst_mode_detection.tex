@@ -1,8 +1,10 @@
 \section{Catalyst Mode Detection}
-The saturated catalyst model's response does not depend on the previous state but only on the inputs, making the
-response independent of the initial conditions. Thus, using the parameter estimates, a given data point can be
-classified as a saturated-catalyst response if the prediction error for the same inputs (inlet $\nox$, $u_1$, and
-mass flow rate, $F$) is less than $\epsilon_{sat}$.
+Under catalyst saturation, the $\nox$ reduction $\lr{\eta_{sat}(k+1)}$ is independent of its previous state
+$\lr{\eta_{sat}(k)}$ and initial conditions (\ref{eqn::regression}, \ref{eqn::phi_def}). Rather, it depends entirely on
+the inputs from the preceding time step, $\lr{u_1(k), F(k), T(k)}$. Thus, the measured $\nox$ reduction at any given
+time step can be classified as either a saturated or an unsaturated response based solely on these prior inputs.
+Consequently, by utilizing the estimated parameters, a data point is identified as a saturated-catalyst response if the
+prediction error for the corresponding inputs (inlet $\nox$, $u_1$, and mass flow rate $F$) is less than $\epsilon_{sat}$.
 \begin{align}
         \abs{\hat \eta_{sat}(k) - \eta(k)} \leq \epsilon_{sat} \implies \text{Catalyst Saturation} \label{eqn::sat_cond}
 \end{align}
@@ -29,7 +31,7 @@ the total number of samples ($N$) for different test conditions are listed in Ta
 \ref{tab::sat_data_perc_iod}. The total number of data points, $N$, is the total length of the temporally contiguous
 segment of the test cell data that is within the chosen temperature operating range for the tests. The operating range
 for RMC test is between $250^\circ C$ and $350^\circ C$, and for Hot-FTP test is between $200^\circ C$ and $300^\circ
-C$.
+        C$.
 %==============================================================
 \begin{table}[ht]
         \centering
@@ -37,15 +39,15 @@ C$.
         \label{tab::sat_data_perc_ssd}
         \begin{tabular}{l r r r}
                 \hline \hline
-                Test & $N$ & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$  \\\hline \hline
-                DG RMC 1  & 2402 & 490 & 20.4 \\
-                DG RMC 2  & 2402 & 493 & 20.5\\
-                DG RMC 3  & 2402 & 491 & 20.4\\
-                Aged RMC  & 2402 & 515 & 21.4\\ \hline
-                DG Hot FTP 1 & 634 & 186 & 29.3\\
-                DG Hot FTP 2 & 634 & 181 & 28.5\\
-                DG Hot FTP 3 & 638 & 180 & 28.2\\
-                Aged Hot FTP & 636 & 198 & 31.1\\
+                Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
+                DG RMC 1     & 2402 & 490       & 20.4                           \\
+                DG RMC 2     & 2402 & 493       & 20.5                           \\
+                DG RMC 3     & 2402 & 491       & 20.4                           \\
+                Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
+                DG Hot FTP 1 & 634  & 186       & 29.3                           \\
+                DG Hot FTP 2 & 634  & 181       & 28.5                           \\
+                DG Hot FTP 3 & 638  & 180       & 28.2                           \\
+                Aged Hot FTP & 636  & 198       & 31.1                           \\
                 \hline\hline
         \end{tabular}
 \end{table}
@@ -55,15 +57,15 @@ C$.
         \label{tab::sat_data_perc_iod}
         \begin{tabular}{l r r r}
                 \hline \hline
-                Test & $N$ & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
-                DG RMC 1  & 2402 & 492 & 20.5 \\
-                DG RMC 2  & 2402 & 494 & 20.6 \\
-                DG RMC 3  & 2402 & 493 & 20.5 \\
-                Aged RMC  & 2402 & 515 & 21.4 \\ \hline
-                DG Hot FTP 1 & 634 & 194 & 30.6 \\
-                DG Hot FTP 2 & 634 & 191 & 30.1 \\
-                DG Hot FTP 3 & 638 & 198 & 31.0 \\
-                Aged Hot FTP & 636 & 220 &  34.6\\
+                Test         & $N$  & $N_{sat}$ & $\% \lr{ \sfrac{N_{sat}}{N} }$ \\\hline \hline
+                DG RMC 1     & 2402 & 492       & 20.5                           \\
+                DG RMC 2     & 2402 & 494       & 20.6                           \\
+                DG RMC 3     & 2402 & 493       & 20.5                           \\
+                Aged RMC     & 2402 & 515       & 21.4                           \\ \hline
+                DG Hot FTP 1 & 634  & 194       & 30.6                           \\
+                DG Hot FTP 2 & 634  & 191       & 30.1                           \\
+                DG Hot FTP 3 & 638  & 198       & 31.0                           \\
+                Aged Hot FTP & 636  & 220       & 34.6                           \\
                 \hline\hline
         \end{tabular}
 \end{table}
