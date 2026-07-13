@@ -26,9 +26,9 @@ aging. However, the effectiveness of traditional OBD approaches for this purpose
 model validation with real-world catalyst degradation data, the limitations imposed by existing commercial $\nox$
 sensors' cross-sensitivity to ammonia, and the absence of ammonia sensors in commercial vehicles.
 
-Numerous studies have been conducted on modeling SCR-ASC systems and their control \cite{yuan2015diesel}. A
-prevalent modeling approach is to approximate the PDE model for the plug flow reaction as a set of ODEs using a sequence
-of Continuously Stirred Tank Reactors (CSTRs) approximation (\cite{hsieh2011development} , and \cite{nova2014urea}). The
+Numerous studies have been conducted on modeling SCR-ASC systems and their control \cite{yuan2015diesel}. A prevalent
+modeling approach is to approximate the PDE model for the plug flow reaction as a set of ODEs using a sequence of
+Continuously Stirred Tank Reactors (CSTRs) approximation (\cite{hsieh2011development} , and \cite{nova2014urea}). The
 single CSTR approach was first justified in \cite{devarakonda2008adequacy} and a nonlinear model was developed using
 these assumptions, which was then linearized for feedback control design (\cite{devarakonda2009model}). With this model,
 observers were designed to estimate the states corresponding to the catalyst's storage (\cite{ma2017observer},
@@ -42,16 +42,16 @@ availability of all the gaseous states at the tailpipe for state estimation and 
 cross-sensitivity of the $\nox$ sensors, which is not always the case in real-world applications as tailpipe ammonia
 measurements are not generally available in commercial vehicles. Another fundamental issue with the CSTR model in the
 context of sensor sampling is that the discretization of the continuous model does not account for the residence time
-of the reactants, resulting in high sampling frequency requirements that are not feasible in practice. Additionally, the
-discretization requires at least two CSTRs to capture the system dynamics and causality \cite{charla2024reduced},
-thereby increasing the model order.
+\cite{charla2026board} of the reactants, resulting in high sampling frequency requirements that are not feasible in
+practice. Additionally, the discretization requires at least two CSTRs to capture the system dynamics and causality
+\cite{charla2024reduced}, thereby increasing the model order.
 
 An alternative approach to the problem would be discarding the CSTR assumption and modelling the time evolution of the
 sensor signals when a "plug" or "parcel" of the exhaust gases flows through the chamber in discrete time, considering
 the interplay between sampling and residence time of the reactants. The catalyst saturation that is inherently
 considered in the CSTR approach needs to be explicitly included as a separate mode of the system.
 
-The present work develops such a nonlinear model for $\nox$ reduction under catalyst saturation, which serves as one of
+This work develops such a nonlinear model for $\nox$ reduction under catalyst saturation, which serves as one of
 the modes within a complete switched nonlinear framework. Following the model development, we present an algorithm to
 estimate the parameters of the saturated catalyst model using real-world data. This estimation explicitly accounts for
 unknown operating modes, uncertainties arising from $\nox$ sensor cross-sensitivity to ammonia, and the absence of

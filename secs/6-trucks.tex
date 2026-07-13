@@ -88,4 +88,18 @@ coupled with the constrained parameter estimation method (\ref{eqn::lin_prog}) a
 (\ref{eqn::wald_test}) enables a statistically grounded aging detection framework that performs reasonably well on both
 test-cell and truck data under sensor sampling limitations and cross-sensitivity.
 
+%=== Practical OBD considerations ===
+For on-vehicle implementation, the detector's performance depends on whether the driving profile produces sufficient
+data close to catalyst saturation within a given driving window. Conditions that combine moderate-to-high exhaust mass
+flow rates with elevated urea dosing, such as sustained highway cruising, high-load acceleration, or uphill driving
+within the detector's operational temperature range ($200$--$300\,^\circ C$ in the present case, which can be adjusted),
+are most likely to trigger saturation. The extent of catalyst utilization can be assessed in real time by monitoring
+readily available signals such as urea dosing rate, engine rpm, and throttle position. When these indicate sustained low
+catalyst demand, the system can determine a priori that the accumulated data are unsuitable for aging detection and
+defer its decision rather than executing the hypothesis test on insufficient data. The detector therefore avoids
+producing false alarms under non-catalyst-saturating driving conditions, as the Wald test~(\ref{eqn::wald_test}) is
+simply not invoked. A consequence of this design is that the monitor's in-use performance ratio (IUPMR) is governed by
+the frequency of saturating driving conditions, since the diagnostic can only complete when the necessary
+condition~(\ref{eqn::Ns_min}) is met.
+
 
