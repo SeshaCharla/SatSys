@@ -79,13 +79,13 @@ unaccounted variance of the reference parameter $\theta_{sat}^{dg}$, which is it
 factors inflate $T_w$ under $\mathcal{H}_0$, necessitating a higher threshold to maintain an acceptable false-alarm
 rate.
 
-With a larger data set and known degreend paramters, the thresholds can be determined using statistically optimal
-selection criteria such as Neyman–Pearson \cite{kay1998detection} or minimum Bayes cost on the receiver operating
+With a larger data set and known degreened paramters, the thresholds can be determined using statistically-optimal
+selection criteria such as Neyman-Pearson \cite{kay1998detection} or minimum Bayes cost on the receiver operating
 characteristic (ROC) curve \cite{PoorDetection}. This would require multiple truck runs under known catalyst conditions
 to characterize the null distribution, and runs at known aging levels to estimate the non-centrality parameter under
 $\mathcal{H}_1$. Nevertheless, the results demonstrate that the proposed saturated-catalyst model (\ref{eqn::nox_mdl})
 coupled with the constrained parameter estimation method (\ref{eqn::lin_prog}) and the statistical detector
-(\ref{eqn::wald_test}) enables a statistically grounded aging detection framework that performs reasonably well on both
+(\ref{eqn::wald_test}) enables a statistically-grounded aging detection framework that performs reasonably well on both
 test-cell and truck data under sensor sampling limitations and cross-sensitivity.
 
 %=== Practical OBD considerations ===
@@ -94,8 +94,8 @@ data close to catalyst saturation within a given driving window. Conditions that
 flow rates with elevated urea dosing, such as sustained highway cruising, high-load acceleration, or uphill driving
 within the detector's operational temperature range ($200$--$300\,^\circ C$ in the present case, which can be adjusted),
 are most likely to trigger saturation. The extent of catalyst utilization can be assessed in real time by monitoring
-readily available signals such as urea dosing rate, engine rpm, and throttle position. When these indicate sustained low
-catalyst demand, the system can determine a priori that the accumulated data are unsuitable for aging detection and
+readily-available signals such as urea dosing rate, engine rpm, and throttle position. When these indicate sustained low
+catalyst demand, the system can determine apriori that the accumulated data are unsuitable for aging detection and
 defer its decision rather than executing the hypothesis test on insufficient data. The detector therefore avoids
 producing false alarms under non-catalyst-saturating driving conditions, as the Wald test~(\ref{eqn::wald_test}) is
 simply not invoked. A consequence of this design is that the monitor's in-use performance ratio (IUPMR) is governed by
