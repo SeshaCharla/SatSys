@@ -60,12 +60,12 @@ each of the specific comments and describe the corresponding revisions made in t
     \endfoot
     Associate editor,\newline Reviewer 12,\newline Reviewer 14                                                                               &
     Formatting errors and Writing issues.                                                                                                    &
-    1. The writing issues are due to missed reference link while changing the paper format from JDSMC template to MECC template. These are fixed. \newline
-    2. The chemical symbols are corrected from being italic in math mode to roman format as suggested by Reviewer 14.                          \\ \midrule
+    1. The writing issues were due to a missing cross-reference link while changing the paper format from the JDSMC template to the MECC template. These have been fixed. \newline
+    2. The chemical symbols have been corrected from italic in math mode to roman format, as suggested by Reviewer 14.                         \\ \midrule
     Reviewer 18                                                                                                                              &
-    Independence of saturated mode's dynamics on previous states.                                                                            &
-    The goal of the phrase was to convey that one mode (saturated) of the switched dynamic model for NOx reduction is independent of initial conditions so, we can use the prediction error to classify data points as ``close to saturation" for working out the statistics for aging detection. \newline\newline
-    Clarified this by adding more information to the referred sentences (first paragraph of section 4).                                        \\ \midrule
+    Independence of the saturated mode's dynamics from previous states.                                                                      &
+    The goal of the phrase was to convey that one mode (the saturated mode) of the switched dynamic model for NOx reduction is independent of initial conditions. This allows us to use the prediction error to classify data points as ``close to saturation" when working out the statistics for aging detection. \newline\newline
+    We clarified this by adding more information to the referred sentences (in the first paragraph of Section 4).                              \\ \midrule
     Reviewer 14                                                                                                                              &
     Interpretation of threshold $\beta$: Why is the threshold abruptly scaled to 250 for truck data?                                         &
     The limited sample size causes $T_w$ to diverge from its asymptotic $\chi^2_\nu$ distribution under $\mathcal{H}_0$.
@@ -73,26 +73,184 @@ each of the specific comments and describe the corresponding revisions made in t
     Added 2 paragraphs at the end of section-6 justifying the reason for threshold discrepancy.                                                \\
     \midrule
     Associate Editor,\newline Reviewer 18,\newline Reviewer 14                                                                               &
-    \textbullet~ Explain the bottleneck of utilizing the limited data for diagnostics in the context of real-world applications? \newline
-    \textbullet~ What operating conditions would ensure this necessary conditions are satisfied? \newline
-    \textbullet~ How long is the system expected to wait for OBD decision? \newline
+    \textbullet~ Explain the bottleneck of utilizing the limited data for diagnostics in the context of real-world applications. \newline
+    \textbullet~ What operating conditions would ensure these necessary conditions are satisfied? \newline
+    \textbullet~ How long is the system expected to wait for an OBD decision? \newline
     \textbullet~ Under driving conditions that do not trigger catalyst saturation, will the system generate false alarms?                    &
     Although only a fraction of the operating data is close to saturation (approximately 10\% in real-world truck data),
     the convex parameter estimation framework utilizes the \textbf{entire} dataset. The non-saturated data points
     establish the lower boundary constraints ($\eta(k) \le \eta_{\sat}(k)$), which restrict the parameter space and
     prevent the estimates from collapsing.
     \newline\newline
-    Explicitly addressed the comments about dealing with the engineering limitations of the necessary conditions at the end of section 6       \\ \midrule
+    We explicitly addressed the comments about dealing with the engineering limitations of the necessary conditions at the end of Section 6.   \\ \midrule
     Reviewer 12                                                                                                                              &
     Significance of the paper should be stated clearly                                                                                       &
-    Separated the contributions to a separate paragraph at the end of Introduction.                                                            \\ \midrule
+    We separated the contributions into a dedicated paragraph at the end of the Introduction.                                                  \\ \midrule
     Reviewer 12                                                                                                                              &
     The reader may want a clear comparison between experimental results and the model results. It is better to present figures than numbers. &
     Tables are utilized instead of time-series figures to convey the massive amount of detection results clearly and concisely.                \\ \midrule
     Reviewer 12                                                                                                                              &
     Literature review is not sufficient. Limitations of the existing works are not clear.                                                    &
-    As this paper focuses specifically on the narrow aspect of model-based SCR aging diagnostics under catalyst saturation. The current literature review and the included references justify the research objctive, idetify the gap and map directly to this specific focus. We believe the existing references adequately represent the state-of-the-art for this particular diagnostic approach.
+    This paper focuses specifically on the narrow aspect of model-based SCR aging diagnostics under catalyst saturation. The current literature review and the included references justify the research objective, identify the gap, and map directly to this specific focus. We believe the existing references adequately represent the state-of-the-art for SCR aging diagnostics.
     \\ \bottomrule
 \end{longtable}
+
+% %===========================================================================================
+% \newpage
+% \section{Response to the Associate Editor (AE)}
+% %===========================================================================================
+% 
+% \subsection{Formatting Errors and Writing Issues}
+% 
+% \paragraph{Rebuttal.}
+% The writing issues were due to a missing cross-reference link that arose while converting the paper from the JDSMC
+% template to the MECC template. The broken cross-reference {(Appendix-??)} was caused by a mismatched LaTeX label
+% in the Appendix file.
+% 
+% \paragraph{Revision.}
+% The cross-reference has been corrected and now compiles as {(Appendix~B)} in Section~3.
+% 
+% \subsection{Justification of Necessary Conditions for Sufficient Data Under Vehicle Working Conditions}
+% 
+% \paragraph{Rebuttal.}
+% Although only a fraction of the operating data is close to saturation (approximately 10\% in real-world truck data), the
+% convex parameter estimation framework utilizes the \textbf{entire} dataset. The non-saturated data points establish the
+% lower boundary constraints ($\eta(k) \le \eta_{\sat}(k)$), which restrict the parameter space and prevent the estimates
+% from collapsing. For on-vehicle implementation, catalyst utilization can be assessed in real time by monitoring readily
+% available signals such as urea dosing rate, engine rpm, and throttle position. When these indicate sustained low
+% catalyst demand, the system defers its decision rather than executing the hypothesis test on insufficient data. The
+% detector therefore avoids producing false alarms under non-catalyst-saturating driving conditions.
+% 
+% \paragraph{Revision.}
+% A dedicated paragraph discussing these practical OBD considerations, false-alarm prevention, and the impact on the
+% in-use monitor performance ratio (IUPMR) has been added at the end of Section~6. Additionally, a note on monitoring
+% catalyst utilization via available signals has been added to the Limitations appendix
+% (Appendix~B).
+% 
+% %===========================================================================================
+% \newpage
+% \section{Response to Reviewer 12}
+% %===========================================================================================
+% 
+% \subsection{Significance of the Paper}
+% 
+% \paragraph{Rebuttal.}
+% We have added a dedicated paragraph in the Introduction to explicitly outline the significance of our work:
+% \begin{enumerate}
+%     \item \textbf{Dynamic Modeling}: A first-principles discrete-time input-output model derived from molar conservation
+%           that explicitly captures the interplay between gas parcel residence time and sensor sampling intervals.
+%     \item \textbf{Convex Estimation without $\ammonia$ Sensors}: A convex parameter estimation framework that bypasses
+%           the need for on-board ammonia sensors, while remaining robust to the unidirectional bias of commercial $\nox$
+%           sensors.
+%     \item \textbf{Real-World Validation}: A Wald-test-based catalyst aging detector validated using both test-cell and
+%           real-world truck driving datasets.
+% \end{enumerate}
+% 
+% \paragraph{Revision.}
+% The significance paragraph has been added to the end of Section~1 (Introduction).
+% 
+% \subsection{Writing Mistakes}
+% 
+% \paragraph{Rebuttal.}
+% The \texttt{(Appendix-??)} error was caused by a LaTeX label mismatch introduced during template conversion.
+% 
+% \paragraph{Revision.}
+% The broken link has been corrected to \texttt{(Appendix~A)} in Section~3 (page~5).
+% 
+% \subsection{Comparison of Experimental Data and Model Results}
+% 
+% \paragraph{Rebuttal.}
+% Tables are utilized instead of time-series figures to convey the massive amount of detection results clearly and
+% concisely. The detection results span multiple trucks, multiple drive segments, and two data years, making tabular
+% presentation more effective than individual time-series plots.
+% 
+% \paragraph{Revision.}
+% No additional figures were added. The existing tables (Tables~5--9) present the detection results for all trucks and
+% drive segments.
+% 
+% \subsection{Literature Review}
+% 
+% \paragraph{Rebuttal.}
+% This paper focuses specifically on the narrow aspect of model-based SCR aging diagnostics under catalyst saturation. The
+% current literature review and the included references justify the research objective, identify the gap, and map directly
+% to this specific focus. We believe the existing references adequately represent the state-of-the-art for SCR aging
+% diagnostics.
+% 
+% \paragraph{Revision.}
+% No changes were made to the literature review, as the existing references are sufficient for the scope of this work.
+% 
+% %===========================================================================================
+% \newpage
+% \section{Response to Reviewer 14}
+% %===========================================================================================
+% 
+% \subsection{Formatting of Chemical Compounds}
+% 
+% \paragraph{Rebuttal.}
+% We have updated all chemical symbols to ensure they are strictly rendered in roman font, as is standard practice.
+% 
+% \paragraph{Revision.}
+% All occurrences of chemical symbols have been updated to $\nox$, $\ammonia$, $\oxygen$, and $\nitrogen$ throughout the
+% text.
+% 
+% \subsection{Engineering Feasibility and Necessary Conditions}
+% 
+% \paragraph{Rebuttal.}
+% The extent of catalyst utilization over a given data window can be assessed by monitoring readily available signals such
+% as urea dosing rate, engine rpm, and the $\nox$ reduction estimate from sensors. When these indicate no catalyst
+% saturation, the system determines a priori that the data are unsuitable for aging detection and defers its decision. The
+% Wald test is simply not invoked under such conditions.
+% 
+% \paragraph{Revision.}
+% A dedicated paragraph addressing these practical OBD considerations has been added at the end of Section~6. The
+% Limitations appendix (Appendix~\ref{sec::necessary_cond}) has also been updated with a note on monitoring catalyst
+% utilization.
+% 
+% \subsection{Interpretation of Threshold $\beta$}
+% 
+% \paragraph{Rebuttal.}
+% The threshold $\beta_{truck} = 250$ is significantly larger than the test-cell thresholds ($\beta_{RMC} = 10$,
+% $\beta_{hFTP} = 4$) due to the finite-sample departure of $T_w$ from its asymptotic $\chi^2_p$ distribution under
+% $\mathcal{H}_0$. Truck data has considerably fewer saturated-mode samples ($N_{sat} \approx 120$--$150$) compared to
+% test-cell experiments ($N_{sat} \approx 200$--$500$), resulting in heavier tails in the null distribution. This is
+% compounded by the less reliable estimation of the error variance under road conditions and the unaccounted variance of
+% the reference parameter $\theta_{sat}^{dg}$.
+% 
+% \paragraph{Revision.}
+% Two paragraphs have been added at the end of Section~6 justifying the threshold discrepancy and discussing the path
+% toward statistically optimal threshold selection.
+% 
+% %===========================================================================================
+% \newpage
+% \section{Response to Reviewer 18}
+% %===========================================================================================
+% 
+% \subsection{Saturation Requirement as a Bottleneck for Real-World Deployment}
+% 
+% \paragraph{Rebuttal.}
+% In a standard drive segment containing tens of thousands of data points, 10\% translates to a sufficiently large $N_{sat}$ samples for maximum likelihood estimators to reach asymptotic convergence. Furthermore, the
+% parameter estimation algorithm does not discard the remaining 90\% of the data. Non-saturated points serve as
+% lower-bound inequality constraints ($\eta(k) \le \eta_{\sat}(k)$), which are critical for preventing the upper-bounding
+% function from over-fitting.
+% 
+% The requirement of saturation is a deliberate design choice that enables the core novelty of this work. Saturated
+% operation simplifies the highly nonlinear, unobservable ammonia coverage dynamics into a static limit, allowing a convex
+% parameter estimation framework \textbf{without requiring an on-board ammonia sensor}.
+% 
+% \paragraph{Revision.}
+% The statistical sufficiency of the 10\% saturation rate and the role of non-saturated samples have been clarified in
+% Section~6. A practical OBD paragraph addressing false-alarm prevention and IUPMR implications has been added at the end
+% of Section~6.
+% 
+% \subsection{Independence of the Saturated Mode from Previous States}
+% 
+% \paragraph{Rebuttal.}
+% The goal of the referred phrase was to convey that one mode (the saturated mode) of the switched dynamic model for
+% $\nox$ reduction is independent of initial conditions. This allows us to use the prediction error to classify data
+% points as ``close to saturation'' when working out the statistics for aging detection. The next time-step $\nox$ reduction still depends on current inputs.
+% 
+% \paragraph{Revision.}
+% Additional clarification has been added to the first paragraph of Section~4 to better convey the role of mode
+% independence within the switched dynamic framework.
 
 \end{document}
