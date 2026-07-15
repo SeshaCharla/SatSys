@@ -70,11 +70,11 @@ ability to quantify the performance of the detector.
 %===
 
 The threshold $\beta_{truck} = 250$ is significantly larger than the test-cell thresholds ($\beta_{RMC} = 10$,
-$\beta_{hFTP} = 4$) due to the finite-sample departure of $T_w$ from its asymptotic $\chi^2_p$ distribution under
-$\mathcal{H}_0$. The convergence of the MLE to normality depends on the number of saturated-mode samples
-\cite{kay1993estimation}, and truck data has considerably fewer such samples ($N_{sat} \approx 120$-$150$) compared
-to test-cell experiments ($N_{sat} \approx 200$-$500$), resulting in heavier tails in the null distribution of $T_w$.
-This effect is compounded by the less reliable estimation of the error variance under road conditions and the
+$\beta_{hFTP} = 4$) because the limited sample size causes $T_w$ to diverge from its asymptotic $\chi^2_\nu$
+distribution under $\mathcal{H}_0$. The convergence of the MLE to normality depends on the number of saturated-mode
+samples \cite{kay1993estimation}, and truck data has considerably fewer such samples ($N_{sat} \approx 120$-$150$)
+compared to test-cell experiments ($N_{sat} \approx 200$-$500$), resulting in heavier tails in the null distribution of
+$T_w$. This effect is compounded by the less reliable estimation of the error variance under road conditions and the
 unaccounted variance of the reference parameter $\theta_{sat}^{dg}$, which is itself estimated from limited data. Both
 factors inflate $T_w$ under $\mathcal{H}_0$, necessitating a higher threshold to maintain an acceptable false-alarm
 rate.
@@ -94,12 +94,12 @@ data close to catalyst saturation within a given driving window. Conditions that
 flow rates with elevated urea dosing, such as sustained highway cruising, high-load acceleration, or uphill driving
 within the detector's operational temperature range ($200$--$300\,^\circ C$ in the present case, which can be adjusted),
 are most likely to trigger saturation. The extent of catalyst utilization can be assessed in real time by monitoring
-readily-available signals such as urea dosing rate, engine rpm, and throttle position. When these indicate sustained low
-catalyst demand, the system can determine apriori that the accumulated data are unsuitable for aging detection and
-defer its decision rather than executing the hypothesis test on insufficient data. The detector therefore avoids
-producing false alarms under non-catalyst-saturating driving conditions, as the Wald test~(\ref{eqn::wald_test}) is
-simply not invoked. A consequence of this design is that the monitor's in-use performance ratio (IUPMR) is governed by
-the frequency of saturating driving conditions, since the diagnostic can only complete when the necessary
-condition~(\ref{eqn::Ns_min}) is met.
+readily-available signals such as urea dosing rate, engine rpm, and the estimate of $\nox$ reduction from sensors. When
+these indicate sustained low $\text{NO}_x$ reduction and low urea dosing which leaves the catalyst unsaturated, the
+system can determine apriori that the accumulated data are unsuitable for aging detection and defer its decision rather
+than executing the hypothesis test on insufficient data. The detector therefore avoids producing false alarms under
+non-catalyst-saturating driving conditions, as the Wald test~(\ref{eqn::wald_test}) is simply not invoked. A consequence
+of this design is that the monitor's in-use performance ratio (IUPMR) is governed by the frequency of saturating driving
+conditions, since the diagnostic can only complete when the necessary condition~(\ref{eqn::Ns_min}) is met.
 
 
