@@ -1,0 +1,232 @@
+\documentclass[letterpaper, 10pt]{article}
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{../../}}
+\makeatother
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{titling}
+\setlength{\droptitle}{-5em}
+
+% Packages not loaded by std_page.tex but required for article document class
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{colortbl}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% --- Color Definitions ---
+\definecolor{reviewbg}{RGB}{245, 245, 255}       % light blue-grey for reviewer quotes
+\definecolor{reviewtext}{RGB}{50, 50, 120}        % dark blue for reviewer quote text
+\definecolor{revisioncolor}{RGB}{0, 100, 0}       % dark green for revision actions
+\definecolor{rowsep}{RGB}{180, 180, 200}          % subtle row separator color
+\definecolor{headerbg}{RGB}{230, 235, 245}        % header background
+
+% --- Helper command for reviewer quotes ---
+\newcommand{\rquote}[1]{\textcolor{reviewtext}{\emph{#1}}}
+
+% --- Helper command for revision notes ---
+\newcommand{\revision}[1]{\par\smallskip\textcolor{revisioncolor}{\textbf{Revision:}~#1}}
+
+% Input workspace custom packages and commands
+\input{../../ltx_core/ltx_pkgs.tex}
+\newcommand{\bm}{}
+\input{../../ltx_core/new_cmds.tex}
+
+\newenvironment{reviewercomment}
+{\begin{framed}\noindent\textbf{Reviewer Comment:}\itshape}
+{\end{framed}}
+
+\title{Author Responses to Peer Reviews \\ \large Joint MECC 2026 -- ASME JDSMC Submission \#26}
+\author{Sesha Charla, Peter H. Meckl, Bin Yao}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+We thank the Associate Editor and the reviewers for their constructive feedback and valuable suggestions on our
+manuscript. We have carefully revised the manuscript to address all the points raised.
+
+We are encouraged by the reviewers' recognition of the novelty and practical significance of our work. The Associate
+Editor described it as addressing \emph{``an important and interesting research problem about modeling and parameter
+    estimation of Diesel engine aftertreatment system with experimental validations.''} Reviewer~14 noted that \emph{``the
+    proposed algorithm holds significant potential for practical engineering applications''} and that \emph{``the paper is
+    well-structured, tightly integrating theoretical derivation with engineering validation.''} Reviewer~18 acknowledged
+the practical value of the approach for \emph{``diagnosing catalyst aging in diesel Selective Catalytic Reduction (SCR)
+    systems.''}
+
+Below we provide responses to each of the specific comments. Concerns shared by multiple reviewers are
+consolidated and addressed first.
+
+\bigskip
+
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{6pt}
+\begin{longtable}{
+    >{\raggedright\arraybackslash\small}p{0.12\textwidth}
+    >{\raggedright\arraybackslash\small}p{0.36\textwidth}
+    >{\raggedright\arraybackslash\small}p{0.46\textwidth}}
+    \toprule
+    \rowcolor{headerbg}
+    \textbf{Reviewers}         &
+    \textbf{Reviewer Feedback} &
+    \textbf{Rebuttal Comments and Revisions} \\ \midrule
+    \endfirsthead
+    \toprule
+    \rowcolor{headerbg}
+    \textbf{Reviewers}         &
+    \textbf{Reviewer Feedback} &
+    \textbf{Rebuttal Comments and Revisions} \\ \midrule
+    \endhead
+    \bottomrule
+    \endfoot
+    %==================================================================================================================
+    % ROW 1: Necessary conditions / OBD feasibility (MAJOR — shared by AE + R14 + R18)
+    %==================================================================================================================
+    Associate Editor,\newline Reviewer~18,\newline Reviewer~14
+                               &
+    \rquote{AE: ``Justify the necessary condition of the proposed method based on sufficient data under vehicle working
+        conditions.''}
+    \par\medskip
+    \rquote{R14: ``During real-world heavy-duty truck operations, the vehicle may encounter prolonged light-load
+        cruising [\ldots] which might result in entire driving segments failing to trigger catalyst saturation at all. Under
+        such scenarios, will the system generate false alarms?''}
+    \par\medskip
+    \rquote{R18: ``This is a severe bottleneck for real-world deployment, evidenced by the fact that the actual truck
+        drive segments [\ldots] featured very few samples (often under 10\%) near saturation.''}
+                               &
+    Although only a fraction of the operating data is close to saturation (approximately 10\% in real-world truck data),
+    the convex parameter estimation framework utilizes the \textbf{entire} dataset. The non-saturated data points
+    establish the lower boundary constraints ($\eta(k) \le \eta_{\sat}(k)$), which restrict the parameter space and
+    prevent the estimates from collapsing.
+    \par\smallskip
+    For on-vehicle implementation, catalyst utilization can be assessed in real time by monitoring readily available
+    signals such as urea dosing rate, engine rpm, and the $\nox$ reduction estimate from sensors. When these indicate
+    sustained low catalyst demand, the system defers its decision rather than executing the hypothesis test on
+    insufficient data. \textbf{The detector can thus avoid producing false alarms under non-catalyst-saturating driving
+        conditions}---the Wald test is simply not invoked.
+    \revision{A dedicated paragraph discussing these practical OBD considerations, false-alarm prevention, and the impact
+        on the in-use monitor performance ratio (IUPMR) has been added at the end of Section~6. A note on monitoring
+        catalyst utilization via available signals has been added to the Limitations appendix (Appendix~B).}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 2: Threshold beta interpretation (MAJOR — R14)
+    %==================================================================================================================
+    Reviewer~14
+                               &
+    \rquote{``In the test-cell validation, the decision thresholds are set to $\beta_{\text{hFTP}} = 4.00$ and
+        $\beta_{\text{RMC}} = 10.00$, respectively. Why is the threshold abruptly scaled up directly to
+        $\beta_{\text{truck}} = 250$ in the real-world truck driving segment analysis?''}
+                               &
+    The threshold $\beta_{\text{truck}} = 250$ is significantly larger than the test-cell thresholds due to the
+    finite-sample departure of $T_w$ from its asymptotic $\chi^2_p$ distribution under $\mathcal{H}_0$. Truck data has
+    considerably fewer saturated-mode samples ($N_{\text{sat}} \approx 120$--$150$) compared to test-cell experiments
+    ($N_{\text{sat}} \approx 200$--$500$), resulting in heavier tails in the null distribution. This is compounded by the
+    less reliable estimation of the error variance under road conditions and the unaccounted variance of the reference
+    parameter $\theta_{\text{sat}}^{dg}$.
+    \revision{Two paragraphs have been added at the end of Section~6 justifying the threshold discrepancy and discussing
+        the path toward statistically optimal threshold selection.}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 3: Independence of saturated mode / scope (MAJOR — R18)
+    %==================================================================================================================
+    Reviewer~18
+                               &
+    \rquote{``The saturated catalyst model's response does not depend on the previous state but only on the inputs,
+        making the response independent of the initial conditions. This effectively means [\ldots] that the dynamics are
+        irrelevant, and that is the reason a simple MLE point estimator suffices. In that sense, this paper does not fit the
+        scope of MECC, because the system dynamics don't really matter.''}
+                               &
+    The goal of the referenced phrase was to convey that one mode (the saturated mode) of the switched dynamic model for
+    $\nox$ reduction is independent of initial conditions. This property allows us to use the prediction error to
+    classify data points as ``close to saturation'' when computing the statistics for aging detection. The next time-step
+    $\nox$ reduction \textbf{still depends on current inputs} through a discrete-time difference equation whose output is
+    governed by the sampling-to-residence-time ratio.
+    \par\smallskip
+    The saturated-mode model is not a static relationship---it is a discrete-time input-output model derived from molar
+    conservation laws. The MLE estimator exploits the time-series structure of the saturated-mode dynamics. The
+    non-saturated data points contribute dynamic inequality constraints. The overall framework is fundamentally a
+    \textbf{dynamic systems identification and change detection problem}.
+    \par\smallskip
+    The requirement of catalyst saturation is a deliberate design choice that enables the core novelty: saturated
+    operation simplifies the highly nonlinear, unobservable ammonia coverage dynamics into a static limit, allowing a
+    convex parameter estimation framework \textbf{without requiring an on-board ammonia sensor}.
+    \revision{Additional clarification has been added to the first paragraph of Section~4 to better convey the role of
+        mode independence within the switched dynamic framework.}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 4: Significance of the paper (MODERATE — R12)
+    %==================================================================================================================
+    Reviewer~12
+                               &
+    \rquote{``The significance of this paper should be stated clearly.''}
+                               &
+    We have added a dedicated paragraph in the Introduction explicitly outlining the three main contributions:
+    (1)~a first-principles discrete-time input-output model derived from molar conservation that captures the interplay
+    between gas parcel residence time and sensor sampling intervals;
+    (2)~a convex parameter estimation framework that bypasses the need for on-board $\ammonia$ sensors while remaining
+    robust to the unidirectional bias of commercial $\nox$ sensors; and
+    (3)~a Wald-test-based catalyst aging detector validated using both test-cell and real-world truck driving datasets.
+    \revision{The significance paragraph has been added to the end of Section~1 (Introduction).}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 5: Experimental comparison — figures vs. tables (MODERATE — R12)
+    %==================================================================================================================
+    Reviewer~12
+                               &
+    \rquote{``The readers may want to see the clear comparison of experimental data and model results. It is better to
+        present the figures but the numbers.''}
+                               &
+    The detection results span multiple trucks, multiple drive segments, and two
+    data years. Presenting all results as individual time-series plots would obscure the cross-comparison that the tabular format enables. The existing tables (Tables~5--9) summarize the detection results for all trucks and drive segments in a compact format that facilitates direct comparison of aging detection outcomes.
+    \revision{No additional figures were added. The tabular format was retained as the most effective presentation for
+        the scope of the results.}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 6: Literature review (MINOR — R12)
+    %==================================================================================================================
+    Reviewer~12
+                               &
+    \rquote{``The literature review is not sufficient. The limitations of the existing works are not clear.''}
+                               &
+    The paper cites 24 references organized around three
+    pillars: SCR modeling and control (9~references, including Hsieh \& Wang, Devarakonda et al., Ciardelli et al.),
+    SCR aging diagnostics (6~references, including Ma \& Wang, Jain et al., Jiang et al.), and the underlying
+    mathematical and statistical theory (10~references, including Kay, Wald, Trefethen). These references collectively
+    justify the research objective, identify the gap, and map directly to the specific focus of model-based SCR aging
+    diagnostics under catalyst saturation.
+    \revision{Additional references to justify the $\beta$ discrepancy were added.}
+    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    %==================================================================================================================
+    % ROW 7: Formatting errors and writing issues (MINOR — AE + R12 + R14)
+    %==================================================================================================================
+    Associate Editor,\newline Reviewer~12,\newline Reviewer~14
+                               &
+    \rquote{AE: ``Some writing issues (e.g., Appendix-?? on page 5) need to be revised.''}
+    \par\medskip
+    \rquote{R12: ``There are some writing mistakes in this paper. Such as: the expression of `(Appendix-??)' is wrong.''}
+    \par\medskip
+    \rquote{R14: ``$\nox$, $\ammonia$, $\oxygen$, and $\nitrogen$ must be strictly rendered in roman font.''}
+                               &
+    1.~The writing issues were due to a missing cross-reference link caused by a LaTeX label mismatch while converting
+    the paper from the JDSMC template to the MECC template. The broken cross-reference has been corrected and now
+    compiles as (Appendix~B) in Section~3.
+    \par\smallskip
+    2.~All chemical symbols have been updated to roman font ($\nox$, $\ammonia$, $\oxygen$, $\nitrogen$) throughout the
+    text, as suggested by Reviewer~14.
+    \revision{Cross-reference fixed in Section~3; chemical symbols corrected throughout.}
+    \\ \bottomrule
+\end{longtable}
+
+\end{document}
