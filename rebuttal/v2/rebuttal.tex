@@ -48,7 +48,7 @@
 {\begin{framed}\noindent\textbf{Reviewer Comment:}\itshape}
 {\end{framed}}
 
-\title{Author Responses to Peer Reviews \\ \large Joint MECC 2026 -- ASME JDSMC Submission \#26}
+\title{Authors' Rebuttal and List of Revisions \\ \large Joint MECC 2026 -- ASME JDSMC Submission \#26}
 \author{Sesha Charla, Peter H. Meckl, Bin Yao}
 \date{\today}
 
@@ -75,19 +75,19 @@ consolidated and addressed first.
 \setlength{\tabcolsep}{6pt}
 \begin{longtable}{
     >{\raggedright\arraybackslash\small}p{0.12\textwidth}
-    >{\raggedright\arraybackslash\small}p{0.36\textwidth}
-    >{\raggedright\arraybackslash\small}p{0.46\textwidth}}
+    >{\small}p{0.36\textwidth}
+    >{\small}p{0.46\textwidth}}
     \toprule
     \rowcolor{headerbg}
     \textbf{Reviewers}         &
     \textbf{Reviewer Feedback} &
-    \textbf{Rebuttal Comments and Revisions} \\ \midrule
+    \textbf{Rebuttal Comments and Revisions}                                                             \\ \midrule
     \endfirsthead
     \toprule
     \rowcolor{headerbg}
     \textbf{Reviewers}         &
     \textbf{Reviewer Feedback} &
-    \textbf{Rebuttal Comments and Revisions} \\ \midrule
+    \textbf{Rebuttal Comments and Revisions}                                                             \\ \midrule
     \endhead
     \bottomrule
     \endfoot
@@ -107,19 +107,19 @@ consolidated and addressed first.
         drive segments [\ldots] featured very few samples (often under 10\%) near saturation.''}
                                &
     Although only a fraction of the operating data is close to saturation (approximately 10\% in real-world truck data),
-    the convex parameter estimation framework utilizes the \textbf{entire} dataset. The non-saturated data points
+    the convex parameter estimation framework utilizes the entire dataset. The non-saturated data points
     establish the lower boundary constraints ($\eta(k) \le \eta_{\sat}(k)$), which restrict the parameter space and
     prevent the estimates from collapsing.
     \par\smallskip
     For on-vehicle implementation, catalyst utilization can be assessed in real time by monitoring readily available
     signals such as urea dosing rate, engine rpm, and the $\nox$ reduction estimate from sensors. When these indicate
     sustained low catalyst demand, the system defers its decision rather than executing the hypothesis test on
-    insufficient data. \textbf{The detector can thus avoid producing false alarms under non-catalyst-saturating driving
-        conditions}---the Wald test is simply not invoked.
-    \revision{A dedicated paragraph discussing these practical OBD considerations, false-alarm prevention, and the impact
-        on the in-use monitor performance ratio (IUPMR) has been added at the end of Section~6. A note on monitoring
-        catalyst utilization via available signals has been added to the Limitations appendix (Appendix~B).}
-    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    insufficient data. The detector can thus avoid producing false alarms under non-catalyst-saturating driving
+    conditions.
+    \revision{A dedicated paragraph discussing these practical OBD considerations, false-alarm prevention, and the
+        impact on the in-use monitor performance ratio (IUPMR) has been added at the end of Section~6. A note on monitoring
+    catalyst utilization via available signals has been added to the Limitations appendix (Appendix~B).} \\
+    \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
     %==================================================================================================================
     % ROW 2: Threshold beta interpretation (MAJOR — R14)
     %==================================================================================================================
@@ -129,15 +129,15 @@ consolidated and addressed first.
         $\beta_{\text{RMC}} = 10.00$, respectively. Why is the threshold abruptly scaled up directly to
         $\beta_{\text{truck}} = 250$ in the real-world truck driving segment analysis?''}
                                &
-    The threshold $\beta_{\text{truck}} = 250$ is significantly larger than the test-cell thresholds due to the
-    finite-sample departure of $T_w$ from its asymptotic $\chi^2_p$ distribution under $\mathcal{H}_0$. Truck data has
-    considerably fewer saturated-mode samples ($N_{\text{sat}} \approx 120$--$150$) compared to test-cell experiments
-    ($N_{\text{sat}} \approx 200$--$500$), resulting in heavier tails in the null distribution. This is compounded by the
-    less reliable estimation of the error variance under road conditions and the unaccounted variance of the reference
-    parameter $\theta_{\text{sat}}^{dg}$.
-    \revision{Two paragraphs have been added at the end of Section~6 justifying the threshold discrepancy and discussing
-        the path toward statistically optimal threshold selection.}
-    \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
+    The threshold $\beta_{\text{truck}} = 250$ is significantly larger than the test-cell thresholds because the limited
+    sample size causes $T_w$ to diverge from its asymptotic $\chi^2_\nu$ distribution under $\mathcal{H}_0$. Truck data
+    has considerably fewer saturated-mode samples ($N_{\text{sat}} \approx 120$--$150$) compared to test-cell
+    experiments ($N_{\text{sat}} \approx 200$--$500$), resulting in heavier tails in the null distribution. This is
+    compounded by the less reliable estimation of the error variance under road conditions and the unaccounted variance
+    of the reference parameter $\theta_{\text{sat}}^{dg}$.
+    \revision{Two paragraphs have been added at the end of
+        Section~6 justifying the threshold discrepancy and discussing the path toward statistically optimal threshold
+    selection.}                                                                                          \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
     %==================================================================================================================
     % ROW 3: Independence of saturated mode / scope (MAJOR — R18)
     %==================================================================================================================
@@ -151,17 +151,16 @@ consolidated and addressed first.
     The goal of the referenced phrase was to convey that one mode (the saturated mode) of the switched dynamic model for
     $\nox$ reduction is independent of initial conditions. This property allows us to use the prediction error to
     classify data points as ``close to saturation'' when computing the statistics for aging detection. The next time-step
-    $\nox$ reduction \textbf{still depends on current inputs} through a discrete-time difference equation whose output is
-    governed by the sampling-to-residence-time ratio.
+    $\nox$ reduction still depends on current inputs through a discrete-time equation.
     \par\smallskip
     The saturated-mode model is not a static relationship---it is a discrete-time input-output model derived from molar
     conservation laws. The MLE estimator exploits the time-series structure of the saturated-mode dynamics. The
     non-saturated data points contribute dynamic inequality constraints. The overall framework is fundamentally a
-    \textbf{dynamic systems identification and change detection problem}.
+    dynamic systems identification and change detection problem.
     \par\smallskip
     The requirement of catalyst saturation is a deliberate design choice that enables the core novelty: saturated
     operation simplifies the highly nonlinear, unobservable ammonia coverage dynamics into a static limit, allowing a
-    convex parameter estimation framework \textbf{without requiring an on-board ammonia sensor}.
+    convex parameter estimation framework without requiring an on-board ammonia sensor.
     \revision{Additional clarification has been added to the first paragraph of Section~4 to better convey the role of
         mode independence within the switched dynamic framework.}
     \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
@@ -200,12 +199,10 @@ consolidated and addressed first.
                                &
     \rquote{``The literature review is not sufficient. The limitations of the existing works are not clear.''}
                                &
-    The paper cites 24 references organized around three
-    pillars: SCR modeling and control (9~references, including Hsieh \& Wang, Devarakonda et al., Ciardelli et al.),
-    SCR aging diagnostics (6~references, including Ma \& Wang, Jain et al., Jiang et al.), and the underlying
-    mathematical and statistical theory (10~references, including Kay, Wald, Trefethen). These references collectively
-    justify the research objective, identify the gap, and map directly to the specific focus of model-based SCR aging
-    diagnostics under catalyst saturation.
+    The paper's references are organized around three pillars: SCR modeling and control, SCR aging diagnostics, and the
+    underlying mathematical and statistical theory. These references collectively justify the research objective,
+    identify the gap, and map directly to the specific focus of model-based SCR aging diagnostics under catalyst
+    saturation.
     \revision{Additional references to justify the $\beta$ discrepancy were added.}
     \\ \arrayrulecolor{rowsep}\midrule\arrayrulecolor{black}
     %==================================================================================================================
