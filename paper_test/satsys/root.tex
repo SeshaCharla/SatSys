@@ -1,0 +1,62 @@
+\documentclass{ifacconf}
+
+\def\versionno{0.1}
+
+% Custom Stuff
+\input{ltx_core/ltx_pkgs.tex}
+\input{ltx_core/new_cmds.tex}
+\usepackage[authoryear,round]{natbib}
+
+\begin{document}
+%=======================================================================================================================
+\begin{frontmatter}
+
+\title{Modelling and Parameter Estimation of Diesel Engine Aftertreatment System under Catalyst Saturation for Aging Diagnostics}
+
+\author[First]{Sesha Charla}
+\author[Second]{Peter H. Meckl\thanksref{correspond}}
+\author[Third]{Bin Yao}
+
+\address[First]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: scharla@purdue.edu)}
+\address[Second]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: meckl@purdue.edu)}
+\address[Third]{School of Mechanical Engineering, Purdue University,
+   West Lafayette, Indiana, USA (e-mail: byao@purdue.edu)}
+
+\thanks[correspond]{Corresponding author.}
+
+%% Abstract should be no more than 100 words
+\begin{abstract}
+\input{secs/0-abstract.tex}
+\end{abstract}
+
+\begin{keyword}
+Diesel Engine Aftertreatment System \sep System Identification \sep Nonlinear Systems \sep
+Hybrid Systems \sep Diagnostics \sep Parameter Estimation \sep Linear Programming
+\end{keyword}
+
+\end{frontmatter}
+%=======================================================================================================================
+
+\input{secs/1-intro.tex}
+\input{secs/2-SatSys_model.tex}
+\input{secs/3-MLE_estimation.tex}
+\input{secs/4-catalyst_mode_detection.tex}
+\input{secs/5-catalyst_aging.tex}
+\input{secs/6-trucks.tex}
+\input{secs/7-conclusion.tex}
+
+%=======================================================================================================================
+\begin{ack}
+Authors acknowledge the support and feedback from David Schmidt, Larry Bruner, Adam Kidd and Tom Nelson of Cummins, Inc.
+Authors acknowledge the funding and test-cell, truck and simulation data of Diesel Engine Aftertreatment Systems from Cummins, Inc.
+\end{ack}
+%=======================================================================================================================
+\input{secs/0-symb_list.tex}
+%=======================================================================================================================
+\appendix   %%% starting appendices
+\input{secs/n-appendix.tex}
+%=======================================================================================================================
+\bibliography{refs}
+\end{document}

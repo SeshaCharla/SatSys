@@ -1,0 +1,15 @@
+%% 2. The I/O dynamics for \nox reduction under Catalyst Saturation forms an upper bound to the actual \nox reduction dynamics which switch between Saturation and de-saturation.
+%===
+
+It can be observed that in a given time step, the maximum $\nox$ reduction occurs when the catalyst is saturated. Thus,
+under the same temperature, flow rate and inlet $\nox$ concentration, the response of the saturated model
+(\ref{eqn::nox_mdl}) forms a tight upper bound to the response of the actual system, which switches between saturation
+and desaturation based on urea dosing, flow rate and catalyst temperature. This results in the following bounding
+condition on the response of the saturated system:
+%===
+\begin{align}
+        \eta_{sat}(k) \geq \eta(k) \qquad \forall k
+        \label{eqn::eta_bound}
+\end{align}
+%===
+This relationship is used for model parameter estimation.

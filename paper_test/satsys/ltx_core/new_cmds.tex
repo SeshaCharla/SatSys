@@ -1,0 +1,30 @@
+% NewCommands
+\newcommand{\peq}{ \mathrel{+}= }
+\newcommand{\muleq}{ \mathrel{*}= }
+\newcommand{\sign}{ \text{sign}}
+\renewcommand{\bm}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\mat}[1]{\begin{matrix} #1 \end{matrix}}
+\newcommand{\lx}[2]{\leftindex #1 {#2}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\itbf}[1]{\noindent\textit{\textbf{#1}}}
+\newcommand{\mdet}[1]{\norm{\begin{matrix} #1 \end{matrix}}}
+\newcommand{\pbox}[1]{\fbox{\begin{minipage}{\textwidth} #1 \end{minipage}}}
+\newcommand{\lstln}[1]{\lstinline|#1|}
+\newcommand{\lr}[1]{\left( #1 \right)}
+\newcommand{\lrb}[1]{\left[ #1 \right]}
+\newcommand{\lrf}[1]{\left\{ #1 \right\}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\mol}[1]{\{#1\}}
+\newcommand{\con}[1]{[#1]}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\sat}{\text{sat}}
+\newcommand{\kron}{\otimes}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\froot}{.} % Root directory for the files
+\newcommand{\figWidth}{\columnwidth}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%%=== Lemmas and Theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
