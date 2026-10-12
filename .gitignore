@@ -1,3 +1,9 @@
+## Build output PDFs (not archive/submission snapshots):
+SCR_SatSys.pdf
+submission/SCR_SatSys.pdf
+paper_test/satsys/root.pdf
+paper_test/ifacconf_latex/ifacconf.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
